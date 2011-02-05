@@ -45,7 +45,7 @@ courses included in this textbook were accurate as of 20 July
 1999.  Revisions to the classes may have been made since that time."
 \end{quotation}
 
-\section{{\tt apstring}}
+\section{{\tt string}}
 
 \begin{verbatim}
 extern const int npos;  // used to indicate not a position in the string
@@ -53,21 +53,21 @@ extern const int npos;  // used to indicate not a position in the string
 // public member functions
 
   // constructors/destructor
-  apstring();                       // construct empty string ""
-  apstring(const char * s);         // construct from string literal
-  apstring(const apstring & str);   // copy constructor
-  ~apstring();                      // destructor
+  string();                       // construct empty string ""
+  string(const char * s);         // construct from string literal
+  string(const string & str);   // copy constructor
+  ~string();                      // destructor
 
   // assignment
-  const apstring & operator= (const apstring & str); // assign str
-  const apstring & operator= (const char * s);       // assign s
-  const apstring & operator= (char ch);              // assign ch
+  const string & operator= (const string & str); // assign str
+  const string & operator= (const char * s);       // assign s
+  const string & operator= (char ch);              // assign ch
 
   // accessors
   int length() const;                      // number of chars
-  int find(const apstring & str) const;    // index of first occurrence of str
+  int find(const string & str) const;    // index of first occurrence of str
   int find(char ch) const;                 // index of first occurrence of ch
-  apstring substr(int pos, int len) const; // substring of len chars, 
+  string substr(int pos, int len) const; // substring of len chars, 
                                            // starting at pos
   const char * c_str() const;              // explicit conversion to char *
 
@@ -76,47 +76,47 @@ extern const int npos;  // used to indicate not a position in the string
   char & operator[ ](int k);     // range-checked indexing
 
   // modifiers
-  const apstring & operator+= (const apstring & str); // append str
-  const apstring & operator+= (char ch);              // append char
+  const string & operator+= (const string & str); // append str
+  const string & operator+= (char ch);              // append char
 
   // The following free (non-member) functions operate on strings
 
   // I/O functions
-  ostream & operator<< ( ostream & os, const apstring & str );
-  istream & operator>> ( istream & is, apstring & str );
-  istream & getline( istream & is, apstring & str );
+  ostream & operator<< ( ostream & os, const string & str );
+  istream & operator>> ( istream & is, string & str );
+  istream & getline( istream & is, string & str );
 
   // comparison operators
-  bool operator== ( const apstring & lhs, const apstring & rhs );
-  bool operator!= ( const apstring & lhs, const apstring & rhs );
-  bool operator<  ( const apstring & lhs, const apstring & rhs );
-  bool operator<= ( const apstring & lhs, const apstring & rhs );
-  bool operator>  ( const apstring & lhs, const apstring & rhs );
-  bool operator>= ( const apstring & lhs, const apstring & rhs );
+  bool operator== ( const string & lhs, const string & rhs );
+  bool operator!= ( const string & lhs, const string & rhs );
+  bool operator<  ( const string & lhs, const string & rhs );
+  bool operator<= ( const string & lhs, const string & rhs );
+  bool operator>  ( const string & lhs, const string & rhs );
+  bool operator>= ( const string & lhs, const string & rhs );
 
   // concatenation operator +
-  apstring operator+ ( const apstring & lhs, const apstring & rhs );
-  apstring operator+ ( char ch, const apstring & str );
-  apstring operator+ ( const apstring & str, char ch );
+  string operator+ ( const string & lhs, const apstring & rhs );
+  string operator+ ( char ch, const string & str );
+  string operator+ ( const string & str, char ch );
 \end{verbatim}
 
-\section{{\tt apvector}}
+\section{{\tt vector}}
 
 \begin{verbatim}
 template <class itemType>
-class apvector
+class vector
 
 // public member functions
 
   // constructors/destructor
-  apvector();                                 // default constructor (size==0)
-  apvector(int size);                         // initial size of vector is size
-  apvector(int size, const itemType & fillValue);  // all entries == fillValue
-  apvector(const apvector & vec);             // copy constructor
-  ~apvector();                                // destructor
+  vector();                                 // default constructor (size==0)
+  vector(int size);                         // initial size of vector is size
+  vector(int size, const itemType & fillValue);  // all entries == fillValue
+  vector(const apvector & vec);             // copy constructor
+  ~vector();                                // destructor
 
   // assignment
-  const apvector & operator= (const apvector & vec);
+  const vector & operator= (const apvector & vec);
 
   // accessors
   int length() const;                            // capacity of vector
@@ -156,8 +156,8 @@ class apmatrix
 
   // indexing
   // range-checked indexing
-  const apvector<itemType> & operator[ ](int k) const;  
-  apvector<itemType> & operator[ ](int k);
+  const vector<itemType> & operator[ ](int k) const;  
+  vector<itemType> & operator[ ](int k);
 
   // modifiers
   void resize(int newRows, int newCols); // resizes matrix to newRows x newCols

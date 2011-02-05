@@ -31,8 +31,8 @@
 
 Most of the data types we have been working with represent a single
 value---an integer, a floating-point number, a boolean value.  {\tt
-apstring}s are different in the sense that they are made up of smaller
-pieces, the characters.  Thus, {\tt apstring}s are an example of a
+string}s are different in the sense that they are made up of smaller
+pieces, the characters.  Thus, {\tt string}s are an example of a
 {\bf compound} type.
 
 Depending on what we are doing, we may want to treat a compound type
@@ -563,10 +563,10 @@ int main ()
 }
 \end{verbatim}
 %
-{\tt cin} can also be used to input an {\tt apstring}:
+{\tt cin} can also be used to input an {\tt string}:
 
 \begin{verbatim}
-  apstring name;
+  string name;
 
   cout << "What is your name? ";
   cin >> name;
@@ -583,10 +583,10 @@ funny behavior), I avoid using the {\tt >>} operator altogether,
 unless I am reading data from a source that is known to be
 error-free.
 
-Instead, I use a function in the {\tt apstring} called {\tt getline}.
+Instead, I use a function in the {\tt string} called {\tt getline}.
 
 \begin{verbatim}
-  apstring name;
+  string name;
 
   cout << "What is your name? ";
   getline (cin, name);
@@ -595,7 +595,7 @@ Instead, I use a function in the {\tt apstring} called {\tt getline}.
 %
 The first argument to {\tt getline} is {\tt cin}, which is
 where the input is coming from.  The second argument is the
-name of the {\tt apstring} where you want the result to be
+name of the {\tt string} where you want the result to be
 stored.
 
 {\tt getline} reads the entire line until the user hits

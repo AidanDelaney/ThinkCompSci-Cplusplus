@@ -103,7 +103,7 @@ operations as {\tt cin}, including {\tt >>} and {\tt getline}.
 
 \begin{verbatim}
   int x;
-  apstring line;
+  string line;
     
   infile >> x;               // get a single integer and store in x
   getline (infile, line);    // get a whole line and store in line
@@ -132,7 +132,7 @@ Here is a program that reads lines from a file and displays
 them on the screen:
 
 \begin{verbatim}
-  apstring fileName = ...;
+  string fileName = ...;
   ifstream infile (fileName.c_str());
 
   if (infile.good() == false) {
@@ -147,10 +147,10 @@ them on the screen:
   }
 \end{verbatim}
 %
-The function {\tt c\_str} converts an {\tt apstring} to a
+The function {\tt c\_str} converts an {\tt string} to a
 native C string.  Because the {\tt ifstream} constructor
 expects a C string as an argument, we have to convert
-the {\tt apstring}.
+the {\tt string}.
 
 \index{c\_str}
 \index{C string}
@@ -272,20 +272,20 @@ indicates that we should take the second backslash seriously.
 Parsing input lines consists of finding the beginning and
 end of each city name and using
 the {\tt substr} function to extract the cities and distance.
-{\tt substr} is an {\tt apstring} member function;
+{\tt substr} is an {\tt string} member function;
 it takes two arguments, the starting index of the substring
 and the length.
 
 \index{find}
 
 \begin{verbatim}
-void processLine (const apstring& line)
+void processLine (const string& line)
 {
   // the character we are looking for is a quotation mark
   char quote = '\"';
 
   // store the indices of the quotation marks in a vector
-  apvector<int> quoteIndex (4);
+  vector<int> quoteIndex (4);
 
   // find the first quotation mark using the built-in find
   quoteIndex[0] = line.find (quote);
@@ -297,11 +297,11 @@ void processLine (const apstring& line)
 
   // break the line up into substrings
   int len1 = quoteIndex[1] - quoteIndex[0] - 1;
-  apstring city1 = line.substr (quoteIndex[0]+1, len1);
+  string city1 = line.substr (quoteIndex[0]+1, len1);
   int len2 = quoteIndex[3] - quoteIndex[2] - 1;
-  apstring city2 = line.substr (quoteIndex[2]+1, len2);
+  string city2 = line.substr (quoteIndex[2]+1, len2);
   int len3 = line.length() - quoteIndex[2] - 1;
-  apstring distString = line.substr (quoteIndex[3]+1, len3);
+  string distString = line.substr (quoteIndex[3]+1, len3);
 
   // output the extracted information
   cout << city1 << "\t" << city2 << "\t" << distString << endl;
@@ -336,9 +336,9 @@ result string.  At the end of the loop, the result string contains all
 the digits from the original string, in order.
 
 \begin{verbatim}
-int convertToInt (const apstring& s)
+int convertToInt (const string& s)
 {
-  apstring digitString = "";
+  string digitString = "";
 
   for (int i=0; i<s.length(); i++) {
     if (isdigit (s[i])) {
@@ -384,8 +384,8 @@ as an argument.
 
 A data structure is a container for grouping a collection
 of data into a single object.  We have seen some examples already,
-including {\tt apstring}s, which are collections of characters,
-and {\tt apvector}s which are collections on any type.
+including {\tt string}s, which are collections of characters,
+and {\tt vector}s which are collections on any type.
 
 An ordered set is a collection of items with two defining
 properties:
@@ -411,7 +411,7 @@ to make room for new elements.
 
 \end{description}
 
-Both {\tt apstring}s and {\tt apvector}s have an ordering; every
+Both {\tt string}s and {\tt vector}s have an ordering; every
 element has an index we can use to identify it.  Both none of
 the data structures we have seen so far have the properties of
 uniqueness or arbitrary size.
@@ -421,43 +421,43 @@ uniqueness or arbitrary size.
 To achieve uniqueness, we have to write an {\tt add} function
 that searches the set to see if it already exists.  To make the
 set expand as elements are added, we can take advantage of the
-{\tt resize} function on {\tt apvector}s.
+{\tt resize} function on {\tt vector}s.
 
 Here is the beginning of a class definition for a {\tt Set}.
 
 \begin{verbatim}
 class Set {
 private:
-  apvector<apstring> elements;
+  vector<string> elements;
   int numElements;
 
 public:
   Set (int n);
 
   int getNumElements () const;
-  apstring getElement (int i) const;
-  int find (const apstring& s) const;
-  int add (const apstring& s);
+  string getElement (int i) const;
+  int find (const string& s) const;
+  int add (const string& s);
 };
 
 Set::Set (int n)
 {
-  apvector<apstring> temp (n);
+  vector<string> temp (n);
   elements = temp;
   numElements = 0;
 }
 \end{verbatim}
 %
-The instance variables are an {\tt apvector} of strings and an
+The instance variables are an {\tt vector} of strings and an
 integer that keeps track of how many elements there are in the
 set.  Keep in mind that the number of elements in the
 set, {\tt numElements}, is not the same thing as the size
-of the {\tt apvector}.  Usually it will be smaller.
+of the {\tt vector}.  Usually it will be smaller.
 
 \index{constructor}
 
 The {\tt Set} constructor takes a single parameter, which is
-the initial size of the {\tt apvector}.  The initial number
+the initial size of the {\tt vector}.  The initial number
 of elements is always zero.
 
 {\tt getNumElements} and {\tt getElement} are accessor functions
@@ -481,15 +481,15 @@ convince yourself that they all maintain the invariants.
 \index{data encapsulation}
 \index{encapsulation!data}
 
-When we use the {\tt []} operator to access the {\tt apvector},
+When we use the {\tt []} operator to access the {\tt vector},
 it checks to make sure the index is greater than or equal to zero
-and less than the length of the {\tt apvector}.  To access the
+and less than the length of the {\tt vector}.  To access the
 elements of a set, though, we need to check a stronger condition.
 The index has to be less than the number of elements, which 
-might be smaller than the length of the {\tt apvector}.
+might be smaller than the length of the {\tt vector}.
 
 \begin{verbatim}
-apstring Set::getElement (int i) const
+string Set::getElement (int i) const
 {
   if (i < numElements) {
     return elements[i];
@@ -511,7 +511,7 @@ now, the pattern for traversing and searching should be old
 hat:
 
 \begin{verbatim}
-int Set::find (const apstring& s) const
+int Set::find (const string& s) const
 {
   for (int i=0; i<numElements; i++) {
     if (elements[i] == s) return i;
@@ -525,13 +525,13 @@ something like {\tt add} would be void, but in this case it
 might be useful to make it return the index of the element.
 
 \begin{verbatim}
-int Set::add (const apstring& s)
+int Set::add (const string& s)
 {
   // if the element is already in the set, return its index
   int index = find (s);
   if (index != -1) return index;
 
-  // if the apvector is full, double its size
+  // if the vector is full, double its size
   if (numElements == elements.length()) {
     elements.resize (elements.length() * 2);
   }
@@ -551,7 +551,7 @@ but it is also the index of the next element to be added.
 It takes a minute to convince yourself that that works, but
 consider this: when the number of elements is zero, the index
 of the next element is 0.  When the number of elements is
-equal to the length of the {\tt apvector}, that means that the
+equal to the length of the {\tt vector}, that means that the
 vector is full, and we have to allocate more space (using
 {\tt resize}) before we can add the new element.
 
@@ -587,7 +587,7 @@ as a second parameter.
 \index{matrix}
 \index{apmatrix}
 
-An {\tt apmatrix} is similar to an {\tt apvector} except it
+An {\tt apmatrix} is similar to an {\tt vector} except it
 is two-dimensional.  Instead of a length, it has two
 dimensions, called {\tt numrows} and {\tt numcols}, for
 ``number of rows'' and ``number of columns.''
@@ -615,8 +615,8 @@ constructor that takes another {\tt apmatrix} as a parameter.
 
 \index{constructor}
 
-Just as with {\tt apvectors}, we can make {\tt apmatrix}es with any
-type of elements (including {\tt apvector}s, and even {\tt
+Just as with {\tt vectors}, we can make {\tt apmatrix}es with any
+type of elements (including {\tt vector}s, and even {\tt
 apmatrix}es).
 
 To access the elements of a matrix, we use the {\tt []} operator
@@ -755,10 +755,10 @@ private:
 public:
   DistMatrix (int rows);
 
-  void add (const apstring& city1, const apstring& city2, int dist);
+  void add (const string& city1, const string& city2, int dist);
   int distance (int i, int j) const;
-  int distance (const apstring& city1, const apstring& city2) const;
-  apstring cityName (int i) const;
+  int distance (const string& city1, const string& city2) const;
+  string cityName (int i) const;
   int numCities () const;
   void print ();
 };
@@ -769,7 +769,7 @@ Using this interface simplifies {\tt main}:
 \begin{verbatim}
 void main ()
 {
-  apstring line;
+  string line;
   ifstream infile ("distances");
   DistMatrix distances (2);
 
@@ -786,10 +786,10 @@ void main ()
 It also simplifies {\tt processLine}:
 
 \begin{verbatim}
-void processLine (const apstring& line, DistMatrix& distances)
+void processLine (const string& line, DistMatrix& distances)
 {
   char quote = '\"';
-  apvector<int> quoteIndex (4);
+  vector<int> quoteIndex (4);
   quoteIndex[0] = line.find (quote);
   for (int i=1; i<4; i++) {
     quoteIndex[i] = find (line, quote, quoteIndex[i-1]+1);
@@ -797,11 +797,11 @@ void processLine (const apstring& line, DistMatrix& distances)
 
   // break the line up into substrings
   int len1 = quoteIndex[1] - quoteIndex[0] - 1;
-  apstring city1 = line.substr (quoteIndex[0]+1, len1);
+  string city1 = line.substr (quoteIndex[0]+1, len1);
   int len2 = quoteIndex[3] - quoteIndex[2] - 1;
-  apstring city2 = line.substr (quoteIndex[2]+1, len2);
+  string city2 = line.substr (quoteIndex[2]+1, len2);
   int len3 = line.length() - quoteIndex[2] - 1;
-  apstring distString = line.substr (quoteIndex[3]+1, len3);
+  string distString = line.substr (quoteIndex[3]+1, len3);
   int distance = convertToInt (distString);
 
   // add the new datum to the distances matrix

@@ -210,14 +210,14 @@ The structure definition looks like this
 
 \begin{verbatim}
 struct Deck {
-  apvector<Card> cards;
+  vector<Card> cards;
 
   Deck (int n);
 };
 
 Deck::Deck (int size)
 {
-  apvector<Card> temp (size);
+  vector<Card> temp (size);
   cards = temp;
 }
 \end{verbatim}
@@ -230,7 +230,7 @@ that it contains.
 
 For now there is only one constructor.  It creates a local variable
 named {\tt temp}, which it initializes by invoking the constructor
-for the {\tt apvector} class, passing the size as a parameter.
+for the {\tt vector} class, passing the size as a parameter.
 Then it copies the vector from {\tt temp} into the instance
 variable {\tt cards}.
 
@@ -280,7 +280,7 @@ write a second {\tt Deck} constructor.
 \begin{verbatim}
 Deck::Deck ()
 {
-  apvector<Card> temp (52);
+  vector<Card> temp (52);
   cards = temp;
 
   int i = 0;
@@ -375,7 +375,7 @@ struct Card
 
 // and then later we provide the definition of Deck
 struct Deck {
-  apvector<Card> cards;
+  vector<Card> cards;
 
   Deck ();
   Deck (int n);
