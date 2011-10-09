@@ -308,11 +308,12 @@ In {\tt main} we can call this new function using syntax that
 is similar to the way we call the built-in C++ commands:
 
 \begin{verbatim}
-void main ()
+int main ()
 {
   cout << "First Line." << endl;
   newLine ();
   cout << "Second Line." << endl;
+  return 0;
 }
 \end{verbatim}
 %
@@ -329,13 +330,14 @@ more space between the lines?  We could call the same
 function repeatedly:
 
 \begin{verbatim}
-void main ()
+int main ()
 {
   cout << "First Line." << endl;
   newLine ();
   newLine ();
   newLine ();
   cout << "Second Line." << endl;
+  return 0;
 }
 \end{verbatim}
 %
@@ -348,11 +350,12 @@ void threeLine ()
   newLine ();  newLine ();  newLine ();
 }
 
-void main ()
+int main ()
 {
   cout << "First Line." << endl;
   threeLine ();
   cout << "Second Line." << endl;
+  return 0;
 }
 \end{verbatim}
 %
@@ -413,11 +416,12 @@ void threeLine ()
   newLine ();  newLine ();  newLine ();
 }
 
-void main ()
+int main ()
 {
   cout << "First Line." << endl;
   threeLine ();
   cout << "Second Line." << endl;
+  return 0;
 }
 \end{verbatim}
 
@@ -500,8 +504,9 @@ In order to call this function, we have to provide a {\tt char}.
 For example, we might have a {\tt main} function like this:
 
 \begin{verbatim}
-  void main () {
+  int main () {
     printTwice ('a');
+    return 0;
   }
 \end{verbatim}
 %
@@ -514,9 +519,10 @@ Alternatively, if we had a {\tt char} variable, we could
 use it as an argument instead:
 
 \begin{verbatim}
-  void main () {
+  int main () {
     char argument = 'b';
     printTwice (argument);
+    return 0;
   }
 \end{verbatim}
 %

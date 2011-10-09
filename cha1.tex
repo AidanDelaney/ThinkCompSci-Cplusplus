@@ -119,7 +119,7 @@ Then, depending on what your programming environment is like,
 you might leave the text editor and run the compiler.  The
 compiler would read your source code, translate it, and create
 a new file named {\tt program.o} to contain the object code,
-or {\tt program.exe} to contain the executable. 
+or {\tt program.exe} to contain the executable.  (Aside: on Microsoft Windows executable files have the {\tt .exe} extension, on Unix (on x86) the files do not have to have a certain extension, but contain what's known as a {\it magic number}, the characters \\x7f, `E`, `L' and `F' as the first four characters in the file.)  
 
 \vspace{0.1in}
 \centerline{\epsfig{figure=compile.eps}}
@@ -433,12 +433,14 @@ words ``Hello, World.''  In C++, this program looks like this:
 \begin{verbatim}
 #include <iostream>
 
+using namespace std;
+
 // main: generate some simple output
 
-void main ()
+int main ()
 {
   cout << "Hello, world." << endl;
-  return 0
+  return 0;
 }
 \end{verbatim}
 %
@@ -452,14 +454,16 @@ them, like the first line.
 \index{comment}
 \index{statement!comment}
 
-The second line begins with {\tt //}, which indicates
+The second line begins with the {\tt using} keyword.  It tells the compiler that we are using the standard, i.e. {\tt std}, set of functions which include {\tt cout} and {\tt endl} on subsequent lines.  Namespaces and the {\tt using} keyword will be explained later on in this book.  For the moment it suffices to include this line at the top of every program.
+
+The third line begins with {\tt //}, which indicates
 that it is a {\bf comment}.  A comment is a bit of
-English text that you can put in the middle of a program,
+English (or French, or German, or any language) text that you can put in the middle of a program,
 usually to explain what the program does.  When the compiler
 sees a {\tt //}, it ignores everything from there until the end
 of the line.
 
-In the third line, you can ignore the word {\tt void}
+In the fourth line, you can ignore the word {\tt int}
 for now, but notice the word {\tt main}.  {\tt main} is a
 special name that indicates the place in the program where execution
 begins.  When the program runs, it starts by executing the first
@@ -470,7 +474,7 @@ to the last statement, and then it quits.
 \index{statement!output}
 
 There is no limit to the number of statements that can be in {\tt
-main}, but the example contains only one.  It is a basic {\bf
+main}, but the example contains only two.  It is a basic {\bf
 output} statement, meaning that it outputs or displays a message on
 the screen.  
 
@@ -489,6 +493,8 @@ on the next line.
 
 Like all statements, the output statement ends with a
 semi-colon ({\tt ;}).
+
+The second statement in this program tells the program to finish.  The {\tt return} keyword hands control back to the operating system (one of Microsoft Windows, Linux, Apple OS X, or many others).  The code $0$ is returned to the operating system which, in general, means that the program executed as expected.  We could return another number (technically an integer) and we'll examine this ability in later chapters.
 
 There are a few other things you should notice about the syntax of
 this program.  First, C++ uses squiggly-braces (\{ and
@@ -510,7 +516,7 @@ you misspell {\tt iostream}, you might get an error message like
 the following:
 
 \begin{verbatim}
-hello.cpp:1: oistream.h: No such file or directory
+hello.cpp:1: oistream: No such file or directory
 \end{verbatim}
 %
 There is a lot of information on this line, but it is presented
@@ -519,8 +525,8 @@ compiler might say something like:
 
 \begin{quote}
 ``On line 1 of the source code file named hello.cpp, you tried to
-include a header file named oistream.h.  I didn't find anything
-with that name, but I did find something named iostream.h.  Is
+include a header file named oistream.  I didn't find anything
+with that name, but I did find something named iostream.  Is
 that what you meant, by any chance?''
 \end{quote}
 

@@ -35,12 +35,15 @@ you want in {\tt main}.  For example, to output more than one line:
 \begin{verbatim}
 #include <iostream>
 
+using namespace std;
+
 // main: generate some simple output
 
-void main ()
+int main ()
 {
   cout << "Hello, world." << endl;     // output one line
   cout << "How are you?" << endl;      // output another
+  return 0;
 }
 \end{verbatim}
 %
@@ -62,10 +65,11 @@ statements all on one line.  You can do this by leaving out
 the first {\tt endl}:
 
 \begin{verbatim}
-void main ()
+int main ()
 {
   cout << "Goodbye, ";
   cout << "cruel world!" << endl;
+  return 0;
 }
 \end{verbatim}
 %
@@ -80,10 +84,11 @@ not affect the behavior of the program.  For example, I
 could have written:
 
 \begin{verbatim}
-void main ()
+int main ()
 {
-cout<<"Goodbye, ";
-cout<<"cruel world!"<<endl;
+  cout<<"Goodbye, ";
+  cout<<"cruel world!"<<endl;
+  return 0;
 }
 \end{verbatim}
 %
@@ -92,7 +97,7 @@ The breaks at the ends of lines (newlines) do not affect
 the program's behavior either, so I could have written:
 
 \begin{verbatim}
-void main(){cout<<"Goodbye, ";cout<<"cruel world!"<<endl;}
+int main(){cout<<"Goodbye, ";cout<<"cruel world!"<<endl;return 0;}
 \end{verbatim}
 %
 That would work, too, although you have probably noticed that
@@ -322,11 +327,11 @@ These words, called {\bf keywords}, include {\tt int},
 
 The complete list of keywords is included in the C++ Standard, which
 is the official language definition adopted by the the International
-Organization for Standardization (ISO) on September 1, 1998.  You
-can download a copy electronically from
+Organization for Standardization (ISO) on August 12, 2011\footnote{The latest iteration of a standard initially written in 1989.}.  You
+can download a copy electronically (and at spectacular cost!) from
 
 \begin{verbatim}
-    http://www.ansi.org/
+    http://www.iso.org/
 \end{verbatim}
 %
 Rather than memorize the list, I would suggest that you
