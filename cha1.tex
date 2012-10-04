@@ -42,6 +42,7 @@ accurately.  As it turns out, the process of learning to program is an
 excellent opportunity to practice problem-solving skills.  That's why
 this chapter is called ``The way of the program.''
 
+\begin{comment}
 Of course, the other goal of this book is to prepare you for the
 Computer Science AP Exam.  We may not take the most direct approach
 to that goal, though.  For example, there are not many exercises in
@@ -49,16 +50,13 @@ this book that are similar to the AP questions.  On the other hand,
 if you understand the concepts in this book, along with the details
 of programming in C++, you will have all the tools you need to
 do well on the exam.
+\end{comment}
 
 \section{What is a programming language?}
 \index{programming language}
 \index{language!programming}
 
-The programming language you will be learning is C++, because that is
-the language the AP exam is based on, as of 1998.  Before that, the
-exam used Pascal.  Both C++ and Pascal are {\bf high-level languages};
-other high-level languages you might have heard of are Java, C and
-FORTRAN.
+The programming language you will be learning is C++.  C++ is a {\bf high-level language}; other high-level languages you might have heard of are Java, C and C\#.
 
 As you might infer from the name ``high-level language,'' there are
 also {\bf low-level languages}, sometimes referred to as machine
@@ -430,7 +428,7 @@ Traditionally the first program people write in a new language
 is called ``Hello, World.'' because all it does is print the
 words ``Hello, World.''  In C++, this program looks like this:
 
-\begin{verbatim}
+\begin{lstlisting}
 #include <iostream>
 
 using namespace std;
@@ -442,7 +440,7 @@ int main ()
   cout << "Hello, world." << endl;
   return 0;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Some people judge the quality of a programming language by
 the simplicity of the ``Hello, World.'' program.  By this
@@ -497,9 +495,9 @@ semi-colon ({\tt ;}).
 The second statement in this program tells the program to finish.  The {\tt return} keyword hands control back to the operating system (one of Microsoft Windows, Linux, Apple OS X, or many others).  The code $0$ is returned to the operating system which, in general, means that the program executed as expected.  We could return another number (technically an integer) and we'll examine this ability in later chapters.
 
 There are a few other things you should notice about the syntax of
-this program.  First, C++ uses squiggly-braces (\{ and
+this program.  First, C++ uses curly-braces (\{ and
 \}) to group things together.  In this case, the output statement
-is enclosed in squiggly-braces, indicating that it is {\em inside} the
+is enclosed in curly-braces, indicating that it is {\em inside} the
 definition of {\tt main}.  Also, notice that the statement is
 indented, which helps to show visually which lines are inside the
 definition.
