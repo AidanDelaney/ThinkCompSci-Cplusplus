@@ -29,7 +29,11 @@
 \usepackage{url}
 \usepackage{comment}
 \usepackage{listings}
-\lstset{language=C++}
+\usepackage{textcomp}
+
+% Use non-culry double quotes -- particularly for source listings
+\renewcommand{\textquotedbl}{\textquotesingle\textquotesingle}
+\lstset{language=C++,upquote=true,literate={"}{\textquotedbl}1}
 \pssilent
 
 \title{How to think like a computer scientist}

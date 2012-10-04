@@ -32,7 +32,7 @@
 As I mentioned in the last chapter, you can put as many statements as
 you want in {\tt main}.  For example, to output more than one line:
 
-\begin{verbatim}
+\begin{lstlisting}
 #include <iostream>
 
 using namespace std;
@@ -45,7 +45,7 @@ int main ()
   cout << "How are you?" << endl;      // output another
   return 0;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 As you can see, it is legal to put comments at the
 end of a line, as well as on a line by themselves.
@@ -64,14 +64,14 @@ Often it is useful to display the output from multiple output
 statements all on one line.  You can do this by leaving out
 the first {\tt endl}:
 
-\begin{verbatim}
+\begin{lstlisting}
 int main ()
 {
   cout << "Goodbye, ";
   cout << "cruel world!" << endl;
   return 0;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 In this case the output appears on a single line as
 {\tt Goodbye, cruel world!}.  Notice that there is a space
@@ -83,22 +83,22 @@ Spaces that appear outside of quotation marks generally do
 not affect the behavior of the program.  For example, I
 could have written:
 
-\begin{verbatim}
+\begin{lstlisting}
 int main ()
 {
   cout<<"Goodbye, ";
   cout<<"cruel world!"<<endl;
   return 0;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 This program would compile and run just as well as the original.
 The breaks at the ends of lines (newlines) do not affect
 the program's behavior either, so I could have written:
 
-\begin{verbatim}
+\begin{lstlisting}
 int main(){cout<<"Goodbye, ";cout<<"cruel world!"<<endl;return 0;}
-\end{verbatim}
+\end{lstlisting}
 %
 That would work, too, although you have probably noticed that
 the program is getting harder and harder to read.  Newlines and
@@ -119,17 +119,17 @@ There are other kinds of values, including integers and characters.
 An integer is a whole number like 1 or 17.  You can output
 integer values the same way you output strings:
 
-\begin{verbatim}
+\begin{lstlisting}
   cout << 17 << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 A character value is a letter or digit or punctuation mark
 enclosed in single quotes, like {\tt 'a'} or {\tt '5'}.
 You can output character values the same way:
 
-\begin{verbatim}
+\begin{lstlisting}
   cout << '}' << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 This example outputs a single close squiggly-brace on a line
 by itself.
@@ -154,9 +154,9 @@ variable, you have to declare what type it is.  For example, the
 character type in C++ is called {\tt char}.  The following statement
 creates a new variable named {\tt fred} that has type {\tt char}.
 
-\begin{verbatim}
+\begin{lstlisting}
     char fred;
-\end{verbatim}
+\end{lstlisting}
 %
 This kind of statement is called a {\bf declaration}.
 
@@ -172,20 +172,20 @@ are going to skip that for now (see Chapter~\ref{strings}).
 
 To create an integer variable, the syntax is 
 
-\begin{verbatim}
+\begin{lstlisting}
   int bob;
-\end{verbatim}
+\end{lstlisting}
 %
 where {\tt bob} is the arbitrary name you made up for the
 variable.  In general, you will want to make up variable names
 that indicate what you plan to do with the variable.  For
 example, if you saw these variable declarations:
 
-\begin{verbatim}
+\begin{lstlisting}
     char firstLetter;
     char lastLetter;
     int hour, minute;
-\end{verbatim}
+\end{lstlisting}
 %
 you could probably make a good guess at what values
 would be stored in them.  This example
@@ -201,11 +201,11 @@ Now that we have created some variables, we would like to
 store values in them.  We do that with an {\bf assignment
 statement}.
 
-\begin{verbatim}
+\begin{lstlisting}
     firstLetter = 'a';   // give firstLetter the value 'a'
     hour = 11;           // assign the value 11 to hour
     minute = 59;         // set minute to 59
-\end{verbatim}
+\end{lstlisting}
 %
 This example shows three assignments, and the comments show
 three different ways people sometimes talk about assignment
@@ -240,10 +240,10 @@ value you assign it.  For example, you cannot store a string in
 an {\tt int} variable.  The following statement generates a compiler
 error.
 
-\begin{verbatim}
+\begin{lstlisting}
   int hour;
   hour = "Hello.";       // WRONG !!
-\end{verbatim}
+\end{lstlisting}
 %
 This rule is sometimes a source of confusion, because there are many
 ways that you can convert values from one type to another, and C++
@@ -258,9 +258,9 @@ characters {\tt 1}, {\tt 2} and {\tt 3}, is not
 the same thing as the {\em number} {\tt 123}.
 This assignment is illegal:
 
-\begin{verbatim}
+\begin{lstlisting}
   minute = "59";         // WRONG!
-\end{verbatim}
+\end{lstlisting}
 %
 \section{Outputting variables}
 \label{output}
@@ -268,7 +268,7 @@ This assignment is illegal:
 You can output the value of a variable using the same commands
 we used to output simple values.
 
-\begin{verbatim}
+\begin{lstlisting}
   int hour, minute;
   char colon;
 
@@ -281,16 +281,16 @@ we used to output simple values.
   cout << colon;
   cout << minute;
   cout << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 This program creates two integer variables named {\tt hour} and {\tt
 minute}, and a character variable named {\tt colon}.  It assigns
 appropriate values to each of the variables and then uses a series
 of output statements to generate the following:
 
-\begin{verbatim}
+\begin{lstlisting}
 The current time is 11:59
-\end{verbatim}
+\end{lstlisting}
 
 When we talk about ``outputting a variable,'' we mean outputting the
 {\em value} of the variable.  To output the {\em name} of a variable,
@@ -300,7 +300,7 @@ As we have seen before, you can include more than one value in
 a single output statement, which can make the previous program more
 concise:
 
-\begin{verbatim}
+\begin{lstlisting}
   int hour, minute;
   char colon;
 
@@ -309,7 +309,7 @@ concise:
   colon = ':';
 
   cout << "The current time is " << hour << colon << minute << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 On one line, this program outputs a string, two integers, a character,
 and the special value {\tt endl}.  Very impressive!
@@ -330,9 +330,9 @@ is the official language definition adopted by the the International
 Organization for Standardization (ISO) on August 12, 2011\footnote{The latest iteration of a standard initially written in 1989.}.  You
 can download a copy electronically (and at spectacular cost!) from
 
-\begin{verbatim}
+\begin{lstlisting}
     http://www.iso.org/
-\end{verbatim}
+\end{lstlisting}
 %
 Rather than memorize the list, I would suggest that you
 take advantage of a feature provided in many development
@@ -354,9 +354,9 @@ example, the operator for adding two integers is {\tt +}.
 The following are all legal C++ expressions whose meaning is
 more or less obvious:
 
-\begin{verbatim}
+\begin{lstlisting}
 1+1        hour-1       hour*60 + minute     minute/60
-\end{verbatim}
+\end{lstlisting}
 %
 Expressions can contain both variables
 names and integer values.  In each case the name of the variable is
@@ -368,7 +368,7 @@ Addition, subtraction and multiplication all do what you
 expect, but you might be surprised by division.  For example,
 the following program:
 
-\begin{verbatim}
+\begin{lstlisting}
   int hour, minute;
   hour = 11;
   minute = 59;
@@ -376,14 +376,14 @@ the following program:
   cout << hour*60 + minute << endl;
   cout << "Fraction of the hour that has passed: ";
   cout << minute/60 << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 would generate the following output:
 
-\begin{verbatim}
+\begin{lstlisting}
 Number of minutes since midnight: 719
 Fraction of the hour that has passed: 0
-\end{verbatim}
+\end{lstlisting}
 %
 The first line is what we expected, but the second line is
 odd.  The value of the variable {\tt minute} is 59, and
@@ -404,16 +404,16 @@ even in cases like this where the next integer is so close.
 A possible alternative in this case is to calculate a percentage
 rather than a fraction:
 
-\begin{verbatim}
+\begin{lstlisting}
   cout << "Percentage of the hour that has passed: ";
   cout << minute*100/60 << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 The result is:
 
-\begin{verbatim}
+\begin{lstlisting}
 Percentage of the hour that has passed: 98
-\end{verbatim}
+\end{lstlisting}
 %
 Again the result is rounded down, but at least now the answer
 is approximately correct.  In order to get an even more accurate
@@ -460,11 +460,11 @@ change the result.
 Interestingly, the same mathematical operations that work on
 integers also work on characters.  For example,
 
-\begin{verbatim}
+\begin{lstlisting}
   char letter;
   letter = 'a' + 1;
   cout << letter << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 outputs the letter {\tt b}.  Although it is syntactically legal
 to multiply characters, it is almost never useful to do it.
@@ -475,11 +475,11 @@ but that is not completely true.  In some cases, C++ converts
 automatically between types.  For example, the following is
 legal.
 
-\begin{verbatim}
+\begin{lstlisting}
   int number;
   number = 'a';
   cout << number << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 The result is 97, which is the number that is used internally
 by C++ to represent the letter {\tt 'a'}.  However, it is
@@ -515,9 +515,9 @@ is their ability to take small building blocks and
 integers and we know how to output values; it turns out we can
 do both at the same time:
 
-\begin{verbatim}
+\begin{lstlisting}
     cout << 17 * 3;
-\end{verbatim}
+\end{lstlisting}
 %
 Actually, I shouldn't say ``at the same time,'' since in reality
 the multiplication has to happen before the output, but
@@ -525,17 +525,17 @@ the point is that any expression, involving numbers, characters,
 and variables, can be used inside an output statement.  We've
 already seen one example:
 
-\begin{verbatim}
+\begin{lstlisting}
   cout << hour*60 + minute << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 You can also put arbitrary expressions on the right-hand
 side of an assignment statement:
 
-\begin{verbatim}
+\begin{lstlisting}
   int percentage;
   percentage = (minute * 100) / 60;
-\end{verbatim}
+\end{lstlisting}
 %
 This ability may not seem so impressive now, but we will see
 other examples where composition makes it possible
