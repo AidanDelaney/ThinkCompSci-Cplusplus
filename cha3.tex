@@ -41,19 +41,19 @@ called {\tt float} and {\tt double}.  In this book we will use
 You can create floating-point variables and assign values to them
 using the same syntax we used for the other types.  For example:
 
-\begin{verbatim}
+\begin{lstlisting}
   double pi;
   pi = 3.14159;
-\end{verbatim}
+\end{lstlisting}
 %
 It is also legal to declare a variable and assign a value to it at the
 same time:
 
-\begin{verbatim}
+\begin{lstlisting}
   int x = 1;
-  String empty = "";
+  string empty = "";
   double pi = 3.14159;
-\end{verbatim}
+\end{lstlisting}
 %
 In fact, this syntax is quite common.  A combined declaration
 and assignment is sometimes called an {\bf initialization}.
@@ -73,9 +73,9 @@ different types, and strictly speaking, you are not allowed
 to make assignments between types.  For example, the following
 is illegal
 
-\begin{verbatim}
+\begin{lstlisting}
     int x = 1.1;
-\end{verbatim}
+\end{lstlisting}
 %
 because the variable on the left is an {\tt int}
 and the value on the right is a {\tt double}.  But it is easy
@@ -83,17 +83,17 @@ to forget this rule, especially because there are places where C++
 automatically converts from one type to another.
 For example,
 
-\begin{verbatim}
+\begin{lstlisting}
     double y = 1;
-\end{verbatim}
+\end{lstlisting}
 %
 should technically not be legal, but C++ allows it by converting the
 {\tt int} to a {\tt double} automatically.  This leniency is
 convenient, but it can cause problems; for example:
 
-\begin{verbatim}
+\begin{lstlisting}
     double y = 1 / 3;
-\end{verbatim}
+\end{lstlisting}
 %
 You might expect the variable {\tt y} to be given the value
 {\tt 0.333333}, which is a legal floating-point value, but in
@@ -107,9 +107,9 @@ One way to solve this problem (once you figure out what
 it is) is to make the right-hand side a floating-point
 expression:
 
-\begin{verbatim}
+\begin{lstlisting}
     double y = 1.0 / 3.0;
-\end{verbatim}
+\end{lstlisting}
 %
 This sets {\tt y} to {\tt 0.333333}, as expected.
 
@@ -142,10 +142,10 @@ type (in the sense of molding or reforming, not throwing).
 The syntax for typecasting is like the syntax
 for a function call.  For example:
 
-\begin{verbatim}
+\begin{lstlisting}
   double pi = 3.14159;
   int x = int (pi);
-\end{verbatim}
+\end{lstlisting}
 %
 The {\tt int} function returns an integer, so {\tt x} gets the value
 3.  Converting to an integer always rounds down, even if the fraction
@@ -182,11 +182,11 @@ of the mathematical operations you can think of.
 The math functions are invoked using a syntax that is similar to
 mathematical notation:
 
-\begin{verbatim}
+\begin{lstlisting}
      double log = log (17.0);
      double angle = 1.5;
      double height = sin (angle);
-\end{verbatim}
+\end{lstlisting}
 %
 The first example sets {\tt log} to the logarithm of 17, base
 $e$.  There is also a function called {\tt log10} that takes
@@ -204,24 +204,24 @@ calculate it using the {\tt acos} function.  The arccosine
 (or inverse cosine) of -1 is $\pi$, because the cosine of
 $\pi$ is -1.
 
-\begin{verbatim}
+\begin{lstlisting}
   double pi = acos(-1.0);
   double degrees = 90;
   double angle = degrees * 2 * pi / 360.0;
-\end{verbatim}
+\end{lstlisting}
 %
 Before you can use any of the math functions, you have to
 include the math {\bf header file}.  Header files contain
 information the compiler needs about functions that are defined
 outside your program.  For example, in the ``Hello, world!''
-program we included a header file named {\tt iostream.h} using
+program we included a header file named {\tt iostream} using
 an {\bf include} statement:
 
-\begin{verbatim}
+\begin{lstlisting}
 #include <iostream>
-\end{verbatim}
+\end{lstlisting}
 %
-{\tt iostream.h} contains information about input and output
+{\tt iostream} contains information about input and output
 (I/O) streams, including the object named {\tt cout}.
 
 \index{header file}
@@ -232,9 +232,9 @@ Similarly, the math header file contains information
 about the math functions.  You can include it at the beginning
 of your program along with {\tt iostream.h}:
 
-\begin{verbatim}
+\begin{lstlisting}
 #include <math.h>
-\end{verbatim}
+\end{lstlisting}
 
 \section {Composition}
 \label{composition}
@@ -245,9 +245,9 @@ Just as with mathematical functions, C++ functions can be {\bf
 composed}, meaning that you use one expression as part of another.
 For example, you can use any expression as an argument to a function:
 
-\begin{verbatim}
+\begin{lstlisting}
     double x = cos (angle + pi/2);
-\end{verbatim}
+\end{lstlisting}
 %
 This statement takes the value of {\tt pi}, divides it by two and
 adds the result to the value of {\tt angle}.  The sum is
@@ -256,9 +256,9 @@ then passed as an argument to the {\tt cos} function.
 You can also take the result of one function and pass it as
 an argument to another:
 
-\begin{verbatim}
+\begin{lstlisting}
     double x = exp (log (10.0));
-\end{verbatim}
+\end{lstlisting}
 %
 This
 statement finds the log base $e$ of 10 and then raises $e$ to that
@@ -277,11 +277,11 @@ is special because it indicates where the execution of the program
 begins, but the syntax for {\tt main} is the same as for any other
 function definition:
 
-\begin{verbatim}
+\begin{lstlisting}
   void NAME ( LIST OF PARAMETERS ) {
     STATEMENTS
   }
-\end{verbatim}
+\end{lstlisting}
 %
 You can make up any name you want for your function, except
 that you can't call it {\tt main} or any other
@@ -294,11 +294,11 @@ the empty parentheses {\tt ()} in it's definition.  The first couple
 of functions we are going to write also have no parameters, so the
 syntax looks like this:
 
-\begin{verbatim}
+\begin{lstlisting}
   void newLine () {
     cout << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 This function is named {\tt newLine}; it contains only a single
 statement, which outputs a newline character, represented by
@@ -307,7 +307,7 @@ the special value {\tt endl}.
 In {\tt main} we can call this new function using syntax that
 is similar to the way we call the built-in C++ commands:
 
-\begin{verbatim}
+\begin{lstlisting}
 int main ()
 {
   cout << "First Line." << endl;
@@ -315,21 +315,21 @@ int main ()
   cout << "Second Line." << endl;
   return 0;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The output of this program is
 
-\begin{verbatim}
+\begin{lstlisting}
 First line.
 
 Second line.
-\end{verbatim}
+\end{lstlisting}
 %
 Notice the extra space between the two lines.  What if we wanted
 more space between the lines?  We could call the same
 function repeatedly:
 
-\begin{verbatim}
+\begin{lstlisting}
 int main ()
 {
   cout << "First Line." << endl;
@@ -339,12 +339,12 @@ int main ()
   cout << "Second Line." << endl;
   return 0;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Or we could write a new function, named {\tt threeLine}, that 
 prints three new lines:
 
-\begin{verbatim}
+\begin{lstlisting}
 void threeLine ()
 {
   newLine ();  newLine ();  newLine ();
@@ -357,7 +357,7 @@ int main ()
   cout << "Second Line." << endl;
   return 0;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 You should notice a few things about this program:
 
@@ -403,7 +403,7 @@ print 27 new lines?
 Pulling together all the code fragments from the previous
 section, the whole program looks like this:
 
-\begin{verbatim}
+\begin{lstlisting}
 #include <iostream>
 
 void newLine ()
@@ -423,7 +423,7 @@ int main ()
   cout << "Second Line." << endl;
   return 0;
 }
-\end{verbatim}
+\end{lstlisting}
 
 This program contains three function definitions: {\tt newLine},
 {\tt threeLine}, and {\tt main}.
@@ -486,11 +486,11 @@ are.  So it shouldn't surprise you that when you write a
 class definition, the parameter list indicates the type of
 each parameter.  For example:
 
-\begin{verbatim}
+\begin{lstlisting}
   void printTwice (char phil) {
     cout << phil << phil << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 This function takes a single parameter, named {\tt phil}, that
 has type {\tt char}.  Whatever that parameter is (and at
@@ -503,12 +503,12 @@ choose something more illustrative than {\tt phil}.
 In order to call this function, we have to provide a {\tt char}.
 For example, we might have a {\tt main} function like this:
 
-\begin{verbatim}
+\begin{lstlisting}
   int main () {
     printTwice ('a');
     return 0;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 The {\tt char} value you provide is called an {\bf argument}, and we
 say that the argument is {\bf passed} to the function.  In this
@@ -518,13 +518,13 @@ to {\tt printTwice} where it will get printed twice.
 Alternatively, if we had a {\tt char} variable, we could
 use it as an argument instead:
 
-\begin{verbatim}
+\begin{lstlisting}
   int main () {
     char argument = 'b';
     printTwice (argument);
     return 0;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 Notice something very important here: the name of the variable we pass
 as an argument ({\tt argument}) has nothing to do with the name of the
@@ -590,13 +590,13 @@ parameters is a common source of errors.  First, remember
 that you have to declare the type of every parameter.  For
 example
 
-\begin{verbatim}
+\begin{lstlisting}
   void printTime (int hour, int minute) {
     cout << hour;
     cout << ":";
     cout << minute;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 It might be tempting to write {\tt (int hour, minute)}, but
 that format is only legal for variable declarations, not
@@ -605,11 +605,11 @@ for parameters.
 Another common source of confusion is that you do not have
 to declare the types of arguments.  The following is wrong!
 
-\begin{verbatim}
+\begin{lstlisting}
     int hour = 11;
     int minute = 59;
     printTime (int hour, int minute);   // WRONG!
-\end{verbatim}
+\end{lstlisting}
 %
 In this case, the compiler can tell the type of {\tt hour}
 and {\tt minute} by looking at their declarations.  It is
