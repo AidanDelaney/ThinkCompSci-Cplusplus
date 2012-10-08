@@ -74,7 +74,7 @@ of an object.  The keyword {\tt private} is used to protect parts
 of a structure definition.  For example, we could have written
 the {\tt Card} definition:
 
-\begin{verbatim}
+\begin{lstlisting}
 struct Card
 {
 private:
@@ -89,7 +89,7 @@ public:
   void setRank (int r) { rank = r; }
   void setSuit (int s) { suit = s; }
 };
-\end{verbatim}
+\end{lstlisting}
 %
 There are two sections of this definition, a private part and
 a public part.  The functions are public, which means that they
@@ -129,7 +129,7 @@ is just a structure whose instance variables are private by
 default.  For example, I could have written the {\tt Card}
 definition:
 
-\begin{verbatim}
+\begin{lstlisting}
 class Card
 {
   int suit, rank;
@@ -143,7 +143,7 @@ public:
   int setRank (int r) { rank = r; }
   int setSuit (int s) { suit = s; }
 };
-\end{verbatim}
+\end{lstlisting}
 %
 I replaced the word {\tt struct} with the word {\tt class} and
 removed the {\tt private:} label.  This result of the two definitions
@@ -178,7 +178,7 @@ and $i$ represents the square root of -1.
 The following is a class definition for a user-defined type called
 {\tt Complex}:
 
-\begin{verbatim}
+\begin{lstlisting}
 class Complex
 {
   double real, imag;
@@ -187,7 +187,7 @@ public:
   Complex () { }
   Complex (double r, double i) { real = r;  imag = i; }
 };
-\end{verbatim}
+\end{lstlisting}
 %
 Because this is a {\tt class} definition, the instance variables
 {\tt real} and {\tt imag} are private, and we have to include
@@ -251,7 +251,7 @@ easier in polar coordinates (like multiplication).  One option is that
 we can write a class definition that uses {\em both} representations,
 and that converts between them automatically, as needed.
 
-\begin{verbatim}
+\begin{lstlisting}
 class Complex
 {
   double real, imag;
@@ -267,7 +267,7 @@ public:
     cartesian = true;  polar = false;
   }
 };
-\end{verbatim}
+\end{lstlisting}
 %
 There are now six instance variables, which means that
 this representation will take up more space than either
@@ -318,27 +318,27 @@ In this case, the accessor functions give us an opportunity
 to make sure that the value of the variable is valid before
 we return it.  Here's what {\tt getReal} looks like:
 
-\begin{verbatim}
+\begin{lstlisting}
 double Complex::getReal ()
 {
   if (cartesian == false) calculateCartesian ();
   return real;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 If the {\tt cartesian} flag is true then {\tt real} contains
 valid data, and we can just return it.  Otherwise, we have
 to call {\tt calculateCartesian} to convert from polar coordinates
 to Cartesian coordinates:
 
-\begin{verbatim}
+\begin{lstlisting}
 void Complex::calculateCartesian ()
 {
   real = mag * cos (theta);
   imag = mag * sin (theta);
   cartesian = true;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Assuming that the polar coordinates are valid, we
 can calculate the Cartesian coordinates using the formulas
@@ -359,7 +359,7 @@ As usual when we define a new class, we want to be able to
 output objects in a human-readable form.  For {\tt Complex}
 objects, we could use two functions:
 
-\begin{verbatim}
+\begin{lstlisting}
 void Complex::printCartesian ()
 {
   cout << getReal() << " + " << getImag() << "i" << endl;
@@ -369,7 +369,7 @@ void Complex::printPolar ()
 {
   cout << getMag() << " e^ " << getTheta() << "i" << endl;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The nice thing here is that we can output any {\tt Complex} object in
 either format without having to worry about the representation.  Since
@@ -381,12 +381,12 @@ second constructor.   Initially, it is in Cartesian format only.
 When we invoke {\tt printCartesian} it accesses {\tt real} and
 {\tt imag} without having to do any conversions.
 
-\begin{verbatim}
+\begin{lstlisting}
   Complex c1 (2.0, 3.0);
 
   c1.printCartesian();
   c1.printPolar();
-\end{verbatim}
+\end{lstlisting}
 %
 When we invoke {\tt printPolar}, and {\tt printPolar} invokes
 {\tt getMag}, the program is forced to convert to polar
@@ -398,10 +398,10 @@ immediately.
 
 The output of this code is:
 
-\begin{verbatim}
+\begin{lstlisting}
 2 + 3i
 3.60555 e^ 0.982794i
-\end{verbatim}
+\end{lstlisting}
 
 \section{A function on {\tt Complex} numbers}
 \index{pure function}
@@ -415,7 +415,7 @@ convert them to Cartesian coordinates and then add them.
 Again, it is easy to deal with these cases if we use
 the accessor functions:
 
-\begin{verbatim}
+\begin{lstlisting}
 Complex add (Complex& a, Complex& b)
 {
   double real = a.getReal() + b.getReal();
@@ -423,25 +423,25 @@ Complex add (Complex& a, Complex& b)
   Complex sum (real, imag);
   return sum;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Notice that the arguments to {\tt add} are not {\tt const}
 because they might be modified when we invoke the accessors.
 To invoke this function, we would pass both operands as arguments:
 
-\begin{verbatim}
+\begin{lstlisting}
   Complex c1 (2.0, 3.0);
   Complex c2 (3.0, 4.0);
 
   Complex sum = add (c1, c2);
   sum.printCartesian();
-\end{verbatim}
+\end{lstlisting}
 %
 The output of this program is
 
-\begin{verbatim}
+\begin{lstlisting}
 5 + 7i
-\end{verbatim}
+\end{lstlisting}
 %
 
 
@@ -457,7 +457,7 @@ In polar coordinates, we can just multiply the magnitudes and
 add the angles.  As usual, we can use the accessor functions
 without worrying about the representation of the objects.
 
-\begin{verbatim}
+\begin{lstlisting}
 Complex mult (Complex& a, Complex& b)
 {
   double mag = a.getMag() * b.getMag()
@@ -466,7 +466,7 @@ Complex mult (Complex& a, Complex& b)
   product.setPolar (mag, theta);
   return product;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 A small problem we encounter here is that we have no constructor
 that accepts polar coordinates.  It would be nice to write one,
@@ -483,32 +483,32 @@ make sure that the {\tt cartesian} flag is unset.  That's because
 if we change the polar coordinates, the cartesian coordinates are
 no longer valid.
 
-\begin{verbatim}
+\begin{lstlisting}
 void Complex::setPolar (double m, double t)
 {
   mag = m;  theta = t;
   cartesian = false;  polar = true;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 As an exercise, write the corresponding function named
 {\tt setCartesian}.
 
 To test the {\tt mult} function, we can try something like:
 
-\begin{verbatim}
+\begin{lstlisting}
   Complex c1 (2.0, 3.0);
   Complex c2 (3.0, 4.0);
 
   Complex product = mult (c1, c2);
   product.printCartesian();
-\end{verbatim}
+\end{lstlisting}
 %
 The output of this program is
 
-\begin{verbatim}
+\begin{lstlisting}
 -6 + 17i
-\end{verbatim}
+\end{lstlisting}
 %
 There is a lot of conversion going on in this program behind the
 scenes.  When we call {\tt mult}, both arguments get converted to
@@ -550,13 +550,13 @@ an invariant to be violated.
 Looking at the {\tt Complex} class, we can list the functions
 that make assignments to one or more instance variables:
 
-\begin{verbatim}
+\begin{lstlisting}
 the second constructor
 calculateCartesian
 calculatePolar
 setCartesian
 setPolar
-\end{verbatim}
+\end{lstlisting}
 %
 In each case, it is straightforward to show that the function
 maintains each of the invariants I listed.  We have to be a little
@@ -597,7 +597,7 @@ this function will produce meaningless results.
 One option is to add a comment to the function that warns
 programmers about the {\bf precondition}.
 
-\begin{verbatim}
+\begin{lstlisting}
 void Complex::calculateCartesian ()
 // precondition: the current object contains valid polar coordinates
 	and the polar flag is set
@@ -609,7 +609,7 @@ void Complex::calculateCartesian ()
   imag = mag * sin (theta);
   cartesian = true;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 At the same time, I also commented on the {\bf postconditions},
 the things we know will be true when the function completes.
@@ -618,7 +618,7 @@ These comments are useful for people reading your programs, but
 it is an even better idea to add code that {\em checks} the
 preconditions, so that we can print an appropriate error message:
 
-\begin{verbatim}
+\begin{lstlisting}
 void Complex::calculateCartesian ()
 {
   if (polar == false) {
@@ -631,7 +631,7 @@ void Complex::calculateCartesian ()
   imag = mag * sin (theta);
   cartesian = true;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The {\tt exit} function causes the program to quit immediately.  The
 return value is an error code that tells the system (or whoever
@@ -649,7 +649,7 @@ expression) as an argument.  As long as the argument is true,
 {\tt assert} does nothing.  If the argument is false, assert
 prints an error message and quits.  Here's how to use it:
 
-\begin{verbatim}
+\begin{lstlisting}
 void Complex::calculateCartesian ()
 {
   assert (polar);
@@ -658,7 +658,7 @@ void Complex::calculateCartesian ()
   cartesian = true;
   assert (polar && cartesian);
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The first {\tt assert} statement checks the precondition
 (actually just part of it); the second {\tt assert} statement
@@ -667,10 +667,10 @@ checks the postcondition.
 In my development environment, I get the following message
 when I violate an assertion:
 
-\begin{verbatim}
+\begin{lstlisting}
 Complex.cpp:63: void Complex::calculatePolar(): Assertion `cartesian' failed.
 Abort
-\end{verbatim}
+\end{lstlisting}
 %
 There is a lot of information here to help me track down the error,
 including the file name and line number of the assertion that
@@ -690,7 +690,7 @@ could declare them {\tt private} the same way we do with instance
 variables.  In that case the complete class definition for
 {\tt Complex} would look like:
 
-\begin{verbatim}
+\begin{lstlisting}
 class Complex
 {
 private:
@@ -721,7 +721,7 @@ public:
   void setCartesian (double r, double i);
   void setPolar (double m, double t);
 };
-\end{verbatim}
+\end{lstlisting}
 %
 The {\tt private} label at the beginning is not necessary,
 but it is a useful reminder.

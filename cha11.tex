@@ -106,7 +106,7 @@ form for whatever you are doing.
 In Chapter~\ref{time} we defined a structure named {\tt Time}
 and wrote a function named {\tt printTime}
 
-\begin{verbatim}
+\begin{lstlisting}
 struct Time {
   int hour, minute;
   double second;
@@ -115,15 +115,15 @@ struct Time {
 void printTime (const Time& time) {
   cout << time.hour << ":" << time.minute << ":" << time.second << endl;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 To call this function, we had to pass a {\tt Time} object as
 a parameter.
 
-\begin{verbatim}
+\begin{lstlisting}
   Time currentTime = { 9, 14, 30.0 };
   printTime (currentTime);
-\end{verbatim}
+\end{lstlisting}
 %
 To make {\tt printTime} into a member function, the
 first step is to change the name of the function from {\tt printTime}
@@ -155,12 +155,12 @@ a structure pointer into a structure.  In the following
 function, we use it to assign the value of {\tt this} to a local
 variable named {\tt time}:
 
-\begin{verbatim}
+\begin{lstlisting}
 void Time::print () {
   Time time = *this;
   cout << time.hour << ":" << time.minute << ":" << time.second << endl;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The first two lines of this function changed quite a bit as we
 transformed it into a member function, but notice that the output
@@ -169,22 +169,22 @@ statement itself did not change at all.
 In order to invoke the new version of {\tt print}, we have
 to invoke it on a {\tt Time} object:
 
-\begin{verbatim}
+\begin{lstlisting}
   Time currentTime = { 9, 14, 30.0 };
   currentTime.print ();
-\end{verbatim}
+\end{lstlisting}
 %
 The last step of the transformation process is that we have to
 declare the new function inside the structure definition:
 
-\begin{verbatim}
+\begin{lstlisting}
 struct Time {
   int hour, minute;
   double second;
 
   void Time::print ();
 };
-\end{verbatim}
+\end{lstlisting}
 %
 A {\bf function declaration} looks just like the first line of the
 function definition, except that it has a semi-colon at the end.  The
@@ -211,12 +211,12 @@ If the function refers to {\tt hour}, {\tt minute}, or {\tt second},
 all by themselves with no dot notation, C++ knows that it must
 be referring to the current object.  So we could have written:
 
-\begin{verbatim}
+\begin{lstlisting}
 void Time::print ()
 {
   cout << hour << ":" << minute << ":" << second << endl;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 This kind of variable access is called ``implicit'' because the
 name of the object does not appear explicitly.  Features like
@@ -230,7 +230,7 @@ are going to transform one of the parameters into the implicit
 parameter called {\tt this}.  Then we can go through the function
 and make all the variable accesses implicit.
 
-\begin{verbatim}
+\begin{lstlisting}
 void Time::increment (double secs) {
   second += secs;
 
@@ -243,7 +243,7 @@ void Time::increment (double secs) {
     hour += 1;
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 By the way, remember that this is not the most efficient implementation
 of this function.  If you didn't do it back in Chapter~\ref{time}, you
@@ -252,7 +252,7 @@ should write a more efficient version now.
 To declare the function, we can just copy the first line into the
 structure definition:
 
-\begin{verbatim}
+\begin{lstlisting}
 struct Time {
   int hour, minute;
   double second;
@@ -260,16 +260,16 @@ struct Time {
   void Time::print ();
   void Time::increment (double secs);
 };
-\end{verbatim}
+\end{lstlisting}
 %
 And again, to call it, we have to invoke it on a {\tt Time}
 object:
 
-\begin{verbatim}
+\begin{lstlisting}
   Time currentTime = { 9, 14, 30.0 };
   currentTime.increment (500.0);
   currentTime.print ();
-\end{verbatim}
+\end{lstlisting}
 %
 The output of this program is {\tt 9:22:50}.
 
@@ -277,23 +277,23 @@ The output of this program is {\tt 9:22:50}.
 
 The original version of {\tt convertToSeconds} looked like this:
 
-\begin{verbatim}
+\begin{lstlisting}
 double convertToSeconds (const Time& time) {
   int minutes = time.hour * 60 + time.minute;
   double seconds = minutes * 60 + time.second;
   return seconds;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 It is straightforward to convert this to a member function:
 
-\begin{verbatim}
+\begin{lstlisting}
 double Time::convertToSeconds () const {
   int minutes = hour * 60 + minute;
   double seconds = minutes * 60 + second;
   return seconds;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The interesting thing here is that the implicit parameter should
 be declared {\tt const}, since we don't modify it in this function.
@@ -317,7 +317,7 @@ Inside the function, we can refer to one of the them implicitly,
 but to access the instance variables of the other we continue
 to use dot notation.
 
-\begin{verbatim}
+\begin{lstlisting}
 bool Time::after (const Time& time2) const {
   if (hour > time2.hour) return true;
   if (hour < time2.hour) return false;
@@ -328,15 +328,15 @@ bool Time::after (const Time& time2) const {
   if (second > time2.second) return true;
   return false;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 To invoke this function:
 
-\begin{verbatim}
+\begin{lstlisting}
   if (doneTime.after (currentTime)) {
     cout << "The bread will be done after it starts." << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 You can almost read the invocation like English: ``If the
 done-time is after the current-time, then...''
@@ -346,7 +346,7 @@ done-time is after the current-time, then...''
 Another function we wrote in Chapter~\ref{time} was
 {\tt makeTime}:
 
-\begin{verbatim}
+\begin{lstlisting}
 Time makeTime (double secs) {
   Time time;
   time.hour = int (secs / 3600.0);
@@ -356,7 +356,7 @@ Time makeTime (double secs) {
   time.second = secs;
   return time;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Of course, for every new type, we need to be able to create
 new objects.  In fact, functions like {\tt makeTime} are so
@@ -364,7 +364,7 @@ common that there is a special function syntax for them.  These
 functions are called {\bf constructors} and the syntax looks
 like this:
 
-\begin{verbatim}
+\begin{lstlisting}
 Time::Time (double secs) {
   hour = int (secs / 3600.0);
   secs -= hour * 3600.0;
@@ -372,7 +372,7 @@ Time::Time (double secs) {
   secs -= minute * 60.0;
   second = secs;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 First, notice that the constructor has the same name as the
 class, and no return type.  The arguments haven't changed, though.
@@ -388,9 +388,9 @@ variables of the new object.
 To invoke the constructor, you use syntax that is a cross
 between a variable declaration and a function call:
 
-\begin{verbatim}
+\begin{lstlisting}
   Time time (seconds);
-\end{verbatim}
+\end{lstlisting}
 %
 This statement declares that the variable {\tt time} has
 type {\tt Time}, and it invokes the constructor we just wrote,
@@ -405,17 +405,17 @@ its instance variables.  The result is assigned to the variable
 Earlier we declared and initialized some {\tt Time} structures
 using squiggly-braces:
 
-\begin{verbatim}
+\begin{lstlisting}
   Time currentTime = { 9, 14, 30.0 };
   Time breadTime = { 3, 35, 0.0 };
-\end{verbatim}
+\end{lstlisting}
 %
 Now, using constructors, we have a different way to declare
 and initialize:
 
-\begin{verbatim}
+\begin{lstlisting}
   Time time (seconds);
-\end{verbatim}
+\end{lstlisting}
 %
 These two functions represent different programming styles, and
 different points in the history of C++.  Maybe
@@ -438,31 +438,31 @@ For example, it is common to have a constructor that takes
 one parameter for each instance variable, and that assigns
 the values of the parameters to the instance variables:
 
-\begin{verbatim}
+\begin{lstlisting}
 Time::Time (int h, int m, double s)
 {
   hour = h;  minute = m;  second = s;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 To invoke this constructor, we use the same funny syntax
 as before, except that the arguments have to be two integers
 and a {\tt double}:
 
-\begin{verbatim}
+\begin{lstlisting}
   Time currentTime (9, 14, 30.0);
-\end{verbatim}
+\end{lstlisting}
 
 \section {One last example}
 
 The final example we'll look at is {\tt addTime}:
 
-\begin{verbatim}
+\begin{lstlisting}
 Time addTime2 (const Time& t1, const Time& t2) {
   double seconds = convertToSeconds (t1) + convertToSeconds (t2);
   return makeTime (seconds);
 }
-\end{verbatim}
+\end{lstlisting}
 %
 We have to make several changes to this function, including:
 
@@ -480,13 +480,13 @@ invocation.
 %
 Here's the result:
 
-\begin{verbatim}
+\begin{lstlisting}
 Time Time::add (const Time& t2) const {
   double seconds = convertToSeconds () + t2.convertToSeconds ();
   Time time (seconds);
   return time;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The first time we invoke {\tt convertToSeconds},
 there is no apparent object!  Inside a member function, the compiler
@@ -517,7 +517,7 @@ file, but with the suffix {\tt .h} instead of {\tt .cpp}.  For
 the example we have been looking at, the header file is called
 {\tt Time.h}, and it contains the following:
 
-\begin{verbatim}
+\begin{lstlisting}
 struct Time {
   // instance variables
   int hour, minute;
@@ -536,7 +536,7 @@ struct Time {
   Time add (const Time& t2) const;
   double convertToSeconds () const;
 };
-\end{verbatim}
+\end{lstlisting}
 %
 Notice that in the structure definition I don't really have
 to include the prefix {\tt Time::} at the beginning of every
@@ -546,7 +546,7 @@ that are members of the {\tt Time} structure.
 {\tt Time.cpp} contains the definitions of the member functions
 (I have elided the function bodies to save space):
 
-\begin{verbatim}
+\begin{lstlisting}
 #include <iostream>
 #include "Time.h"
 
@@ -563,7 +563,7 @@ bool Time::after (const Time& time2) const ...
 Time Time::add (const Time& t2) const ...
 
 double Time::convertToSeconds () const ...
-\end{verbatim}
+\end{lstlisting}
 %
 In this case the definitions in {\tt Time.cpp} appear in the
 same order as the declarations in {\tt Time.h}, although it
@@ -578,7 +578,7 @@ Finally, {\tt main.cpp} contains the function {\tt main} along
 with any functions we want that are not members of the {\tt Time}
 structure (in this case there are none):
 
-\begin{verbatim}
+\begin{lstlisting}
 #include <iostream>
 using namespace std;
 #include "Time.h"
@@ -599,7 +599,7 @@ int main ()
   return 0;
 }
 
-\end{verbatim}
+\end{lstlisting}
 %
 Again, {\tt main.cpp} has to include the header file.
 
@@ -634,10 +634,10 @@ for you to know about this feature, especially since it explains
 one of the statements that appeared in the first program we
 wrote:
 
-\begin{verbatim}
+\begin{lstlisting}
 #include <iostream>
 using namespace std;
-\end{verbatim}
+\end{lstlisting}
 %
 {\tt iostream} is the header file that contains declarations
 for {\tt cin} and {\tt cout} and the functions that operate on

@@ -43,18 +43,18 @@ integers.  Just to keep things interesting, let's make {\tt second} a
 
 Here's what the structure definition looks like:
 
-\begin{verbatim}
+\begin{lstlisting}
 struct Time {
   int hour, minute;
   double second;
 };
-\end{verbatim}
+\end{lstlisting}
 %
 We can create a {\tt Time} object in the usual way:
 
-\begin{verbatim}
+\begin{lstlisting}
   Time time = { 11, 59, 3.14159 };
-\end{verbatim}
+\end{lstlisting}
 %
 The state diagram for this object looks like this:
 
@@ -77,16 +77,16 @@ When we define a new type it is a good idea to write
 function that displays the instance variables in a human-readable
 form.  For example:
 
-\begin{verbatim}
+\begin{lstlisting}
 void printTime (Time& t) {
   cout << t.hour << ":" << t.minute << ":" << t.second << endl;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The output of this function, if we pass {\tt time}
 an argument, is {\tt 11:59:3.14159}.
 
-\begin{verbatim}
+\begin{lstlisting}
 #include <iostream>
 
 using namespace std;
@@ -110,7 +110,7 @@ int main ()
  
  return 0;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 \section{Functions for objects}
 \label{objectops}
@@ -152,7 +152,7 @@ One example is {\tt after}, which compares two {\tt Time}s and
 returns a {\tt bool} that indicates whether the first operand
 comes after the second:
 
-\begin{verbatim}
+\begin{lstlisting}
 bool after (Time& time1, Time& time2) {
   if (time1.hour > time2.hour) return true;
   if (time1.hour < time2.hour) return false;
@@ -163,7 +163,7 @@ bool after (Time& time1, Time& time2) {
   if (time1.second > time2.second) return true;
   return false;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 What is the result of this function if the two times are equal?  Does
 that seem like the appropriate result for this function?  If you were
@@ -177,7 +177,7 @@ the bread will be done.
 
 Here is a rough draft of this function that is not quite right:
 
-\begin{verbatim}
+\begin{lstlisting}
 Time addTime (Time& t1, Time& t2) {
   Time sum;
   sum.hour = t1.hour + t2.hour;
@@ -185,7 +185,7 @@ Time addTime (Time& t1, Time& t2) {
   sum.second = t1.second + t2.second;
   return sum;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Here is an example of how to use this function.  If {\tt currentTime}
 contains the current time and {\tt breadTime} contains the amount
@@ -193,12 +193,12 @@ of time it takes for your breadmaker to make bread, then you
 could use {\tt addTime} to figure out when the bread will be
 done.
 
-\begin{verbatim}
+\begin{lstlisting}
   Time currentTime = { 9, 14, 30.0 };
   Time breadTime = { 3, 35, 0.0 };
   Time doneTime = addTime (currentTime, breadTime);
   printTime (doneTime);
-\end{verbatim}
+\end{lstlisting}
 %
 The output of this program is {\tt 12:49:30}, which is
 correct.  On the other hand, there are cases where the result
@@ -212,7 +212,7 @@ column.
 
 Here's a second, corrected version of this function.
 
-\begin{verbatim}
+\begin{lstlisting}
 Time addTime (Time& t1, Time& t2) {
   Time sum;
   sum.hour = t1.hour + t2.hour;
@@ -229,7 +229,7 @@ Time addTime (Time& t1, Time& t2) {
   }
   return sum;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Although it's correct, it's starting to get big.  Later,
 I will suggest an alternate approach to this problem that
@@ -267,10 +267,10 @@ If you are writing a function and you do not intend to modify
 a parameter, you can declare that it is a {\bf constant
 reference parameter}.  The syntax looks like this:
 
-\begin{verbatim}
+\begin{lstlisting}
 void printTime (const Time& time) ...
 Time addTime (const Time& t1, const Time& t2) ...
-\end{verbatim}
+\end{lstlisting}
 %
 I've included only the first line of the functions.  If you tell
 the compiler that you don't intend to change a
@@ -291,7 +291,7 @@ As an example of a modifier, consider {\tt increment},
 which adds a given number of seconds to a {\tt Time} object.
 Again, a rough draft of this function looks like:
 
-\begin{verbatim}
+\begin{lstlisting}
 void increment (Time& time, double secs) {
   time.second += secs;
 
@@ -304,7 +304,7 @@ void increment (Time& time, double secs) {
     time.hour += 1;
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The first line performs the basic operation; the remainder
 deals with the special cases we saw before.
@@ -315,7 +315,7 @@ subtract 60 once; we have to keep doing it until {\tt second}
 is below 60.  We can do that by replacing the {\tt if}
 statements with {\tt while} statements:
 
-\begin{verbatim}
+\begin{lstlisting}
 void increment (Time& time, double secs) {
   time.second += secs;
 
@@ -328,7 +328,7 @@ void increment (Time& time, double secs) {
     time.hour += 1;
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 This solution is correct, but not very efficient.
 Can you think of a solution that does not require iteration?
@@ -344,7 +344,7 @@ called, we could require the caller to provide an ``empty''
 object where {\tt addTime} can store the result.  Compare
 the following with the previous version:
 
-\begin{verbatim}
+\begin{lstlisting}
 void addTimeFill (const Time& t1, const Time& t2, Time& sum) {
   sum.hour = t1.hour + t2.hour;
   sum.minute = t1.minute + t2.minute;
@@ -359,7 +359,7 @@ void addTimeFill (const Time& t1, const Time& t2, Time& sum) {
     sum.hour += 1;
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 One advantage of this approach is that the caller has the option of
 reusing the same object repeatedly to perform a series of additions.
@@ -424,18 +424,18 @@ Thus an alternate approach to the whole problem is to convert
 the computer already knows how to do arithmetic with {\tt double}s.
 Here is a function that converts a {\tt Time} into a {\tt double}:
 
-\begin{verbatim}
+\begin{lstlisting}
 double convertToSeconds (const Time& t) {
   int minutes = t.hour * 60 + t.minute;
   double seconds = minutes * 60 + t.second;
   return seconds;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Now all we need is a way to convert from a {\tt double}
 to a {\tt Time} object:
 
-\begin{verbatim}
+\begin{lstlisting}
 Time makeTime (double secs) {
   Time time;
   time.hour = int (secs / 3600.0);
@@ -445,18 +445,18 @@ Time makeTime (double secs) {
   time.second = secs;
   return time;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 You might have to think a bit to convince yourself that the technique
 I am using to convert from one base to another is correct.  Assuming
 you are convinced, we can use these functions to rewrite {\tt addTime}:
 
-\begin{verbatim}
+\begin{lstlisting}
 Time addTime (const Time& t1, const Time& t2) {
   double seconds = convertToSeconds (t1) + convertToSeconds (t2);
   return makeTime (seconds);
 }
-\end{verbatim}
+\end{lstlisting}
 %
 This is much shorter than the original version, and it is much easier
 to demonstrate that it is correct (assuming, as usual, that the

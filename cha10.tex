@@ -41,10 +41,10 @@ programming environment.
 
 You can create a vector the same way you create other variable types:
 
-\begin{verbatim}
+\begin{lstlisting}
   vector<int> count;
   vector<double> doubleVector;
-\end{verbatim}
+\end{lstlisting}
 %
 The type that makes up the vector appears in angle brackets ({\tt <}
 and {\tt >}).  The first line creates a vector of integers named {\tt
@@ -53,9 +53,9 @@ statements are legal, they are not very useful because they create
 vectors that have no elements (their size is zero).  It is more
 common to specify the size of the vector in parentheses:
 
-\begin{verbatim}
+\begin{lstlisting}
   vector<int> count (4);
-\end{verbatim}
+\end{lstlisting}
 %
 The syntax here is a little odd; it looks like a combination of a
 variable declarations and a function call.  In fact, that's exactly
@@ -84,9 +84,9 @@ There is another constructor for {\tt vector}s that takes
 two parameters; the second is a ``fill value,'' the
 value that will be assigned to each of the elements.
 
-\begin{verbatim}
+\begin{lstlisting}
   vector<int> count (4, 0);
-\end{verbatim}
+\end{lstlisting}
 %
 This statement creates a vector of four elements and initializes
 all of them to zero.
@@ -102,12 +102,12 @@ refers to the ``zeroeth'' element of the vector, and {\tt count[1]}
 refers to the ``oneth'' element.  You can use the {\tt []} operator
 anywhere in an expression:
 
-\begin{verbatim}
+\begin{lstlisting}
   count[0] = 7;
   count[1] = count[0] * 2;
   count[2]++;
   count[3] -= 60;
-\end{verbatim}
+\end{lstlisting}
 %
 All of these are legal assignment statements.  Here is the
 effect of this code fragment:
@@ -129,13 +129,13 @@ You can use any expression as an index, as long as it has type {\tt
 int}.  One of the most common ways to index a vector is with a loop
 variable.  For example:
 
-\begin{verbatim}
+\begin{lstlisting}
   int i = 0;
   while (i < 4) {
     cout << count[i] << endl;
     i++;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 This {\tt while} loop counts from 0
 to 4; when the loop variable {\tt i} is 4, the
@@ -159,16 +159,16 @@ called a copy constructor because it takes one {\tt vector}
 as an argument and creates a new vector that is the same size,
 with the same elements.
 
-\begin{verbatim}
+\begin{lstlisting}
   vector<int> copy (count);
-\end{verbatim}
+\end{lstlisting}
 %
 Although this syntax is legal, it is almost never used for
 {\tt vector}s because there is a better alternative:
 
-\begin{verbatim}
+\begin{lstlisting}
   vector<int> copy = count;
-\end{verbatim}
+\end{lstlisting}
 %
 The {\tt =} operator works on {\tt vector}s in pretty much
 the way you would expect.
@@ -189,41 +189,41 @@ This type of loop is so common that there is an alternate
 loop statement, called {\tt for}, that expresses it more
 concisely.  The general syntax looks like this:
 
-\begin{verbatim}
+\begin{lstlisting}
   for (INITIALIZER; CONDITION; INCREMENTOR) {
     BODY
   }
-\end{verbatim}
+\end{lstlisting}
 %
 This statement is exactly equivalent to
 
-\begin{verbatim}
+\begin{lstlisting}
   INITIALIZER;
   while (CONDITION) {
     BODY
     INCREMENTOR
   }
-\end{verbatim}
+\end{lstlisting}
 %
 except that it is more concise and, since it puts all the
 loop-related statements in one place, it is easier to read.
 For example:
 
-\begin{verbatim}
+\begin{lstlisting}
   for (int i = 0; i < 4; i++) {
     cout << count[i] << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 is equivalent to 
 
-\begin{verbatim}
+\begin{lstlisting}
   int i = 0;
   while (i < 4) {
     cout << count[i] << endl;
     i++;
   }
-\end{verbatim}
+\end{lstlisting}
 
 \section{Vector size}
 \index{size!vector}
@@ -239,11 +239,11 @@ rather than a constant.  That way, if the size of the vector
 changes, you won't have to go through the program changing all the
 loops; they will work correctly for any size vector.
 
-\begin{verbatim}
+\begin{lstlisting}
   for (int i = 0; i < count.size(); i++) {
     cout << count[i] << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 The last time the body of the loop gets executed, the value of {\tt i}
 is {\tt count.size() - 1}, which is the index of the last element.  When
@@ -317,7 +317,7 @@ on my computer) also defined in the header file.  Each time you call
 {\tt random} you get a different randomly-generated number.  To see a
 sample, run this loop:
 
-\begin{verbatim}
+\begin{lstlisting}
 #include <iostream>
 #include <cstdlib>
 using namespace std;
@@ -332,16 +332,16 @@ int main ()
 }
 
   
-\end{verbatim}
+\end{lstlisting}
 %
 On my machine I got the following output:
 
-\begin{verbatim}
+\begin{lstlisting}
 1804289383
 846930886
 1681692777
 1714636915
-\end{verbatim}
+\end{lstlisting}
 %
 You will probably get something similar, but different, on yours.
 
@@ -350,10 +350,10 @@ More often we want to generate integers between 0 and some
 upper bound.  A simple way to do that is with the modulus
 operator.  For example:
 
-\begin{verbatim}
+\begin{lstlisting}
   int x = random ();
   int y = x % upperBound;
-\end{verbatim}
+\end{lstlisting}
 %
 Since {\tt y} is the remainder when {\tt x} is divided by
 {\tt upperBound}, the only possible values for {\tt y}
@@ -365,10 +365,10 @@ It is also frequently useful to generate random floating-point values.
 A common way to do that is by dividing by {\tt RAND\_MAX}.  For
 example:
 
-\begin{verbatim}
+\begin{lstlisting}
   int x = random ();
   double y = double(x) / RAND_MAX;
-\end{verbatim}
+\end{lstlisting}
 %
 This code sets {\tt y} to a random value between 0.0 and 1.0,
 including both end points.  As an exercise, you might want to
@@ -401,7 +401,7 @@ The following function takes a single argument, the size of
 the vector.  It allocates a new vector of {\tt int}s, 
 and fills it with random values between 0 and {\tt upperBound-1}.
 
-\begin{verbatim}
+\begin{lstlisting}
 vector<int> randomVector (int n, int upperBound) {
   vector<int> vec (n);
   for (int i = 0; i<vec.size(); i++) {
@@ -409,20 +409,20 @@ vector<int> randomVector (int n, int upperBound) {
   }
   return vec;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The return type is {\tt vector<int>}, which means that
 this function returns a vector of integers.
 To test this function, it is convenient to have a function that
 outputs the contents of a vector.
 
-\begin{verbatim}
+\begin{lstlisting}
 void printVector (const vector<int>& vec) {
   for (int i = 0; i<vec.size(); i++) {
     cout << vec[i] << " ";
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Notice that it is legal to pass {\tt vector}s by reference.
 In fact it is quite common, since it makes it unnecessary to
@@ -431,18 +431,18 @@ vector, we declare the parameter {\tt const}.
 
 The following code generates a vector and outputs it:
 
-\begin{verbatim}
+\begin{lstlisting}
   int numValues = 20;
   int upperBound = 10;
   vector<int> vector = randomVector (numValues, upperBound);
   printVector (vector);
-\end{verbatim}
+\end{lstlisting}
 %
 On my machine the output is
 
-\begin{verbatim}
+\begin{lstlisting}
 3 6 7 5 3 5 6 2 9 1 2 7 0 9 3 6 0 6 2 6 
-\end{verbatim}
+\end{lstlisting}
 %
 which is pretty random-looking.  Your results may differ.
 
@@ -504,7 +504,7 @@ counts the number of elements in a vector that equal a given value.
 The parameters are the vector and the integer value we are looking
 for.  The return value is the number of times the value appears.
 
-\begin{verbatim}
+\begin{lstlisting}
 int howMany (const vector<int>& vec, int value) {
   int count = 0;
   for (int i=0; i< vec.size(); i++) {
@@ -512,7 +512,7 @@ int howMany (const vector<int>& vec, int value) {
   }
   return count;
 }
-\end{verbatim}
+\end{lstlisting}
 
 
 \section{Checking the other values}
@@ -521,7 +521,7 @@ int howMany (const vector<int>& vec, int value) {
 we are interested in seeing how many times each value appears.
 We can solve that problem with a loop:
 
-\begin{verbatim}
+\begin{lstlisting}
   int numValues = 20;
   int upperBound = 10;
   vector<int> vector = randomVector (numValues, upperBound);
@@ -531,7 +531,7 @@ We can solve that problem with a loop:
   for (int i = 0; i<upperBound; i++) {
     cout << i << '\t' << howMany (vector, i) << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 Notice that it is legal to declare a variable inside a {\tt for}
 statement.  This syntax is sometimes convenient, but you should
@@ -543,7 +543,7 @@ This code uses the loop variable as an argument to
 {\tt howMany}, in order to check each value between 0 and 9,
 in order.  The result is:
 
-\begin{verbatim}
+\begin{lstlisting}
 value   howMany
 0       2
 1       1
@@ -555,13 +555,13 @@ value   howMany
 7       2
 8       0
 9       2
-\end{verbatim}
+\end{lstlisting}
 %
 Again, it is hard to tell if the digits are really appearing
 equally often.  If we increase {\tt numValues} to 100,000 we
 get the following:
 
-\begin{verbatim}
+\begin{lstlisting}
 value   howMany
 0       10130
 1       10072
@@ -573,7 +573,7 @@ value   howMany
 7       9954
 8       9891
 9       9958
-\end{verbatim}
+\end{lstlisting}
 %
 In each case, the number of appearances is within about 1\% of
 the expected value (10,000), so we conclude that the random
@@ -595,7 +595,7 @@ way we can create all ten storage locations at once and we
 can access them using indices, rather than ten different names.
 Here's how:
 
-\begin{verbatim}
+\begin{lstlisting}
   int numValues = 100000;
   int upperBound = 10;
   vector<int> vector = randomVector (numValues, upperBound);
@@ -605,7 +605,7 @@ Here's how:
     int count = howMany (vector, i);
     histogram[i] = count;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 I called the vector {\bf histogram} because that's
 a statistical term for a vector of numbers that counts the
@@ -632,14 +632,14 @@ counter and increment it.  In other words, we can use the
 value from the vector as an index into the histogram.  Here's
 what that looks like:
 
-\begin{verbatim}
+\begin{lstlisting}
   vector<int> histogram (upperBound, 0);
 
   for (int i = 0; i<numValues; i++) {
     int index = vector[i];
     histogram[index]++;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 The first line initializes the elements of the histogram to
 zeroes.  That way, when we use the increment

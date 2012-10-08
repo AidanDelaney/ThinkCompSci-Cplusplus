@@ -107,7 +107,7 @@ that they are not part of the C++ program.  They are part of the
 program design, but they never appear explicitly in the code.
 The class definition for the {\tt Card} type looks like this:
 
-\begin{verbatim}
+\begin{lstlisting}
 struct Card
 {
   int suit, rank;
@@ -123,7 +123,7 @@ Card::Card () {
 Card::Card (int s, int r) { 
   suit = s;  rank = r;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 There are two constructors for {\tt Card}s.  You can tell that
 they are constructors because they have no return type and their
@@ -140,9 +140,9 @@ The following code creates an object named {\tt threeOfClubs}
 that represents
 the 3 of Clubs:
 
-\begin{verbatim}
+\begin{lstlisting}
    Card threeOfClubs (0, 3);
-\end{verbatim}
+\end{lstlisting}
 %
 The first argument, {\tt 0} represents the suit Clubs, the
 second, naturally, represents the rank 3.
@@ -164,9 +164,9 @@ words.  A natural way to do that is with a vector of {\tt string}s.
 You can create a vector of {\tt string}s the same way you create an
 vector of other types:
 
-\begin{verbatim}
+\begin{lstlisting}
   vector<string> suits (4);
-\end{verbatim}
+\end{lstlisting}
 %
 Of course, in order to use {\tt vector}s and {\tt string}s, you
 will have to include the header files for both.
@@ -174,12 +174,12 @@ will have to include the header files for both.
 To initialize the elements of the vector, we can use a series of
 assignment statements.
 
-\begin{verbatim}
+\begin{lstlisting}
   suits[0] = "Clubs";
   suits[1] = "Diamonds";
   suits[2] = "Hearts";
   suits[3] = "Spades";
-\end{verbatim}
+\end{lstlisting}
 %
 A state diagram for this vector looks like this:
 
@@ -195,7 +195,7 @@ using the {\tt suit} and {\tt rank} as indices.  Finally, we can
 write a function called {\tt print} that outputs the card on which
 it is invoked:
 
-\begin{verbatim}
+\begin{lstlisting}
 void Card::print () const
 {
   vector<string> suits (4);
@@ -221,7 +221,7 @@ void Card::print () const
 
   cout << ranks[rank] << " of " << suits[suit] << endl;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The expression {\tt suits[suit]} means ``use the instance variable
 {\tt suit} from the current object as an index into the vector named
@@ -232,10 +232,10 @@ it can refer to the instance variables of the current object
 implicitly (without having to use dot notation to specify the
 object).  The output of this code
 
-\begin{verbatim}
+\begin{lstlisting}
   Card card (1, 11);
   card.print ();
-\end{verbatim}
+\end{lstlisting}
 %
 is {\tt Jack of Diamonds}.
 
@@ -266,24 +266,24 @@ function or a free-standing function?
 
 As a member function, it looks like this:
 
-\begin{verbatim}
+\begin{lstlisting}
 bool Card::equals (const Card& c2) const
 {
   return (rank == c2.rank && suit == c2.suit);
 }
-\end{verbatim}
+\end{lstlisting}
 %
 To use this function, we have to invoke it on one of the
 cards and pass the other as an argument:
 
-\begin{verbatim}
+\begin{lstlisting}
   Card card1 (1, 11);
   Card card2 (1, 11);
 
   if (card1.equals(card2)) {
     cout << "Yup, that's the same card." << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 This method of invocation always seems strange to me when the
 function is something like {\tt equals}, in which the two
@@ -292,22 +292,22 @@ does not matter whether I ask ``Is A equal to B?'' or
 ``Is B equal to A?''  In this case, I think it looks better to rewrite
 {\tt equals} as a nonmember function:
 
-\begin{verbatim}
+\begin{lstlisting}
 bool equals (const Card& c1, const Card& c2)
 {
   return (c1.rank == c2.rank && c1.suit == c2.suit);
 }
-\end{verbatim}
+\end{lstlisting}
 %
 When we call this version of the function, the arguments
 appear side-by-side in a way that makes more logical sense,
 to me at least.
 
-\begin{verbatim}
+\begin{lstlisting}
   if (equals (card1, card2)) {
     cout << "Yup, that's the same card." << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 Of course, this is a matter of taste.  My point here is that
 you should be comfortable writing both member and nonmember
@@ -364,7 +364,7 @@ want to know ``Is A greater than B?'' or ``Is B greater than A?''
 Therefore I think it makes more sense to write {\tt isGreater} as a
 member function:
 
-\begin{verbatim}
+\begin{lstlisting}
 bool Card::isGreater (const Card& c2) const
 {
   // first check the suits
@@ -378,12 +378,12 @@ bool Card::isGreater (const Card& c2) const
   // if the ranks are also equal, return false
   return false;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Then when we invoke it, it is obvious from the syntax which
 of the two possible questions we are asking:
 
-\begin{verbatim}
+\begin{lstlisting}
   Card card1 (2, 11);
   Card card2 (1, 11);
 
@@ -392,16 +392,16 @@ of the two possible questions we are asking:
     cout << "is greater than" << endl;
     card2.print ();
   }
-\end{verbatim}
+\end{lstlisting}
 %
 You can almost read it like English: ``If card1 isGreater card2 ...''
 The output of this program is
 
-\begin{verbatim}
+\begin{lstlisting}
 Jack of Hearts
 is greater than
 Jack of Diamonds
-\end{verbatim}
+\end{lstlisting}
 %
 According to {\tt isGreater}, aces are
 less than deuces (2s).
@@ -417,9 +417,9 @@ The reason I chose {\tt Cards} as the objects for this chapter is that
 there is an obvious use for a vector of cards---a deck.  Here is some
 code that creates a new deck of 52 cards:
 
-\begin{verbatim}
+\begin{lstlisting}
   vector<Card> deck (52);
-\end{verbatim}
+\end{lstlisting}
 %
 Here is the state diagram for this object:
 
@@ -438,10 +438,10 @@ could contain any possible value.
 One way to initialize them would be to pass a {\tt Card} as
 a second argument to the constructor:
 
-\begin{verbatim}
+\begin{lstlisting}
   Card aceOfSpades (3, 1);
   vector<Card> deck (52, aceOfSpades);
-\end{verbatim}
+\end{lstlisting}
 %
 This code builds a deck with 52 identical cards, like
 a special deck for a magic trick.  Of course,
@@ -457,7 +457,7 @@ to 13.  Since the outer loop iterates 4 times, and
 the inner loop iterates 13 times, the total number of times
 the body is executed is 52 (13 times 4).
 
-\begin{verbatim}
+\begin{lstlisting}
   int i = 0;
   for (int suit = 0; suit <= 3; suit++) {
     for (int rank = 1; rank <= 13; rank++) {
@@ -466,7 +466,7 @@ the body is executed is 52 (13 times 4).
       i++;
     }
   }
-\end{verbatim}
+\end{lstlisting}
 %
 I used the variable {\tt i} to keep track of where in the
 deck the next card should go.
@@ -495,13 +495,13 @@ a function that prints the contents of the vector.  We have
 seen the pattern for traversing a vector several times, so the
 following function should be familiar:
 
-\begin{verbatim}
+\begin{lstlisting}
 void printDeck (const vector<Card>& deck) {
   for (int i = 0; i < deck.length(); i++) {
     deck[i].print ();
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 By now it should come as no surprise that we can compose the
 syntax for vector access with the syntax for invoking a function.
@@ -530,14 +530,14 @@ the deck and comparing each card to the one we are looking for.  If we
 find it we return the index where the card appears.  If it is not in
 the deck, we return -1.
 
-\begin{verbatim}
+\begin{lstlisting}
 int find (const Card& card, const vector<Card>& deck) {
   for (int i = 0; i < deck.length(); i++) {
     if (equals (deck[i], card)) return i;
   }
   return -1;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The loop here is exactly the same as the loop in {\tt printDeck}.
 In fact, when I wrote the program, I copied it, which saved me
@@ -556,18 +556,18 @@ and return {\tt -1}.
 
 To test this function, I wrote the following:
 
-\begin{verbatim}
+\begin{lstlisting}
   vector<Card> deck = buildDeck ();
 
   int index = card.find (deck[17]);
   cout << "I found the card at index = " << index << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 The output of this code is
 
-\begin{verbatim}
+\begin{lstlisting}
 I found the card at index = 17
-\end{verbatim}
+\end{lstlisting}
 %
 
 
@@ -641,7 +641,7 @@ Steps 3 and 4 look suspiciously like recursive
 invocations.  Here's what this all looks like translated into
 C++:
 
-\begin{verbatim}
+\begin{lstlisting}
 int findBisect (const Card& card, const vector<Card>& deck,
                 int low, int high) {
   int mid = (high + low) / 2;
@@ -658,7 +658,7 @@ int findBisect (const Card& card, const vector<Card>& deck,
     return findBisect (card, deck, mid+1, high);
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Although this code contains the kernel of a bisection search, it
 is still missing a piece.  As it is currently written,
@@ -677,7 +677,7 @@ there are no cards in the segment of the deck indicated by
 
 With that line added, the function works correctly:
 
-\begin{verbatim}
+\begin{lstlisting}
 int findBisect (const Card& card, const vector<Card>& deck,
                 int low, int high) {
 
@@ -695,27 +695,27 @@ int findBisect (const Card& card, const vector<Card>& deck,
     return findBisect (card, deck, mid+1, high);
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 I added an output statement at the beginning so I could watch
 the sequence of recursive calls and convince myself
 that it would eventually reach the base case.  I tried out the
 following code:
 
-\begin{verbatim}
+\begin{lstlisting}
   cout << findBisect (deck, deck[23], 0, 51));
-\end{verbatim}
+\end{lstlisting}
 %
 And got the following output:
 
-\begin{verbatim}
+\begin{lstlisting}
 0, 51
 0, 24
 13, 24
 19, 24
 22, 24
 I found the card at index = 23
-\end{verbatim}
+\end{lstlisting}
 %
 Then I made up a card that is not in the deck (the 15 of Diamonds),
 and tried to find it.  I got the following:
@@ -759,10 +759,10 @@ C++ will (eventually) generate a run-time error.
 
 Looking at the interface to {\tt findBisect}
 
-\begin{verbatim}
+\begin{lstlisting}
 int findBisect (const Card& card, const vector<Card>& deck,
 		int low, int high) {
-\end{verbatim}
+\end{lstlisting}
 %
 it might make sense to treat three of the parameters, {\tt deck}, {\tt
 low} and {\tt high}, as a single parameter that specifies a {\bf

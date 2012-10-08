@@ -61,11 +61,11 @@ The question, then, is how to group these two values into
 a compound object, or structure.  The answer is a {\tt struct}
 definition:
 
-\begin{verbatim}
+\begin{lstlisting}
 struct Point {
   double x, y;
 };  
-\end{verbatim}
+\end{lstlisting}
 %
 {\tt struct} definitions appear outside of any function definition,
 usually at the beginning of the program (after the {\tt include}
@@ -83,11 +83,11 @@ squiggly-brace, but you'll get used to it.
 Once you have defined the new structure, you can create variables
 with that type:
 
-\begin{verbatim}
+\begin{lstlisting}
   Point blank;
   blank.x = 3.0;
   blank.y = 4.0;   
-\end{verbatim}
+\end{lstlisting}
 %
 The first line is a conventional variable declaration: {\tt blank} has
 type {\tt Point}.  The next two lines initialize the instance variables of the
@@ -119,9 +119,9 @@ a compound object with two named instance variables.
 You can read the values of an instance variable using the same syntax we
 used to write them:
 
-\begin{verbatim}
+\begin{lstlisting}
     int x = blank.x;
-\end{verbatim}
+\end{lstlisting}
 %
 The expression {\tt blank.x} means ``go to the object named {\tt
 blank} and get the value of {\tt x}.''  In this case we assign that
@@ -133,10 +133,10 @@ variable named {\tt x}.  The purpose of dot notation is to identify
 You can use dot notation as part of any C++ expression, so the
 following are legal.
 
-\begin{verbatim}
+\begin{lstlisting}
   cout << blank.x << ", " << blank.y << endl;
   double distance = blank.x * blank.x + blank.y * blank.y;
-\end{verbatim}
+\end{lstlisting}
 %
 The first line outputs {\tt 3, 4}; the second line calculates
 the value 25.
@@ -155,9 +155,9 @@ structures.  It can be used in two ways: to initialize the instance
 variables of a structure or to copy the instance variables from one
 structure to another.  An initialization looks like this:
 
-\begin{verbatim}
+\begin{lstlisting}
   Point blank = { 3.0, 4.0 };
-\end{verbatim}
+\end{lstlisting}
 %
 The values in squiggly braces get assigned to the instance variables of
 the structure one by one, in order.  So in this case, {\tt x}
@@ -166,31 +166,31 @@ gets the first value and {\tt y} gets the second.
 Unfortunately, this syntax can be used only in an initialization,
 not in an assignment statement.  So the following is illegal.
 
-\begin{verbatim}
+\begin{lstlisting}
   Point blank;
   blank = { 3.0, 4.0 };       // WRONG !!
-\end{verbatim}
+\end{lstlisting}
 %
 You might wonder why this perfectly reasonable statement should
 be illegal; I'm not sure, but I think the problem is that the compiler
 doesn't know what type the right hand side should be.  If you
 add a typecast:
 
-\begin{verbatim}
+\begin{lstlisting}
   Point blank;
   blank = (Point){ 3.0, 4.0 };
-\end{verbatim}
+\end{lstlisting}
 %
 That works.
 
 It is legal to assign one structure to
 another.  For example:
 
-\begin{verbatim}
+\begin{lstlisting}
   Point p1 = { 3.0, 4.0 };
   Point p2 = p1;
   cout << p2.x << ", " <<  p2.y << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 The output of this program is {\tt 3, 4}.
 
@@ -201,11 +201,11 @@ The output of this program is {\tt 3, 4}.
 You can pass structures as parameters in the usual way.  For
 example,
 
-\begin{verbatim}
+\begin{lstlisting}
 void printPoint (Point p) {
   cout << "(" << p.x << ", " << p.y << ")" << endl;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 {\tt printPoint} takes a point as an argument and outputs it in
 the standard format.  If you call {\tt printPoint (blank)},
@@ -215,13 +215,13 @@ As a second example, we can rewrite the {\tt distance} function from
 Section~\ref{distance} so that it takes two {\tt Point}s as parameters
 instead of four {\tt double}s.
 
-\begin{verbatim}
+\begin{lstlisting}
 double distance (Point p1, Point p2) {
   double dx = p2.x - p1.x;
   double dy = p2.y - p1.y;
   return sqrt (dx*dx + dy*dy);
 }
-\end{verbatim}
+\end{lstlisting}
 
 \section{Call by value}
 \index{parameter passing}
@@ -260,14 +260,14 @@ For example, you can reflect a point around the 45-degree line by
 swapping the two coordinates.  The most obvious (but incorrect) way to
 write a {\tt reflect} function is something like this:
 
-\begin{verbatim}
+\begin{lstlisting}
 void reflect (Point p)      // WRONG !!
 {
   double temp = p.x;
   p.x = p.y;
   p.y = temp;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 But this won't work, because the changes we make in {\tt reflect}
 will have no effect on the caller.
@@ -276,29 +276,29 @@ Instead, we have to specify that we want to pass the parameter by
 reference.  We do that by adding an ampersand ({\tt \&}) to the
 parameter declaration:
 
-\begin{verbatim}
+\begin{lstlisting}
 void reflect (Point& p)
 {
   double temp = p.x;
   p.x = p.y;
   p.y = temp;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Now we can call the function in the usual way:
 
-\begin{verbatim}
+\begin{lstlisting}
   printPoint (blank);
   reflect (blank);
   printPoint (blank);
-\end{verbatim}
+\end{lstlisting}
 %
 The output of this program is as expected:
 
-\begin{verbatim}
+\begin{lstlisting}
 (3, 4)
 (4, 3)
-\end{verbatim}
+\end{lstlisting}
 %
 Here's how we would draw a stack diagram for this program:
 
@@ -342,22 +342,22 @@ upper left corner of the rectangle and the size.  To do that
 in C++, we will define a structure that contains a {\tt Point}
 and two doubles.
 
-\begin{verbatim}
+\begin{lstlisting}
 struct Rectangle {
   Point corner;
   double width, height;
 };  
-\end{verbatim}
+\end{lstlisting}
 %
 Notice that one structure can contain another.  In fact, this
 sort of thing is quite common.  Of course, this means that in
 order to create a {\tt Rectangle}, we have to create a {\tt Point}
 first:
 
-\begin{verbatim}
+\begin{lstlisting}
   Point corner = { 0.0, 0.0 };
   Rectangle box = { corner, 100.0, 200.0 };
-\end{verbatim}
+\end{lstlisting}
 %
 This code creates a new {\tt Rectangle} structure and initializes the
 instance variables.  The figure shows the effect of this assignment.
@@ -368,26 +368,26 @@ instance variables.  The figure shows the effect of this assignment.
 %
 We can access the {\tt width} and {\tt height} in the usual way:
 
-\begin{verbatim}
+\begin{lstlisting}
   box.width += 50.0;
   cout << box.height << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 In order to access the instance variables of {\tt corner}, we can use a
 temporary variable:
 
-\begin{verbatim}
+\begin{lstlisting}
   Point temp = box.corner;
   double x = temp.x;
-\end{verbatim}
+\end{lstlisting}
 %
 Alternatively, we can compose the two statements:
 
 \index{composition}
 
-\begin{verbatim}
+\begin{lstlisting}
   double x = box.corner.x;
-\end{verbatim}
+\end{lstlisting}
 %
 It makes the most sense to read this statement from right to
 left: ``Extract {\tt x} from the {\tt corner} of the {\tt box},
@@ -397,9 +397,9 @@ While we are on the subject of composition, I should point
 out that you can, in fact, create the {\tt Point} and the
 {\tt Rectangle} at the same time:
 
-\begin{verbatim}
+\begin{lstlisting}
   Rectangle box = { { 0.0, 0.0 }, 100.0, 200.0 };
-\end{verbatim}
+\end{lstlisting}
 %
 The innermost squiggly braces are the coordinates of the
 corner point; together they make up the first of the three
@@ -419,7 +419,7 @@ You can write functions that return structures.  For example,
 returns a {\tt Point} that contains the coordinates of the
 center of the {\tt Rectangle}:
 
-\begin{verbatim}
+\begin{lstlisting}
 Point findCenter (Rectangle& box)
 {
   double x = box.corner.x + box.width/2;
@@ -427,17 +427,17 @@ Point findCenter (Rectangle& box)
   Point result = {x, y};
   return result;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 To call this function, we have to pass a box as an argument
 (notice that it is being passed by reference), and assign the
 return value to a {\tt Point} variable:
 
-\begin{verbatim}
+\begin{lstlisting}
   Rectangle box = { {0.0, 0.0}, 100, 200 };
   Point center = findCenter (box);
   printPoint (center);
-\end{verbatim}
+\end{lstlisting}
 %
 The output of this program is {\tt (50, 100)}.
 
@@ -450,23 +450,23 @@ It's not just structures that can be passed by reference.
 All the other types we've seen can, too.  For example, to swap
 two integers, we could write something like:
 
-\begin{verbatim}
+\begin{lstlisting}
 void swap (int& x, int& y)
 {
   int temp = x;
   x = y;
   y = temp;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 We would call this function in the usual way:
 
-\begin{verbatim}
+\begin{lstlisting}
   int i = 7;
   int j = 9;
   swap (i, j);
   cout << i << j << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 The output of this program is {\tt 97}.  Draw a stack
 diagram for this program to convince yourself this is true.
@@ -479,11 +479,11 @@ When people start passing things like integers by reference,
 they often try to use an expression
 as a reference argument.  For example:
 
-\begin{verbatim}
+\begin{lstlisting}
   int i = 7;
   int j = 9;
   swap (i, j+1);         // WRONG!!
-\end{verbatim}
+\end{lstlisting}
 %
 This is not legal because the expression {\tt j+1} is not
 a variable---it does not occupy a location that the reference
@@ -515,10 +515,10 @@ C++ defines an object named {\tt cin} that handles input in
 much the same way that {\tt cout} handles output.  To get an
 integer value from the user:
 
-\begin{verbatim}
+\begin{lstlisting}
   int x;
   cin >> x;
-\end{verbatim}
+\end{lstlisting}
 %
 The {\tt >>} operator causes the program to stop executing and
 wait for the user to type something.  If the user types a valid
@@ -540,7 +540,7 @@ failed, and also that the next operation will fail.
 
 Thus, getting input from the user might look like this:
 
-\begin{verbatim}
+\begin{lstlisting}
 #include <iostream>
 
 using namespace std;
@@ -564,17 +564,17 @@ int main ()
   cout << x << endl;
   return 0;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 {\tt cin} can also be used to input a {\tt string}:
 
-\begin{verbatim}
+\begin{lstlisting}
   string name;
 
   cout << "What is your name? ";
   cin >> name;
   cout << name << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 Unfortunately, this statement only takes the first word of
 input, and leaves the rest for the next input statement.
@@ -588,13 +588,13 @@ error-free.
 
 Instead, I use a function in the header {\tt string} called {\tt getline}.
 
-\begin{verbatim}
+\begin{lstlisting}
   string name;
 
   cout << "What is your name? ";
   getline (cin, name);
   cout << name << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 The first argument to {\tt getline} is {\tt cin}, which is
 where the input is coming from.  The second argument is the

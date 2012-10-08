@@ -92,22 +92,22 @@ To get data from a file, we have to create a stream that flows
 from the file into the program.  
 We can do that using the {\tt ifstream} constructor.
 
-\begin{verbatim}
+\begin{lstlisting}
   ifstream infile ("file-name");
-\end{verbatim}
+\end{lstlisting}
 %
 The argument for this constructor is a string that
 contains the name of the file you want to open.  The result
 is an object named {\tt infile} that supports all the same
 operations as {\tt cin}, including {\tt >>} and {\tt getline}.
 
-\begin{verbatim}
+\begin{lstlisting}
   int x;
   string line;
     
   infile >> x;               // get a single integer and store in x
   getline (infile, line);    // get a whole line and store in line
-\end{verbatim}
+\end{lstlisting}
 %
 If we know ahead of time how much data is in a file, it is 
 straightforward to write a loop that reads the entire file and
@@ -131,7 +131,7 @@ the end of the file and we know that the last attempt failed.
 Here is a program that reads lines from a file and displays
 them on the screen:
 
-\begin{verbatim}
+\begin{lstlisting}
   string fileName = ...;
   ifstream infile (fileName.c_str());
 
@@ -145,7 +145,7 @@ them on the screen:
     if (infile.eof()) break;
     cout << line << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 The function {\tt c\_str} converts an {\tt string} to a
 native C string.  Because the {\tt ifstream} constructor
@@ -186,7 +186,7 @@ Sending output to a file is similar.  For example, we could
 modify the previous program to copy lines from one file to
 another.
 
-\begin{verbatim}
+\begin{lstlisting}
   ifstream infile ("input-file");
   ofstream outfile ("output-file");
 
@@ -200,7 +200,7 @@ another.
     if (infile.eof()) break;
     outfile << line << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 
 \section{Parsing input}
 \label{parsing}
@@ -222,7 +222,7 @@ web page\footnote{This page is no longer available, but the point stands.}
 so it may be wildly inaccurate, but that doesn't matter.  The
 format of the file looks like this:
 
-\begin{verbatim}
+\begin{lstlisting}
 "Atlanta"       "Chicago"       700
 "Atlanta"       "Boston"        1,100
 "Atlanta"       "Chicago"       700
@@ -230,7 +230,7 @@ format of the file looks like this:
 "Atlanta"       "Denver"        1,450
 "Atlanta"       "Detroit"       750
 "Atlanta"       "Orlando"       400
-\end{verbatim}
+\end{lstlisting}
 %
 Each line of the file contains the names of two cities in quotation
 marks and the distance between them in miles.  The quotation marks
@@ -247,9 +247,9 @@ If we want to find the
 first appearance of a quotation mark, we have to write something
 like:
 
-\begin{verbatim}
+\begin{lstlisting}
   int index = line.find ('\"');
-\end{verbatim}
+\end{lstlisting}
 %
 The argument here looks like a mess, but it represents a single
 character, a double quotation mark.  The outermost single-quotes
@@ -273,7 +273,7 @@ and the length.
 
 \index{find}
 
-\begin{verbatim}
+\begin{lstlisting}
 void processLine (const string& line)
 {
   // the character we are looking for is a quotation mark
@@ -301,7 +301,7 @@ void processLine (const string& line)
   // output the extracted information
   cout << city1 << "\t" << city2 << "\t" << distString << endl;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Of course, just displaying the extracted information is not
 exactly what we want, but it is a good starting place.
@@ -330,7 +330,7 @@ check whether each character is a digit.  If so, we add it to the
 result string.  At the end of the loop, the result string contains all
 the digits from the original string, in order.
 
-\begin{verbatim}
+\begin{lstlisting}
 int convertToInt (const string& s)
 {
   string digitString = "";
@@ -342,7 +342,7 @@ int convertToInt (const string& s)
   }
   return atoi (digitString.c_str());
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The variable {\tt digitString} is an example of an {\bf accumulator}.  It is
 similar to the counter we saw in Section~\ref{loopcount},
@@ -351,15 +351,15 @@ one new character at a time, using string concatentation.
 
 The expression
 
-\begin{verbatim}
+\begin{lstlisting}
       digitString += s[i];
-\end{verbatim}
+\end{lstlisting}
 %
 is equivalent to
 
-\begin{verbatim}
+\begin{lstlisting}
       digitString = digitString + s[i];
-\end{verbatim}
+\end{lstlisting}
 %
 Both statements add a single character onto the end of the existing
 string.
@@ -420,7 +420,7 @@ set expand as elements are added, we can take advantage of the
 
 Here is the beginning of a class definition for a {\tt Set}.
 
-\begin{verbatim}
+\begin{lstlisting}
 class Set {
 private:
   vector<string> elements;
@@ -441,7 +441,7 @@ Set::Set (int n)
   elements = temp;
   numElements = 0;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The instance variables are an {\tt vector} of strings and an
 integer that keeps track of how many elements there are in the
@@ -460,12 +460,12 @@ for the instance variables, which are private.  {\tt numElements}
 is a read-only variable, so we provide a {\tt get} function
 but not a {\tt set} function.
 
-\begin{verbatim}
+\begin{lstlisting}
 int Set::getNumElements () const
 {
   return numElements;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Why do we have to prevent client programs from changing {\tt
 getNumElements}?  What are the invariants for this type, and
@@ -483,7 +483,7 @@ elements of a set, though, we need to check a stronger condition.
 The index has to be less than the number of elements, which 
 might be smaller than the length of the {\tt vector}.
 
-\begin{verbatim}
+\begin{lstlisting}
 string Set::getElement (int i) const
 {
   if (i < numElements) {
@@ -493,7 +493,7 @@ string Set::getElement (int i) const
     exit (1);
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 If {\tt getElement} gets an index that is out of range, it prints
 an error message (not the most useful message, I admit), and
@@ -505,7 +505,7 @@ The interesting functions are {\tt find} and {\tt add}.  By
 now, the pattern for traversing and searching should be old
 hat:
 
-\begin{verbatim}
+\begin{lstlisting}
 int Set::find (const string& s) const
 {
   for (int i=0; i<numElements; i++) {
@@ -513,13 +513,13 @@ int Set::find (const string& s) const
   }
   return -1;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 So that leaves us with {\tt add}.  Often the return type for
 something like {\tt add} would be void, but in this case it
 might be useful to make it return the index of the element.
 
-\begin{verbatim}
+\begin{lstlisting}
 int Set::add (const string& s)
 {
   // if the element is already in the set, return its index
@@ -537,7 +537,7 @@ int Set::add (const string& s)
   numElements++;
   return index;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The tricky thing here is that {\tt numElements} is used in
 two ways.  It is the number of elements in the set, of course,
@@ -563,17 +563,17 @@ Now we can use the {\tt Set} class to keep track of the cities
 we find in the file.  In {\tt main} we create the {\tt Set} with
 an initial size of 2:
 
-\begin{verbatim}
+\begin{lstlisting}
   Set cities (2);
-\end{verbatim}
+\end{lstlisting}
 %
 Then in {\tt processLine} we add both cities to the {\tt Set}
 and store the index that gets returned.
 
-\begin{verbatim}
+\begin{lstlisting}
   int index1 = cities.add (city1);
   int index2 = cities.add (city2);
-\end{verbatim}
+\end{lstlisting}
 %
 I modified {\tt processLine} to take the {\tt cities} object
 as a second parameter.
@@ -594,12 +594,12 @@ one specifies the row number, the other the column number.
 
 To create a matrix, there are four constructors:
 
-\begin{verbatim}
+\begin{lstlisting}
   apmatrix<char> m1;
   apmatrix<int> m2 (3, 4);
   apmatrix<double> m3 (rows, cols, 0.0);
   apmatrix<double> m4 (m3);
-\end{verbatim}
+\end{lstlisting}
 %
 The first is a do-nothing constructor that makes a matrix with both
 dimensions 0.  The second takes two integers, which are the initial
@@ -617,10 +617,10 @@ apmatrix}es).
 To access the elements of a matrix, we use the {\tt []} operator
 to specify the row and column:
 
-\begin{verbatim}
+\begin{lstlisting}
   m2[0][0] = 1;
   m3[1][2] = 10.0 * m2[0][0];
-\end{verbatim}
+\end{lstlisting}
 %
 If we try to access an element that is out of range, the program
 prints an error message and quits.
@@ -638,25 +638,25 @@ The usual way to traverse a matrix is with a nested loop.
 This loop sets each element of the matrix to the sum of its
 two indices:
 
-\begin{verbatim}
+\begin{lstlisting}
   for (int row=0; row < m2.numrows(); row++) {
     for (int col=0; col < m2.numcols(); col++) {
       m2[row][col] = row + col;
     }
   }
-\end{verbatim}
+\end{lstlisting}
 %
 This loop prints each row of the matrix with tabs between the
 elements and newlines between the rows:
 
-\begin{verbatim}
+\begin{lstlisting}
   for (int row=0; row < m2.numrows(); row++) {
     for (int col=0; col < m2.numcols(); col++) {
       cout << m2[row][col] << "\t";
     }
     cout << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 
 \section{A distance matrix}
@@ -668,28 +668,28 @@ one column for each city.
 We'll create the matrix in {\tt main}, with plenty of space
 to spare:
 
-\begin{verbatim}
+\begin{lstlisting}
   apmatrix<int> distances (50, 50, 0);
-\end{verbatim}
+\end{lstlisting}
 %
 
 Inside {\tt processLine}, we add new information to the
 matrix by getting the indices of the two cities from the
 {\tt Set} and using them as matrix indices:
 
-\begin{verbatim}
+\begin{lstlisting}
   int dist = convertToInt (distString);
   int index1 = cities.add (city1);
   int index2 = cities.add (city2);
 
   distances[index1][index2] = distance;
   distances[index2][index1] = distance;
-\end{verbatim}
+\end{lstlisting}
 %
 Finally, in {\tt main} we can print the information in a
 human-readable form:
 
-\begin{verbatim}
+\begin{lstlisting}
   for (int i=0; i<cities.getNumElements(); i++) {
     cout << cities.getElement(i) << "\t";
 
@@ -704,7 +704,7 @@ human-readable form:
     cout << cities.getElement(i) << "\t";
   }
   cout << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 This code produces the output shown at the beginning of the
 chapter.  The original data is available from this book's web page.
@@ -741,7 +741,7 @@ single object called a {\tt DistMatrix}.
 Here is a draft of what the header for a {\tt DistMatrix}
 might look like:
 
-\begin{verbatim}
+\begin{lstlisting}
 class DistMatrix {
 private:
   Set cities;
@@ -757,11 +757,11 @@ public:
   int numCities () const;
   void print ();
 };
-\end{verbatim}
+\end{lstlisting}
 %
 Using this interface simplifies {\tt main}:
 
-\begin{verbatim}
+\begin{lstlisting}
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -782,11 +782,11 @@ int main ()
   distances.print ();
   return 0;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 It also simplifies {\tt processLine}:
 
-\begin{verbatim}
+\begin{lstlisting}
 void processLine (const string& line, DistMatrix& distances)
 {
   char quote = '\"';
@@ -808,7 +808,7 @@ void processLine (const string& line, DistMatrix& distances)
   // add the new datum to the distances matrix
   distances.add (city1, city2, distance);
 }
-\end{verbatim}
+\end{lstlisting}
 %
 I will leave it as an exercise to you to implement the
 member functions of {\tt DistMatrix}.

@@ -23,33 +23,17 @@
 % Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 
-\chapter{Quick reference for AP classes}
+\chapter{Quick reference for String, Vector and APMatrix classes}
 
-These class definitions are copied from the College Board
-web page,
-
-\begin{verbatim}
-http://www.collegeboard.org/ap/computer-science/html/quick_ref.htm
-\end{verbatim}
-
-with minor formatting changes.  This is probably a good time to
-repeat the following text, also from the College Board web page.
-
-\begin{quotation}
-"Inclusion of the C++ classes defined for use in the Advanced
-Placement Computer Science courses does not constitute endorsement of
-the other material in this textbook by the College Board, Educational
-Testing service, or the AP Computer Science Development Committee. The
-versions of the C++ classes defined for use in the AP Computer Science
-courses included in this textbook were accurate as of 20 July
-1999.  Revisions to the classes may have been made since that time."
-\end{quotation}
+The \texttt{string} and \texttt{vector} classes detailed here as containing
+a subset of the functionality of the STL \texttt{string} and \texttt{vector}
+classes.  The \texttt{apmatrix} class is copied from the
+\href{www.collegeboard.org}{College Board} web page, and was widely used in the
+USA as part of college entrance examinations.
 
 \section{{\tt string}}
 
-\begin{verbatim}
-extern const int npos;  // used to indicate not a position in the string
-
+\begin{lstlisting}
 // public member functions
 
   // constructors/destructor
@@ -98,11 +82,11 @@ extern const int npos;  // used to indicate not a position in the string
   string operator+ ( const string & lhs, const apstring & rhs );
   string operator+ ( char ch, const string & str );
   string operator+ ( const string & str, char ch );
-\end{verbatim}
+\end{lstlisting}
 
 \section{{\tt vector}}
 
-\begin{verbatim}
+\begin{lstlisting}
 template <class itemType>
 class vector
 
@@ -129,11 +113,11 @@ class vector
   // modifiers
   void resize(int newSize);               // change size dynamically
                                           //can result in losing values
-\end{verbatim}
+\end{lstlisting}
 
 \section{{\tt apmatrix}}
 
-\begin{verbatim}
+\begin{lstlisting}
 template <class itemType>
 class apmatrix
 
@@ -162,5 +146,5 @@ class apmatrix
   // modifiers
   void resize(int newRows, int newCols); // resizes matrix to newRows x newCols
                                          // (can result in losing values)
-\end{verbatim}
+\end{lstlisting}
 
