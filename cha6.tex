@@ -35,12 +35,12 @@ make more than one assignment to the same variable.  The
 effect of the second assignment is to replace the old value
 of the variable with a new value.
 
-\begin{verbatim}
+\begin{lstlisting}
   int fred = 5;
   cout << fred;
   fred = 7;
   cout << fred;
-\end{verbatim}
+\end{lstlisting}
 %
 The output of this program is {\tt 57}, because the first
 time we print {\tt fred} his value is 5, and the second time
@@ -71,11 +71,11 @@ for all time.  If $a = b$ now, then $a$ will always equal $b$.
 In C++, an assignment statement can make two variables equal,
 but they don't have to stay that way!
 
-\begin{verbatim}
+\begin{lstlisting}
   int a = 5;
   int b = a;     // a and b are now equal
   a = 3;         // a and b are no longer equal
-\end{verbatim}
+\end{lstlisting}
 %
 The third line changes the value of {\tt a} but it does not
 change the value of {\tt b}, and so they are no longer equal.
@@ -111,7 +111,7 @@ statement and the {\tt for} statement.
 
 Using a {\tt while} statement, we can rewrite {\tt countdown}:
 
-\begin{verbatim}
+\begin{lstlisting}
 void countdown (int n) {
   while (n > 0) {
     cout << n << endl;
@@ -119,7 +119,7 @@ void countdown (int n) {
   }
   cout << "Blastoff!" << endl;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 You can almost read a {\tt while} statement as if it were
 English.  What this means is, ``While {\tt n} is greater than
@@ -170,7 +170,7 @@ each time through the loop (each {\bf iteration}), so
 eventually we have to get to zero.  In other cases it is not
 so easy to tell:
 
-\begin{verbatim}
+\begin{lstlisting}
   void sequence (int n) {
     while (n != 1) {
       cout << n << endl;
@@ -181,7 +181,7 @@ so easy to tell:
       }
     }
   }
-\end{verbatim}
+\end{lstlisting}
 %
 The condition for this loop is {\tt n != 1}, so the loop
 will continue until {\tt n} is 1, which will make the condition
@@ -239,13 +239,13 @@ makes a good example of iteration.  The following program outputs a
 sequence of values in the left column and their logarithms in the
 right column:
 
-\begin{verbatim}
+\begin{lstlisting}
   double x = 1.0;
   while (x < 10.0) {
     cout << x << "\t" << log(x) << "\n";
     x = x + 1.0;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 The sequence \verb+\t+ represents a {\bf tab} character.
 The
@@ -265,7 +265,7 @@ if it appears as part of a string, I use \verb+\n+.
 
 The output of this program is
 
-\begin{verbatim}
+\begin{lstlisting}
 1      0
 2      0.693147
 3      1.09861
@@ -275,7 +275,7 @@ The output of this program is
 7      1.94591
 8      2.07944
 9      2.19722
-\end{verbatim}
+\end{lstlisting}
 %
 If these values seem odd, remember that the {\tt log} function uses
 base $e$.  Since powers of two are so important in computer science,
@@ -286,13 +286,13 @@ we can use the following formula:
 %
 Changing the output statement to
 
-\begin{verbatim}
+\begin{lstlisting}
       cout << x << "\t" << log(x) / log(2.0) << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 yields
 
-\begin{verbatim}
+\begin{lstlisting}
 1      0
 2      1
 3      1.58496
@@ -302,27 +302,27 @@ yields
 7      2.80735
 8      3
 9      3.16993
-\end{verbatim}
+\end{lstlisting}
 %
 We can see that 1, 2, 4 and 8 are powers of two, because
 their logarithms base 2 are round numbers.  If we wanted to find
 the logarithms of other powers of two, we could modify the
 program like this:
 
-\begin{verbatim}
+\begin{lstlisting}
   double x = 1.0;
   while (x < 100.0) {
     cout << x << "\t" << log(x) / log(2.0) << endl;
     x = x * 2.0;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 Now instead of adding something to {\tt x} each time through
 the loop, which yields an arithmetic sequence, we multiply
 {\tt x} by something, yielding a {\bf geometric} sequence.
 The result is:
 
-\begin{verbatim}
+\begin{lstlisting}
 1      0
 2      1
 4      2
@@ -330,7 +330,7 @@ The result is:
 16     4
 32     5
 64     6
-\end{verbatim}
+\end{lstlisting}
 %
 Because we are using tab characters between the columns, the
 position of the second column does not depend on the number
@@ -352,14 +352,14 @@ multiplication table for the values from 1 to 6.
 A good way to start is to write a simple loop that prints
 the multiples of 2, all on one line.
 
-\begin{verbatim}
+\begin{lstlisting}
   int i = 1;
   while (i <= 6) {
     cout << 2*i << "   ";
     i = i + 1;
   }
   cout << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 The first line initializes a variable named {\tt i}, which is
 going to act as a counter, or {\bf loop variable}.  As the
@@ -375,9 +375,9 @@ all the output on a single line.
 
 The output of this program is:
 
-\begin{verbatim}
+\begin{lstlisting}
 2   4   6   8   10   12
-\end{verbatim}
+\end{lstlisting}
 %
 So far, so good.  The next step is to {\bf encapsulate} and {\bf
 generalize}.
@@ -400,7 +400,7 @@ multiples of any integer.
 Here's a function that encapsulates the loop from the previous
 section and generalizes it to print multiples of {\tt n}.
 
-\begin{verbatim}
+\begin{lstlisting}
 void printMultiples (int n)
 {
   int i = 1;
@@ -410,7 +410,7 @@ void printMultiples (int n)
   }
   cout << endl;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 To encapsulate, all I had to do was add the first line,
 which declares the name, parameter,
@@ -420,28 +420,28 @@ the value 2 with the parameter {\tt n}.
 If we call this function with the argument 2, we get the same
 output as before.  With argument 3, the output is:
 
-\begin{verbatim}
+\begin{lstlisting}
 3   6   9   12   15   18
-\end{verbatim}
+\end{lstlisting}
 %
 and with argument 4, the output is
 
-\begin{verbatim}
+\begin{lstlisting}
 4   8   12   16   20   24 
-\end{verbatim}
+\end{lstlisting}
 %
 By now you can probably guess how we are going to print a
 multiplication table: we'll call {\tt printMultiples} repeatedly with
 different arguments.  In fact, we are going to use another loop to
 iterate through the rows.
 
-\begin{verbatim}
+\begin{lstlisting}
   int i = 1;
   while (i <= 6) {
     printMultiples (i);
     i = i + 1;
   }    
-\end{verbatim}
+\end{lstlisting}
 %
 First of all, notice how similar this loop is to the one inside {\tt
 printMultiples}.  All I did was replace the print statement with a
@@ -449,14 +449,14 @@ function call.
 
 The output of this program is
 
-\begin{verbatim}
+\begin{lstlisting}
 1   2   3   4   5   6   
 2   4   6   8   10   12   
 3   6   9   12   15   18   
 4   8   12   16   20   24   
 5   10   15   20   25   30   
 6   12   18   24   30   36   
-\end{verbatim}
+\end{lstlisting}
 %
 which is a (slightly sloppy) multiplication table.  If the
 sloppiness bothers you, try replacing the spaces between
@@ -493,7 +493,7 @@ Once you write and debug one, you can reuse it.
 To demonstrate encapsulation again, I'll take the code
 from the previous section and wrap it up in a function:
 
-\begin{verbatim}
+\begin{lstlisting}
 void printMultTable () {
   int i = 1;
   while (i <= 6) {
@@ -501,7 +501,7 @@ void printMultTable () {
     i = i + 1;
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The process I am demonstrating is a common 
 development plan.  You develop code gradually by adding
@@ -569,7 +569,7 @@ a program that would print a multiplication table of any
 size, not just the 6x6 table.  You could add a parameter to
 {\tt printMultTable}:
 
-\begin{verbatim}
+\begin{lstlisting}
 void printMultTable (int high) {
   int i = 1;
   while (i <= high) {
@@ -577,12 +577,12 @@ void printMultTable (int high) {
     i = i + 1;
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 I replaced the value 6 with the parameter {\tt high}.  If I
 call {\tt printMultTable} with the argument 7, I get
 
-\begin{verbatim}
+\begin{lstlisting}
 1   2   3   4   5   6   
 2   4   6   8   10   12   
 3   6   9   12   15   18   
@@ -590,7 +590,7 @@ call {\tt printMultTable} with the argument 7, I get
 5   10   15   20   25   30   
 6   12   18   24   30   36   
 7   14   21   28   35   42   
-\end{verbatim}
+\end{lstlisting}
 %
 which is fine, except that I probably want the table to
 be square (same number of rows and columns), which means
@@ -601,7 +601,7 @@ Just to be annoying, I will also call this parameter {\tt high},
 demonstrating that different functions can have parameters
 with the same name (just like local variables):
 
-\begin{verbatim}
+\begin{lstlisting}
 void printMultiples (int n, int high) {
   int i = 1;
   while (i <= high) {
@@ -618,7 +618,7 @@ void printMultTable (int high) {
     i = i + 1;
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Notice that when I added a new parameter, I had to change the first
 line of the function (the interface or prototype), and I also had to
@@ -643,15 +643,15 @@ table appear twice.  You could save ink by printing only
 half the table.  To do that, you only have to change one
 line of {\tt printMultTable}.  Change
 
-\begin{verbatim}
+\begin{lstlisting}
       printMultiples (i, high);
-\end{verbatim}
+\end{lstlisting}
 %
 to
 
-\begin{verbatim}
+\begin{lstlisting}
       printMultiples (i, i);
-\end{verbatim}
+\end{lstlisting}
 %
 and you get
 

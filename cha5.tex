@@ -43,20 +43,20 @@ For example:
 \index{math function!exp}
 \index{math function!sin}
 
-\begin{verbatim}
+\begin{lstlisting}
   double e = exp (1.0);
   double height = radius * sin (angle);
-\end{verbatim}
+\end{lstlisting}
 %
 But so far all the functions we have written have been {\bf void}
 functions; that is, functions that return no value.  When you call
 a void function, it is typically on a line by itself, with
 no assignment:
 
-\begin{verbatim}
+\begin{lstlisting}
   nLines (3);
   countdown (n-1);
-\end{verbatim}
+\end{lstlisting}
 %
 In this chapter, we are going to write functions that return things,
 which I will refer to as {\bf fruitful} functions, for want of a
@@ -67,13 +67,13 @@ given radius:
 \index{math function!acos}
 \index{pi}
 
-\begin{verbatim}
+\begin{lstlisting}
 double area (double radius) {
   double pi = acos (-1.0);
   double area = pi * radius * radius;
   return area;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The first thing you should notice is that the beginning of the
 function definition is different.  Instead of {\tt void}, which
@@ -87,11 +87,11 @@ use the following expression as a return value.''  The
 expression you provide can be arbitrarily complicated,
 so we could have written this function more concisely:
 
-\begin{verbatim}
+\begin{lstlisting}
 double area (double radius) {
   return acos(-1.0) * radius * radius;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 On the other hand, {\bf temporary} variables like {\tt area} often
 make debugging easier.  In either case, the type of the expression in
@@ -108,7 +108,7 @@ take you to task.
 Sometimes it is useful to have multiple return
 statements, one in each branch of a conditional:
 
-\begin{verbatim}
+\begin{lstlisting}
 double absoluteValue (double x) {
   if (x < 0) {
     return -x;
@@ -116,7 +116,7 @@ double absoluteValue (double x) {
     return x;
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Since these returns statements are in an alternative conditional, only
 one will be executed.  Although it is legal to have more than one
@@ -134,7 +134,7 @@ If you put return statements inside a conditional, then
 you have to guarantee that {\em every possible path} through
 the program hits a return statement.  For example:
 
-\begin{verbatim}
+\begin{lstlisting}
 double absoluteValue (double x) {
   if (x < 0) {
     return -x;
@@ -142,7 +142,7 @@ double absoluteValue (double x) {
     return x;
   }                          // WRONG!!
 }
-\end{verbatim}
+\end{lstlisting}
 %
 This program is not correct because if {\tt x} happens to be 0, then
 neither condition will be true and the function will end without hitting
@@ -215,11 +215,11 @@ distance, which will have type {\tt double}.
 
 Already we can write an outline of the function:
 
-\begin{verbatim}
+\begin{lstlisting}
 double distance (double x1, double y1, double x2, double y2) {
   return 0.0;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The {\tt return} statement is a placekeeper so that the function will
 compile and return something, even though it is not the right answer.
@@ -230,10 +230,10 @@ before we make it more complicated.
 In order to test the new function, we have to call it with
 sample values.  Somewhere in {\tt main} I would add:
 
-\begin{verbatim}
+\begin{lstlisting}
   double dist = distance (1.0, 2.0, 4.0, 6.0);
   cout << dist << endl;
-\end{verbatim}
+\end{lstlisting}
 %
 I chose these values so that the horizontal
 distance is 3 and the vertical distance is 4; that way,
@@ -251,7 +251,7 @@ The next step in the computation is to find the differences
 $x_2 - x_1$ and $y_2 - y_1$.  I will store those values in
 temporary variables named {\tt dx} and {\tt dy}.
 
-\begin{verbatim}
+\begin{lstlisting}
 double distance (double x1, double y1, double x2, double y2) {
   double dx = x2 - x1;
   double dy = y2 - y1;
@@ -259,7 +259,7 @@ double distance (double x1, double y1, double x2, double y2) {
   cout << "dy is " << dy << endl;
   return 0.0;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 I added output statements that will let me check the intermediate
 values before proceeding.  As I mentioned, I already know that they
@@ -277,7 +277,7 @@ The next step in the development is to square {\tt dx} and {\tt dy}.
 We could use the {\tt pow} function, but it is simpler and
 faster to just multiply each term by itself.
 
-\begin{verbatim}
+\begin{lstlisting}
 double distance (double x1, double y1, double x2, double y2) {
   double dx = x2 - x1;
   double dy = y2 - y1;
@@ -285,7 +285,7 @@ double distance (double x1, double y1, double x2, double y2) {
   cout << "dsquared is " << dsquared;
   return 0.0;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Again, I would compile and run the program at this stage
 and check the intermediate value (which should be 25.0).
@@ -293,7 +293,7 @@ and check the intermediate value (which should be 25.0).
 Finally, we can use the {\tt sqrt} function to compute and
 return the result.
 
-\begin{verbatim}
+\begin{lstlisting}
 double distance (double x1, double y1, double x2, double y2) {
   double dx = x2 - x1;
   double dy = y2 - y1;
@@ -301,7 +301,7 @@ double distance (double x1, double y1, double x2, double y2) {
   double result = sqrt (dsquared);
   return result;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Then in {\tt main}, we should output and check the value of the result.
 
@@ -343,27 +343,27 @@ and {\tt yc}, and the perimeter point is in {\tt xp} and
 is the distance between the two points.  Fortunately, we have
 a function, {\tt distance}, that does that.
 
-\begin{verbatim}
+\begin{lstlisting}
   double radius = distance (xc, yc, xp, yp);
-\end{verbatim}
+\end{lstlisting}
 %
 The second step is to find the area of a circle with that
 radius, and return it.
 
-\begin{verbatim}
+\begin{lstlisting}
   double result = area (radius);
   return result;
-\end{verbatim}
+\end{lstlisting}
 %
 Wrapping that all up in a function, we get:
 
-\begin{verbatim}
+\begin{lstlisting}
 double fred (double xc, double yc, double xp, double yp) {
   double radius = distance (xc, yc, xp, yp);
   double result = area (radius);
   return result;
 } 
-\end{verbatim}
+\end{lstlisting}
 %
 The name of this function is {\tt fred}, which may seem odd.  I will
 explain why in the next section.
@@ -373,11 +373,11 @@ useful for development and debugging, but once the program is
 working we can make it more concise by composing
 the function calls:
 
-\begin{verbatim}
+\begin{lstlisting}
 double fred (double xc, double yc, double xp, double yp) {
   return area (distance (xc, yc, xp, yp));
 } 
-\end{verbatim}
+\end{lstlisting}
 
 \section{Overloading}
 \label{overloading}
@@ -397,28 +397,28 @@ Having more than one function with the same name, which is called {\bf
 overloading}, is legal in C++ {\em as long as each version takes
 different parameters}.  So we can go ahead and rename {\tt fred}:
 
-\begin{verbatim}
+\begin{lstlisting}
 double area (double xc, double yc, double xp, double yp) {
   return area (distance (xc, yc, xp, yp));
 } 
-\end{verbatim}
+\end{lstlisting}
 %
 This looks like a recursive function, but it is not.  Actually,
 this version of {\tt area} is calling the other version.
 When you call an overloaded function, C++ knows which version you
 want by looking at the arguments that you provide.  If you write:
 
-\begin{verbatim}
+\begin{lstlisting}
     double x = area (3.0);
-\end{verbatim}
+\end{lstlisting}
 %
 C++ goes looking for a function named {\tt area} that
 takes a {\tt double} as an argument, and so it uses the
 first version.  If you write
 
-\begin{verbatim}
+\begin{lstlisting}
     double x = area (1.0, 2.0, 4.0, 6.0);
-\end{verbatim}
+\end{lstlisting}
 %
 C++ uses the second version of {\tt area}.  
 
@@ -458,11 +458,11 @@ statement or a {\tt while} statement is a boolean expression.
 Also, the result of a comparison operator is a boolean value.
 For example:
 
-\begin{verbatim}
+\begin{lstlisting}
   if (x == 5) {
     // do something
   }
-\end{verbatim}
+\end{lstlisting}
 %
 The operator {\tt ==} compares two integers and produces a
 boolean value.
@@ -474,11 +474,11 @@ The values {\tt true} and {\tt false} are keywords in C++,
 and can be used anywhere a boolean expression is called for.
 For example, 
 
-\begin{verbatim}
+\begin{lstlisting}
   while (true) {
     // loop forever
   }
-\end{verbatim}
+\end{lstlisting}
 %
 is a standard idiom for a loop that should run forever (or
 until it reaches a {\tt return} or {\tt break} statement).
@@ -490,11 +490,11 @@ As usual, for every type of value, there is a corresponding
 type of variable.  In C++ the boolean type is called {\bf bool}.
 Boolean variables work just like the other types:
 
-\begin{verbatim}
+\begin{lstlisting}
   bool fred;
   fred = true;
   bool testResult = false;
-\end{verbatim}
+\end{lstlisting}
 %
 The first line is a simple variable declaration;
 the second line is an assignment, and the third line is a
@@ -507,18 +507,18 @@ called an initialization.
 As I mentioned, the result of a comparison operator is a boolean,
 so you can store it in a {\tt bool} variable
 
-\begin{verbatim}
+\begin{lstlisting}
   bool evenFlag = (n%2 == 0);     // true if n is even
   bool positiveFlag = (x > 0);    // true if x is positive
-\end{verbatim}
+\end{lstlisting}
 %
 and then use it as part of a conditional statement later
 
-\begin{verbatim}
+\begin{lstlisting}
   if (evenFlag) {
     cout << "n was even when I checked it" << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 A variable used in this way is called a {\bf flag},
 since it flags the presence or absence of some condition.
@@ -551,13 +551,13 @@ Logical operators often provide a way to simplify nested
 conditional statements.  For example, how would you write
 the following code using a single conditional?
 
-\begin{verbatim}
+\begin{lstlisting}
   if (x > 0) {
     if (x < 10) {
       cout << "x is a positive single digit." << endl;
     }
   }
-\end{verbatim}
+\end{lstlisting}
 
 \section{Bool functions}
 \label{bool}
@@ -568,7 +568,7 @@ Functions can return {\tt bool} values just like any other type,
 which is often convenient for hiding complicated tests inside
 functions.  For example:
 
-\begin{verbatim}
+\begin{lstlisting}
 bool isSingleDigit (int x)
 {
   if (x >= 0 && x < 10) {
@@ -577,7 +577,7 @@ bool isSingleDigit (int x)
     return false;
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The name of this function is {\tt isSingleDigit}.  It is common
 to give boolean functions names that sound like yes/no questions.
@@ -589,19 +589,19 @@ it needs to be.  Remember that the expression {\tt x >= 0 \&\& x < 10}
 has type {\tt bool}, so there is nothing wrong with returning it
 directly, and avoiding the {\tt if} statement altogether:
 
-\begin{verbatim}
+\begin{lstlisting}
 bool isSingleDigit (int x)
 {
   return (x >= 0 && x < 10);
 }
-\end{verbatim}
+\end{lstlisting}
 %
 In {\tt main} you can call this function in the usual ways:
 
-\begin{verbatim}
+\begin{lstlisting}
   cout << isSingleDigit (2) << endl;
   bool bigFlag = !isSingleDigit (17);
-\end{verbatim}
+\end{lstlisting}
 %
 The first line outputs the value {\tt true} because 2 is a
 single-digit number.  Unfortunately, when C++ outputs {\tt bool}s, it
@@ -615,13 +615,13 @@ only if 17 is {\em not} a single-digit number.
 The most common use of {\tt bool} functions is inside conditional
 statements
 
-\begin{verbatim}
+\begin{lstlisting}
   if (isSingleDigit (x)) {
     cout << "x is little" << endl;
   } else {
     cout << "x is big" << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 
 \section {Returning from {\tt main}}
 
@@ -629,12 +629,12 @@ Now that we have functions that return values, I can let you in
 on a secret.  {\tt main} is not really supposed to be a {\tt void}
 function.  It's supposed to return an integer:
 
-\begin{verbatim}
+\begin{lstlisting}
 int main ()
 {
   return 0;
 }  
-\end{verbatim}
+\end{lstlisting}
 %
 The usual return value from {\tt main} is 0, which indicates that
 the program succeeded at whatever it was supposed to to.  If something
@@ -712,29 +712,29 @@ the parameters are for this function, and what the return type is.
 With a little thought, you should conclude that factorial takes an
 integer as a parameter and returns an integer:
 
-\begin{verbatim}
+\begin{lstlisting}
 int factorial (int n)
 {
 }
-\end{verbatim}
+\end{lstlisting}
 %
 If the argument happens to be zero, all we have to do is
 return 1:
 
-\begin{verbatim}
+\begin{lstlisting}
 int factorial (int n)
 {
   if (n == 0) {
     return 1;
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Otherwise, and this is the interesting part, we have to make
 a recursive call to find the factorial of $n-1$, and then
 multiply it by $n$.
 
-\begin{verbatim}
+\begin{lstlisting}
 int factorial (int n)
 {
   if (n == 0) {
@@ -745,7 +745,7 @@ int factorial (int n)
     return result;
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 If we look at the flow of execution for this program,
 it is similar to {\tt nLines} from the previous chapter.
@@ -841,7 +841,7 @@ In the previous example I used temporary variables to spell out the
 steps, and to make the code easier to debug, but I could have saved a
 few lines:
 
-\begin{verbatim}
+\begin{lstlisting}
 int factorial (int n) {
   if (n == 0) {
     return 1;
@@ -849,7 +849,7 @@ int factorial (int n) {
     return n * factorial (n-1);
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 From now on I will tend to use the more concise version, but
 I recommend that you use the more explicit version while you
@@ -868,7 +868,7 @@ following definition:
 %
 Translated into C++, this is
 
-\begin{verbatim}
+\begin{lstlisting}
 int fibonacci (int n) {
   if (n == 0 || n == 1) {
     return 1;
@@ -876,7 +876,7 @@ int fibonacci (int n) {
     return fibonacci (n-1) + fibonacci (n-2);
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 If you try to follow the flow of execution here, even for fairly small
 values of {\tt n}, your head explodes.  But according to the leap of
