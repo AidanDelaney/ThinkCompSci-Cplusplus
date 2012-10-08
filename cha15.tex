@@ -59,7 +59,7 @@ to A, there is no need to print the top half of the matrix.
 To get input from a file or send output to a file, you have to
 create an {\tt ifstream} object (for input files) or an
 {\tt ofstream} object (for output files).  These objects
-are defined in the header file {\tt fstream.h}, which you
+are defined in the header file {\tt fstream}, which you
 have to include.
 
 \index{header file}
@@ -219,11 +219,6 @@ For example, I have a file called {\tt distances} that contains
 information about the distances between major cities in the
 United States.  I got this information from a randomly-chosen
 web page\footnote{This page is no longer available, but the point stands.}
-
-\begin{verbatim}
-http://www.jaring.my/usiskl/usa/distance.html
-\end{verbatim}
-%
 so it may be wildly inaccurate, but that doesn't matter.  The
 format of the file looks like this:
 
@@ -325,7 +320,7 @@ conversion a little more difficult, but it also provides an
 opportunity to write a comma-stripping function, so that's ok.  Once
 we get rid of the commas, we can use the library function {\tt atoi}
 to convert to integer.  {\tt atoi} is defined in the header file {\tt
-stdlib.h}.
+cstdlib}.
 
 \index{character!classification}
 \index{isdigit}
@@ -767,7 +762,12 @@ public:
 Using this interface simplifies {\tt main}:
 
 \begin{verbatim}
-void main ()
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+
+int main ()
 {
   string line;
   ifstream infile ("distances");
@@ -780,6 +780,7 @@ void main ()
   }
 
   distances.print ();
+  return 0;
 }
 \end{verbatim}
 %

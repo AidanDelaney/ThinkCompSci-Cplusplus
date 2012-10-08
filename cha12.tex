@@ -169,19 +169,7 @@ vector of other types:
 \end{verbatim}
 %
 Of course, in order to use {\tt vector}s and {\tt string}s, you
-will have to include the header files for both\footnote{{\tt vector}s
-are a little different from {\tt string}s in this regard.
-The file {\tt vector.cpp} contains a template that allows the
-compiler to create vectors of various kinds.  The first time you
-use a vector of integers, the compiler generates code
-to support that kind of vector.  If you use a vector of {\tt string}s,
-the compiler generates different code to handle that kind of
-vector.  As a result, it is usually sufficient to include the
-header file {\tt vector.h}; you do not have to compile
-{\tt vector.cpp} at all!  Unfortunately, if you do, you are
-likely to get a long stream of error messages.  I hope this
-footnote helps you avoid an unpleasant surprise, but the details
-in your development environment may differ.}.
+will have to include the header files for both.
 
 To initialize the elements of the vector, we can use a series of
 assignment statements.

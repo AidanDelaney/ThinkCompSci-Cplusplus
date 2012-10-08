@@ -510,7 +510,7 @@ text we will consider only keyboard input.
 \index{cin}
 \index{cout}
 
-In the header file {\tt iostream.h},
+In the header file {\tt iostream},
 C++ defines an object named {\tt cin} that handles input in
 much the same way that {\tt cout} handles output.  To get an
 integer value from the user:
@@ -541,6 +541,9 @@ failed, and also that the next operation will fail.
 Thus, getting input from the user might look like this:
 
 \begin{verbatim}
+#include <iostream>
+
+using namespace std;
 int main ()
 {
   int x;
@@ -563,7 +566,7 @@ int main ()
 }
 \end{verbatim}
 %
-{\tt cin} can also be used to input an {\tt string}:
+{\tt cin} can also be used to input a {\tt string}:
 
 \begin{verbatim}
   string name;
@@ -583,7 +586,7 @@ funny behavior), I avoid using the {\tt >>} operator altogether,
 unless I am reading data from a source that is known to be
 error-free.
 
-Instead, I use a function in the {\tt string} called {\tt getline}.
+Instead, I use a function in the header {\tt string} called {\tt getline}.
 
 \begin{verbatim}
   string name;
@@ -610,7 +613,7 @@ value.  If not, you can print an error message and ask the user
 to try again.
 
 To convert a string to an integer you can use the {\tt atoi}
-function defined in the header file {\tt stdlib.h}.  We will
+function defined in the header file {\tt cstdlib}.  We will
 get to that in Section~\ref{parsing}.
 
 \section{Glossary}

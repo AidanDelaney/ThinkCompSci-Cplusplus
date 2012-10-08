@@ -83,10 +83,18 @@ We can output strings in the usual way:
 %
 
 In order to compile this code, you will have to include the
-header file for the {\tt string} class, and you will have
-to add the file {\tt string.cpp} to the list of files you
-want to compile.  The details of how to do this depend on your
-programming environment.
+header file for the {\tt string} class.  To do this we use an
+\texttt{\#include} directive at the top of our source file.
+An example of this now follows.
+\begin{lstlisting}
+#include <string>
+
+int main() {
+  string fruit = "banana";
+  cout << "My favourite friut is " << banana << endl;
+  return 0;
+}
+\end{lstlisting}
 
 Before proceeding, you should type in the program above and make
 sure you can compile and run it.

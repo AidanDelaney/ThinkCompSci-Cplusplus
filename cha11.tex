@@ -580,9 +580,10 @@ structure (in this case there are none):
 
 \begin{verbatim}
 #include <iostream>
+using namespace std;
 #include "Time.h"
 
-void main ()
+int main ()
 {
   Time currentTime (9, 14, 30.0);
   currentTime.increment (500.0);
@@ -595,6 +596,7 @@ void main ()
   if (doneTime.after (currentTime)) {
     cout << "The bread will be done after it starts." << endl;
   }
+  return 0;
 }
 
 \end{verbatim}
@@ -634,9 +636,10 @@ wrote:
 
 \begin{verbatim}
 #include <iostream>
+using namespace std;
 \end{verbatim}
 %
-{\tt iostream.h} is the header file that contains declarations
+{\tt iostream} is the header file that contains declarations
 for {\tt cin} and {\tt cout} and the functions that operate on
 them.  When you compile your program, you need the information
 in that header file.

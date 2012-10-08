@@ -36,10 +36,10 @@ and yields the {\em remainder} when the first operand is divided
 by the second.  In C++, the modulus operator is a percent sign,
 {\tt \%}.  The syntax is exactly the same as for other operators:
 
-\begin{verbatim}
+\begin{lstlisting}
   int quotient = 7 / 3;
   int remainder = 7 % 3;
-\end{verbatim}
+\end{lstlisting}
 %
 The first operator, integer division, yields 2.  The second
 operator yields 1.  Thus, 7 divided by 3 is 2 with 1 left over.
@@ -63,11 +63,11 @@ to check certain conditions and change the behavior of the program
 accordingly.  {\bf Conditional statements} give us this ability.  The
 simplest form is the {\tt if} statement:
 
-\begin{verbatim}
+\begin{lstlisting}
   if (x > 0) {
     cout << "x is positive" << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 The expression in parentheses is called the condition.
 If it is true, then the statements in brackets get executed.
@@ -78,14 +78,14 @@ If the condition is not true, nothing happens.
 
 The condition can contain any of the {\tt comparison operators}:
 
-\begin{verbatim}
+\begin{lstlisting}
     x == y               // x equals y
     x != y               // x is not equal to y
     x > y                // x is greater than y
     x < y                // x is less than y
     x >= y               // x is greater than or equal to y
     x <= y               // x is less than or equal to y
-\end{verbatim}
+\end{lstlisting}
 %
 Although these operations are probably familiar to you, the
 syntax C++ uses is a little different from mathematical
@@ -110,13 +110,13 @@ A second form of conditional execution is alternative execution,
 in which there are two possibilities, and the condition determines
 which one gets executed.  The syntax looks like:
 
-\begin{verbatim}
+\begin{lstlisting}
   if (x%2 == 0) {
     cout << "x is even" << endl;
   } else {
     cout << "x is odd" << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 If the remainder when {\tt x} is divided by 2 is zero, then
 we know that {\tt x} is even, and this code displays a message
@@ -129,7 +129,7 @@ As an aside, if you think you might want to check the parity
 (evenness or oddness) of numbers often, you might want to
 ``wrap'' this code up in a function, as follows:
 
-\begin{verbatim}
+\begin{lstlisting}
 void printParity (int x) {
   if (x%2 == 0) {
     cout << "x is even" << endl;
@@ -137,25 +137,25 @@ void printParity (int x) {
     cout << "x is odd" << endl;
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Now you have a function named {\tt printParity} that will display
 an appropriate message for any integer you care to provide.
 In {\tt main} you would call this function as follows:
 
-\begin{verbatim}
+\begin{lstlisting}
     printParity (17);
-\end{verbatim}
+\end{lstlisting}
 %
 Always remember that when you {\em call} a function, you do
 not have to declare the types of the arguments you provide.
 C++ can figure out what type they are.  You should resist the
 temptation to write things like:
 
-\begin{verbatim}
+\begin{lstlisting}
   int number = 17;
   printParity (int number);         // WRONG!!!
-\end{verbatim}
+\end{lstlisting}
 
 \section {Chained conditionals}
 \index{conditional!chained}
@@ -164,7 +164,7 @@ Sometimes you want to check for a number of related conditions
 and choose one of several actions.  One way to do this is by
 {\bf chaining} a series of {\tt if}s and {\tt else}s:
 
-\begin{verbatim}
+\begin{lstlisting}
   if (x > 0) {
     cout << "x is positive" << endl;
   } else if (x < 0) {
@@ -172,7 +172,7 @@ and choose one of several actions.  One way to do this is by
   } else {
     cout << "x is zero" << endl;
   }
-\end{verbatim}
+\end{lstlisting}
 %
 These chains can be as long as you want, although they can
 be difficult to read if they get out of hand.  One way to
@@ -189,7 +189,7 @@ In addition to chaining, you can also nest one conditional
 within another.  We could have written the previous example
 as:
 
-\begin{verbatim}
+\begin{lstlisting}
   if (x == 0) {
     cout << "x is zero" << endl;
   } else {
@@ -199,7 +199,7 @@ as:
       cout << "x is negative" << endl;
     }
   }
-\end{verbatim}
+\end{lstlisting}
 %
 There is now an outer conditional that contains two branches.  The
 first branch contains a simple output statement, but the second
@@ -226,8 +226,8 @@ The {\tt return} statement allows you to terminate the execution
 of a function before you reach the end.  One reason to use it
 is if you detect an error condition:
 
-\begin{verbatim}
-#include <math.h>
+\begin{lstlisting}
+#include <cmath>
 
 void printLogarithm (double x) {
   if (x <= 0.0) {
@@ -236,9 +236,9 @@ void printLogarithm (double x) {
   }
 
   double result = log (x);
-  cout << "The log of x is " << result);
+  cout << "The log of x is " << result;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 This defines a function named {\tt printLogarithm} that takes
 a {\tt double} named {\tt x} as a parameter.  The first thing
@@ -266,7 +266,7 @@ one of the most magical and interesting things a program can do.
 
 For example, look at the following function:
 
-\begin{verbatim}
+\begin{lstlisting}
 void countdown (int n) {
   if (n == 0) {
     cout << "Blastoff!" << endl;
@@ -275,7 +275,7 @@ void countdown (int n) {
     countdown (n-1);
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The name of the function is {\tt countdown} and it takes a single
 integer as a parameter.  If the parameter is zero, it outputs
@@ -285,13 +285,34 @@ then calls a function named {\tt countdown}---itself---passing
 
 What happens if we call this function like this:
 
-\begin{verbatim}
+\begin{lstlisting}
+#include <iostream>
+#include <cmath>
+using namespace std;
+void printLogarithm (double x) {
+  if (x <= 0.0) {
+    cout << "Positive numbers only, please." << endl;
+    return;
+  }
+
+  double result = log (x);
+  cout << "The log of x is " << result;
+}
+
+void countdown (int n) {
+  if (n == 0) {
+    cout << "Blastoff!" << endl;
+  } else {
+    cout << n << endl;
+    countdown (n-1);
+  }
+}
 int main ()
 {
   countdown (3);
   return 0;
 }
-\end{verbatim}
+\end{lstlisting}
 %
 The execution of {\tt countdown} begins with {\tt n=3}, and
 since {\tt n} is not zero, it outputs the value 3, and then
@@ -326,17 +347,17 @@ The countdown that got {\tt n=3} returns.
 \noindent And then you're back in {\tt main} (what a trip).  So the
 total output looks like:
 
-\begin{verbatim}
+\begin{lstlisting}
 3
 2
 1
 Blastoff!
-\end{verbatim}
+\end{lstlisting}
 %
 As a second example, let's look again at the functions
 {\tt newLine} and {\tt threeLine}.
 
-\begin{verbatim}
+\begin{lstlisting}
 void newLine () {
   cout << endl;
 }
@@ -344,19 +365,19 @@ void newLine () {
 void threeLine () {
   newLine ();  newLine ();  newLine ();
 }
-\end{verbatim}
+\end{lstlisting}
 %
 Although these work, they would not be much help if I wanted
 to output 2 newlines, or 106.  A better alternative would be
 
-\begin{verbatim}
+\begin{lstlisting}
 void nLines (int n) {
   if (n > 0) {
     cout << endl;
     nLines (n-1);
   }
 }
-\end{verbatim}
+\end{lstlisting}
 %
 This program is similar to {\tt countdown}; as long as {\tt n} is
 greater than zero, it outputs one newline, and then calls itself to

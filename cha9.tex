@@ -86,6 +86,32 @@ void printTime (Time& t) {
 The output of this function, if we pass {\tt time}
 an argument, is {\tt 11:59:3.14159}.
 
+\begin{verbatim}
+#include <iostream>
+
+using namespace std;
+
+struct Time {
+  int hour, minute;
+  double second;
+};
+
+
+void printTime (Time& t) {
+  cout << t.hour << ":" << t.minute << ":" << t.second << endl;
+  cout << "Time is " << t.hour << " hour " << t.minute << " minutes " << t.second << "  seconds  "<<endl;
+}
+
+
+int main ()
+{
+ Time time = { 11, 59, 3.14159 };
+ printTime(time);
+ 
+ return 0;
+}
+\end{verbatim}
+%
 \section{Functions for objects}
 \label{objectops}
 \index{object}
