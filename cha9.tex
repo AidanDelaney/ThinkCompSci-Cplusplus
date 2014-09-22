@@ -99,7 +99,9 @@ struct Time {
 
 void printTime (Time& t) {
   cout << t.hour << ":" << t.minute << ":" << t.second << endl;
-  cout << "Time is " << t.hour << " hour " << t.minute << " minutes " << t.second << "  seconds  "<<endl;
+  cout << "Time is " << t.hour << " hour "
+                     << t.minute << " minutes "
+                     << t.second << "  seconds  "<< endl;
 }
 
 
@@ -107,7 +109,7 @@ int main ()
 {
  Time time = { 11, 59, 3.14159 };
  printTime(time);
- 
+
  return 0;
 }
 \end{lstlisting}

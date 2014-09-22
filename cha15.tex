@@ -23,11 +23,11 @@
 % Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 
-\chapter{File Input/Output and {\tt apmatrix}es}
+\chapter{File Input/Output and {\tt matrix}es}
 
 In this chapter we will develop a program that reads and writes files,
-parses input, and demonstrates the {\tt apmatrix} class.  We will also
-implement a data structure called {\tt Set} that expands automatically
+parses input, and demonstrates the creation of a {\tt Matrix} class.  We will
+also implement a data structure called {\tt Set} that expands automatically
 as you add elements.
 
 Aside from demonstrating all these features, the real purpose of the
@@ -578,11 +578,11 @@ and store the index that gets returned.
 I modified {\tt processLine} to take the {\tt cities} object
 as a second parameter.
 
-\section {{\tt apmatrix}}
-\index{matrix}
-\index{apmatrix}
+\section{The {\tt Matrix} data structure}
 
-An {\tt apmatrix} is similar to an {\tt vector} except it
+\index{matrix}
+
+A {\tt Matrix} is similar to an {\tt vector} except it
 is two-dimensional.  Instead of a length, it has two
 dimensions, called {\tt numrows} and {\tt numcols}, for
 ``number of rows'' and ``number of columns.''
@@ -592,13 +592,13 @@ one specifies the row number, the other the column number.
 
 \index{index}
 
-To create a matrix, there are four constructors:
+To create a matrix, we will define four constructors:
 
 \begin{lstlisting}
-  apmatrix<char> m1;
-  apmatrix<int> m2 (3, 4);
-  apmatrix<double> m3 (rows, cols, 0.0);
-  apmatrix<double> m4 (m3);
+  Matrix<char> m1;
+  Matrix<int> m2 (3, 4);
+  Matrix<double> m3 (rows, cols, 0.0);
+  Matrix<double> m4 (m3);
 \end{lstlisting}
 %
 The first is a do-nothing constructor that makes a matrix with both
@@ -606,13 +606,13 @@ dimensions 0.  The second takes two integers, which are the initial
 number of rows and columns, in that order.  The third is the same as
 the second, except that it takes an additional parameter that is used
 to initialized the elements of the matrix.  The fourth is a copy
-constructor that takes another {\tt apmatrix} as a parameter.
+constructor that takes another {\tt Matrix} as a parameter.
 
 \index{constructor}
 
-Just as with {\tt vectors}, we can make {\tt apmatrix}es with any
+Just as with {\tt vectors}, we can make {\tt Matrix}es with any
 type of elements (including {\tt vector}s, and even {\tt
-apmatrix}es).
+Matrix}es).
 
 To access the elements of a matrix, we use the {\tt []} operator
 to specify the row and column:
@@ -669,7 +669,7 @@ We'll create the matrix in {\tt main}, with plenty of space
 to spare:
 
 \begin{lstlisting}
-  apmatrix<int> distances (50, 50, 0);
+  Matrix<int> distances (50, 50, 0);
 \end{lstlisting}
 %
 
@@ -722,7 +722,7 @@ What are some of the problems with the existing code?
 \item We did not know ahead of time how big to make the distance
 matrix, so we chose an arbitrary large number (50) and made it
 a fixed size.  It would be better to allow the distance matrix
-to expand in the same way a {\tt Set} does.  The {\tt apmatrix}
+to expand in the same way a {\tt Set} does.  The {\tt Matrix}
 class has a function called {\tt resize} that makes this possible.
 
 \index{resize}
@@ -733,7 +733,7 @@ as arguments to {\tt processLine}, which is awkward.  Also,
 use of the distance matrix is error prone because we have not
 provided accessor functions that perform error-checking.
 It might be a good idea to take the {\tt Set} of city names
-and the {\tt apmatrix} of distances, and combine them into a
+and the {\tt Matrix} of distances, and combine them into a
 single object called a {\tt DistMatrix}.
 
 \end{enumerate}
@@ -745,7 +745,7 @@ might look like:
 class DistMatrix {
 private:
   Set cities;
-  apmatrix<int> distances;
+  Matrix<int> distances;
 
 public:
   DistMatrix (int rows);

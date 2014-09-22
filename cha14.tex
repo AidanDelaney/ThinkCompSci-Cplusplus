@@ -599,11 +599,13 @@ programmers about the {\bf precondition}.
 
 \begin{lstlisting}
 void Complex::calculateCartesian ()
-// precondition: the current object contains valid polar coordinates
-	and the polar flag is set
-// postcondition: the current object will contain valid Cartesian
-	coordinates and valid polar coordinates, and both the cartesian
-	flag and the polar flag will be set
+// precondition: the current object contains
+//   valid polar coordinates
+//   and the polar flag is set
+// postcondition: the current object will contain
+//   valid Cartesian coordinates and valid polar
+//   coordinates, and both the cartesian
+//   flag and the polar flag will be set
 {
   real = mag * cos (theta);
   imag = mag * sin (theta);

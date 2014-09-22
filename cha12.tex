@@ -497,8 +497,8 @@ following function should be familiar:
 
 \begin{lstlisting}
 void printDeck (const vector<Card>& deck) {
-  for (int i = 0; i < deck.length(); i++) {
-    deck[i].print ();
+  for (Card c: deck) {
+    c.print ();
   }
 }
 \end{lstlisting}
@@ -532,8 +532,10 @@ the deck, we return -1.
 
 \begin{lstlisting}
 int find (const Card& card, const vector<Card>& deck) {
-  for (int i = 0; i < deck.length(); i++) {
-    if (equals (deck[i], card)) return i;
+  int index=0;
+  for (Card c: deck) {
+    if (equals (c, card)) return i;
+    i++;
   }
   return -1;
 }

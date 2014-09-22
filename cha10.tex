@@ -225,6 +225,35 @@ is equivalent to
   }
 \end{lstlisting}
 
+The C++11 standard added some syntax that allows more straightforward {\tt for}
+loops to be written over vectors.  An example of a C++11 for loop is the
+following:
+
+\begin{lstlisting}
+for(auto c: count) {
+  cout << c << endl;
+}
+\end{lstlisting}
+
+Here we see that
+\begin{enumerate}
+\item the syntax of a {\tt for} loop has been simplified, and
+\item the use of the {\tt auto} keyword \index{keyword!auto} \index{auto} to
+  deduce the type of {\tt c}.
+\end{enumerate}
+The advantage of this newer notation is that we cannot overstep the boundary of
+the {\tt count} vector.  Suppose {\tt count} contains $5$ elements.  Using the
+older notation we could write
+\begin{lstlisting}
+  for (int i = 0; i < 6; i++) {
+    cout << count[i] << endl;
+  }
+\end{lstlisting}
+which is incorrect as it tries to access {\tt count[5]} which is not an element
+{\tt count}.  The new notation protects us programmers from making such common
+errors (yes really! you'd be surprised how often these off-by-one errors are
+made).
+
 \section{Vector size}
 \index{size!vector}
 \index{vector!size}
