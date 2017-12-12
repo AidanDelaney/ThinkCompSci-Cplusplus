@@ -52,10 +52,15 @@ The `<<` operator makes it easy(ish) to send more interesting information to `st
 
 ### A Stylistic Note on Whitespace
 
+Programming style is vitally important.  Our first program could also be written as follows:
 
 ```c++
 #include <iostream>
 int main(){std::cout<<"Hello, world"<<std::endl; return 0;}
 ```
+
+Both programs do the same thing.  However, one is readable by a human and the other is very difficult to read.  There are some common styles for writing a program and I suggest you be consistent in your application of a style.  I tend to write C++ where I indent code using 4 spaces (no tabs).  If you use spaces to indent your code, then do not mix in tab characters!
+
+I use newlines between statements, so the `std::cout` above and the `return` statement should appear on separate lines.
 
 ## `int` and Other Types
