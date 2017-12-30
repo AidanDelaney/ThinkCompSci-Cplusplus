@@ -5,7 +5,7 @@ PNGS = $(patsubst %.svg,%.png,${SVGS})
 BOOK_NAME = cpp_south_pacific
 INKSCAPE = inkscape
 
-COMMON_OPTIONS =  --filter pandoc-fignos --chapters --number-sections --standalone --toc
+COMMON_OPTIONS = --chapters --number-sections --standalone --toc #  --filter pandoc-fignos --chapters --number-sections --standalone --toc
 
 all: images pdf html epub
 
