@@ -18,7 +18,7 @@ By contrast, the people who want us to write programs --  employers, family, fri
 
 [^vanuatu]: This doesn't apply in Vanuatu as there is no income tax or corporation tax, but they are being introduced in the near future.
 
-So far we've considered a reductionist bottom-up reason to study programming.  We've also briefly discussed how you also how programming can help you to develop great communication skills.  My third reason for studying programming is an argument made by [Simon Peyton Jones](https://en.wikipedia.org/wiki/Simon_Peyton_Jones).  He argues that in the 20^th^ Century we introduced the natural sciences into schools -- that is physics, chemistry and biology -- so that all adults would have a good understanding of the physical world in which we live.  In the 21^st^ Century we live much of our day outside the physical world and inside the virtual world[^dontbelieve].  Many of our relationships are mediated by social networks -- I have good friends who I've never seen.  Other simple things in life are also digital, bank transfers can be organised through a web browser and avoid standing in line in a physical bank.  There are growing trends where we use software to solve transport issues, negating the reasons to cough up $14k on a second-hand Toyota.  The virtual world has such a huge impact on our real-world that it is useful to study programming so that we can understand the building blocks of he virtual world.
+So far we've considered a reductionist bottom-up reason to study programming.  We've also briefly discussed how you also how programming can help you to develop great communication skills.  My third reason for studying programming is an argument made by [Simon Peyton Jones](https://en.wikipedia.org/wiki/Simon_Peyton_Jones).  He argues that in the 20^th^ Century we introduced the natural sciences into schools -- that is physics, chemistry and biology -- so that all adults would have a good understanding of the physical world in which we live.  In the 21^st^ Century we live much of our day outside the physical world and inside the virtual world[^dontbelieve].  Many of our relationships are mediated by social networks -- I have good friends who I've never seen.  Other simple things in life are also digital, bank transfers can be organised through a web browser and avoid standing in line in a physical bank.  There are growing trends where we use software to solve transport issues, negating the reasons to cough up $14k on a second-hand Toyota.  The virtual world has such a huge impact on our real-world that it is useful to study programming so that we can understand the building blocks of the virtual world.
 
 [^dontbelieve]: If you don't believe me on this, then have a look around and see how many students think I can't see them texting under a desk in your next class.
 
@@ -34,12 +34,11 @@ In one view, a program is an _unambiguous_ list of instructions.  Each time you 
   2. Build a fire,
   3. Carefully place lava rocks over the fire,
   4. Light the fire and let it burn down to embers,
-  5. Put the hot rocks in the pit,
-  6. Season the chicken,
-  7. Wrap the chicken in banana leaves,
-  8. Put the wrapped chicken on the hot stones,
-  9. Cover the food with earth
-  10. Wait 2 hours, remove chicken and eat!
+  5. Season the chicken,
+  6. Wrap the chicken in banana leaves,
+  7. Put the wrapped chicken on the hot stones,
+  8. Cover the food with earth
+  9. Wait 2 hours, remove chicken and eat!
 
 To most people, the above instructions are enough to make a great dinner.  However these instructions are ambiguous.  They don't say how deep or wide to build the pit.  They don't say how high the fire should be within the pit.  How large should the lava rocks be?  Or what do we season the chicken with?  Moreover, if you've ever made a lovo or umu you know it's a lot of effort.  Too much effort to cook a single chicken so maybe we should also place [taro](http://en.wikipedia.org/wiki/taro) and fish alongside the chicken.  The reason that the instructions can be ambiguous is because you, dear reader, are intelligent enough to fill in the blanks.
 
@@ -55,10 +54,22 @@ The game _hangman_ is played by kids in schools all over the world.  One student
 
 [^hangman]: The name _hangman_ and drawing a gallows are pretty awful, but then again most kids are awful!
 
-Our previous paragraph is a reasonable explanation of the game.  Again, like our lovo example, you're probably able to fill in the bits where I've explained it poorly.  What if we had to write the instructions of the game in a way that they couldn't be misinterpreted?  Legal people commonly write such instructions.  FIXME
+Our previous paragraph is a reasonable explanation of the game.  Again, like our lovo example, you're probably able to fill in the bits where I've explained it poorly.  What if we had to write the instructions of the game in a way that they couldn't be misinterpreted?  Legal people commonly write such instructions:
+
+>> The game of hangman, herein referred to as THE GAME, is a game for two parties referred to as THE PLAYER and THE JUDGE.
+>>
+>>  (a) THE JUDGE will draw on paper a gallows and below the gallows a series of dashes where there is one dash for each letter of a secret word.
+>>      * THE JUDGE will not prima-facia reveal the secret word to THE PLAYER
+>>  (b) THE PLAYER will guess a letter of the secret word and
+>>      * if the guessed letter is one or more letters in the secret word, then THE JUDGE writes the guessed letters on top of a dash that is at the same position in the series as the guessed letter in the secret word.
+>>      * otherwise THE JUDGE will draw the next body part of a stick man on the gallows.
+>>  (c) the body parts of a stick man are drawn in progression, on per turn, starting with a head, a body, a left leg, a right leg, a left arm and a right arm.
+>>  (d) THE JUDGE wins the game if the stick man is drawn before the secret word is revealed.
 
 
-The legal code for _hangman_ is useful when two players need to argue about the implementation of a rule.  In our case we want our rule to be interpreted by a machine that can't argue about how to implement a rule.  We know our machines have no intelligence.  They can simply replace symbols with other symbols
+The legal code for _hangman_ is useful when two players need to argue about the implementation of a rule.  We can still argue about the interpretation of some of the rules; should the judge draw the arm as an upper arm and lower arm?  Can the player guess two letters at a time?[^legalese]  In our case we want our rule to be interpreted by a machine that can't argue about how to implement a rule.  We know our machines have no intelligence.  They can simply replace symbols with other symbols
+
+[^legalese]: A solicitor could write these rules in a different way.  They could first formalise the definition of a turn and then describe the progress of the game as a series of turns.  In any case the formalisation into legal language adds more complexity than the informal explanation.
 
 I take a slightly different view of programming from many other texts.  Often a program is seen as the object we want to produce.  By contrast, I see it as an artefact of the production process.  The reality of programming is that we get a bunch of smart people together in order to write a solution to a problem in an unambiguous language.  Under this interpretation the program itself is a difficult-to-read document that explains how the development team understand the problem.
 
@@ -70,11 +81,45 @@ It's obvious that a computer can't cook a lovo.  So why should we bother devisin
 
 The example of calculating pay packets demonstrates how completing mathematical operations quickly is of use.  Some other uses of computers are less clear.  Consider the last movie you watched on a computer.  The movie is stored in a file.  The file is a sequence of numbers that, roughly speaking, can be interpreted as 25 pictures per second.  Each picture states the colour of pixels on the screen.  The act of watching the movie requires a program that interprets the data file and plays the 25 pictures per second on your screen.  Again, we're only using mathematical operations to calculate colour values and moving symbols around inside the memory of the computer.
 
-You might not consider the fuel injector of a boat engine to be a job best handled by a computer.  It is the case though that all modern engines use a computer, referred to as the [_engine control unit_](https://en.wikipedia.org/wiki/Engine_control_unit).  The job of the engine control unit is often to control the timing of firing each cylinder in the engine.  In many cases the control unit can read a stream of numbers provided to it from the engine exhaust and adjust the engine to run within pre-determined environmental limits.  This is something that is simply impractical to achieve without a computer in control.
+You might not consider the fuel injector of a boat engine to be a job best handled by a computer.  It is the case though that all modern engines use a computer, referred to as the [_engine control unit_](https://en.wikipedia.org/wiki/Engine_control_unit).  The job of the engine control unit is often to control the timing of firing each cylinder in the engine.  In many cases the control unit can read a stream of numbers provided to it from the engine exhaust and adjust the engine to run within pre-determined environmental limits.  One practical outcome of this approach is a reduction in the amount of fuel used by an engine.  This is something that is simply impractical to achieve without a computer in control.
 
 So we know that computers are useful for movie night and driving to the movies.  You can find other applications of computers in medical devices and -- obviously -- in mobile phones and running the entire Internet!  We know that computers can do a lot, leading to the interesting question asking whether there are things that computers can't do?
 
 ## What Computers Can't Do
+
+Computers can be used to solve many problems.  Are there problems that computers can't solve?  The short answer is "yes", but a longer answer is more interesting.  The idea of a computer was defined in 1936 by the mathematician [Alan Turing](http://en.wikipedia.org/wiki/Alan_Turing).  His idea has three very practical consequences:
+
+  1. If it can't be formalised then it can't be computed,
+  2. There are some formalised problems that can't be computed,
+  3. There are a large number of practical problems that can be computed but take too long to compute.
+
+The first is a fairly obvious consequence of the previous discussion on formalisation.  Humans can't seem to agree on a definition of _love_ or even of what good music is.  As these ideas can't be formalised in our formal language, then they can't be computed.  The second point is not obvious and was the central point of Turing's [definition of computing](http://www.turingarchive.org/browse.php/B/12).  There are problems that can be formalised but cannot be computed on a computer.  One of these is the measure of [minimum amount of information](https://en.wikipedia.org/wiki/Kolmogorov_complexity) necessary to construct an original information source.  You've probably used an approximation to this measurement.  The `.zip` file format stores information compressed by an algorithm that approximates this problem.  We can't give you the very smallest `.zip` file that represents your original information but we can give you a good guess at it.
+
+The third consequence is again non-obvious but you use it every single day.  Almost all encryption on the web, that is `HTTPS` traffic, is based on a problem that can be computed but simply takes too long to reverse.  Another problem, called the [travelling salesperson problem](https://en.wikipedia.org/wiki/Travelling_Salesman_Problem) (TSP), also illustrates how some computable problems take too long to compute.  The TSP asks us to compute the quickest way to visit all USP campuses.  USP has a on campus in Suva, Lautoka and Labasa in Fiji, it takes 3 hours to travel between Suva and Lautoka, 16 hours to travel between Suva and Labasa and 26 hours to travel between Lautoka and Labasa, this is visualised in figure {@fig:tsp}.
+
+![The travelling salesperson problem](images/tsp.png){#fig:tsp}
+
+[^undirected]: You'll note that if this graph had a quick way of going from Suva to Lautoka but a slow way of getting from Lautoka to Suva, then there would be 6 combinations.  We're dealing with the _undirected_ case here.
+
+I've turned the statement of the problem into a graph.  This makes it a bit easier to focus on the actual problem, not on details such as exactly how we get from Suva to Lautoka.  Given this kind of graph the TSP asks what is the shortest path in the graph that passes through all campuses?  We can start in Suva and end in Lautoka or we can start in Lebasa and end in Suva.  In this graph there are 3 combinations[^undirected] of starting and ending points:
+
+  1. Suva to Lautoka (via Lebasa),
+  2. Suva to Lebasa (via Lautoka), and
+  3. Lautoka to Lebasa (via Suva).
+
+For 3 campuses it's easy to work out which is the shortest route through all.  You can probably do it in your head.  As we in more campuses, say Port Vila in Vanuatu and Apia in Samoa, we find that the number of combinations is huge.  Computer Scientists[^awesome] have worked out that for 5 campuses there are $5^2 \times 2^5$ routes to calcuate, that's $800$ routes to calculate in total.  If we make an assumption that it takes 1 micro second to calculate a route then, for 5 campuses, it takes less than a second to find the cost of all routes.  That's great and much quicker than a human could do it.
+
+[^awesome]: All Computer Scientists are awesome people.  They're also very intelligent and witty individuals.
+
+Keep in mind I said that this problem takes a long time to compute.  It appears that so-far I've not been telling the truth.  Suppose then that we add in all the USP campuses and the costs of travelling (in time) between each campus.  There is one campus in each of 11 countries and then 3 campuses in Fiji, a grand total of 14.  Just for fun we can also add in the University of Auckland as I have some research colleagues there and Université de la Nouvelle-Calédonie because that covers all the teams that play in the Suva 7's Rugby tournament.  For $16$ campuses of various universities there are a lot of routes to calculate:
+
+$$
+16^2\times 2^{16} = 16777216.
+$$
+
+If we make the same assumption that a route costs 1 micro second to calculate then it will take 16777 seconds, or 279 minutes or 4.65 hours to calculate the correct answer.  Again, if we transpose the problem to the EU, which (currently) contains 28 countries, we find that the TSP between each of the capital cities in the EU produces 210453397504 combinations or 6.6 *years* of computation.  As the problem grows in size, the time it takes to solve the problem grows by an unmanageable amount.  This is a direct consequence of Turing's definition of computation.  Interestingly, there is an unproved hypothesis that says that if you can think of any other way of making a physical machine that can do computing, then your machine will only ever compute exactly what Turing described.  This is the [Church-Turing Thesis](https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis).
+
+So we now have reasons to study Computer Science and we have some insight into why we have to learn a formal language in order to write computer programs.  In this book we use C++ as our formal language.  There are other computer programming languages, so why do we learn this particular one?
 
 ## Why C++
 
