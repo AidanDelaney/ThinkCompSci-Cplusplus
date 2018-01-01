@@ -1,3 +1,4 @@
+
 # Hello World
 
 It's traditional to begin programming by writing a program that prints "Hello, world" on the screen.  We will do this in the most simple way that we possibly can.  However, this requires us to use a pretty ancient way of interacting with a computer.  You might imagine that opening a window onscreen and writing "Hello, world" in that window requires a [reasonable amount of code](https://developer.gnome.org/gtkmm-tutorial/stable/sec-helloworld.html.en).  So we'll avoid using windows and mouse input.  We're going straight back to the kinds of interfaces everyone used in the 1980's and that are primarily only used server-side in this decade.  In order to use this interface, which we'll call the *console*, I'll explain some of the features and limitations.
@@ -63,4 +64,3 @@ Both programs do the same thing.  However, one is readable by a human and the ot
 
 I use newlines between statements, so the `std::cout` above and the `return` statement should appear on separate lines.
 
-## `int` and Other Types

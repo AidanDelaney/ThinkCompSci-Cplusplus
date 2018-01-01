@@ -1,3 +1,4 @@
+
 # Provenance
 
 This book is based on "How to think like a computer scientist" which was originally developed in 1999 by Allen B. Downey.  Allen is one of those amazingly productive people who shares under free-content licences.  Because of his generosity, others contributed to the book over many years.  These include Narendra Sisodiya, Tirtha P. Chatterjee and Aidan Delaney.  This book is a derivative work of "How to think..." and was written to focus on motivation and examples that were of significance to students in South Pacific countries.
