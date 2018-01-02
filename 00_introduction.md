@@ -71,7 +71,7 @@ The legal code for _hangman_ is useful when two players need to argue about the 
 
 [^legalese]: A solicitor could write these rules in a different way.  They could first formalise the definition of a turn and then describe the progress of the game as a series of turns.  In any case the formalisation into legal language adds more complexity than the informal explanation.
 
-I take a slightly different view of programming from many other texts.  Often a program is seen as the object we want to produce.  By contrast, I see it as an artefact of the production process.  The reality of programming is that we get a bunch of smart people together in order to write a solution to a problem in an unambiguous language.  Under this interpretation the program itself is a difficult-to-read document that explains how the development team understand the problem.
+<!--- I take a slightly different view of programming from many other texts.  Often a program is seen as the object we want to produce.  By contrast, I see it as an artefact of the production process.  The reality of programming is that we get a bunch of smart people together in order to write a solution to a problem in an unambiguous language.  Under this interpretation the program itself is a difficult-to-read document that explains how the development team understand the problem. -->
 
 TODO: Expand this.
 

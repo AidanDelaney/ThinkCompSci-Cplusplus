@@ -41,17 +41,39 @@ Let's write a more complex program that uses `string` and `float`.  In this prog
 
 ```c++
 #include <iostream>
+#include <string>
 
 int main() {
-  string name = "Hiro Protagoist";
+  std::string name = "Hiro Protagonist";
   float height = 183.5;
 
-  std::cout << name << " is " << height << " tall." << std::endl;
+  std::cout << name << " is " << height << "cm tall." << std::endl;
+  return 0;
+}
+```
+The cool thing about the above code is that it uses functionality to print the values stored in `name` and `height` to the console.  You'll also notice that the type of `float` is just `float` but the type of a string is `std::string`.  In C++ `int`, `char` and `float` are part of the core language but `std::string` comes from the standard library: hence the `std::` prefix on the type name.
+
+## Type Errors
+
+Types are an incredibly useful feature of programming languages.  By enforcing type checking the compiler can let the programmer know that they've made an error in writing their code.  As an example, it makes no sense to try and store a `string` in a storage box that should contain an `int`:
+
+```c++
+int main() {
+  int age = "seventeen";
   return 0;
 }
 ```
 
-## Type Errors
+This error generates the rather cryptic output from a compiler:
+
+```bash
+type_errors.cpp: In function 'int main()':
+type_errors.cpp:2:13: error: invalid conversion from 'const char*' to 'int' [-fpermissive]
+   int age = "seventeen";
+             ^~~~~~~~~~~
+```
+
+Type errors are frustrating when you're learning to program.  But they're less frustrating than speaking to an irate customer who just had your program fail because of a type error!  It is useful to deliberately introduce some errors into a working program so that you can get used to the way compilers report errors.
 
 ## Storage Boxes
 
