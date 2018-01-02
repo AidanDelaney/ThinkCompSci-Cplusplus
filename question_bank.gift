@@ -1,0 +1,50 @@
+
+$CATEGORY: Introduction
+
+::Who Defined Computing::[markdown]The formal idea of a computer was defined by {
+  ~Richard Stallman #Stallman started the GNU project, he didn't define computation.
+  ~Bjarne Stroustrup #Stroustrup introduced C++ a full 50 years after the definition of computation.
+  =Alan Turing
+}
+
+::Who Introduced C++::[markdown]The C++ language was introduced by {
+  ~Dennis Richie #Both Richie and Thompson developed the C programming language on which C++ is based.
+  ~Ken Thompson  #Both Richie and Thompson developed the C programming language on which C++ is based.
+  =Bjarne Stroustrup
+}
+
+::LibreOffice Programming Language::[markdown]The [LibreOffice](https://www.libreoffice.org/) suite is mostly written in {
+  =C++
+  ~Java
+  ~JavaScript
+  ~Haskell
+}
+
+::Current C++ Version::[markdown]The current version of C++ is {
+  =C++17 #Yes, C++ is a modern programming language
+  ~C++11 #Nearly, this version of the standard has been superseeded
+  ~C++20 #The future calls! We're not on C++20 yet.
+  ~C99 #Nope, not a chance. This is a C standard not a C++ standard.
+}
+
+::Formal Language::To program a computer we need to use a {
+  =formal
+  ~informal
+} language.
+
+$CATEGORY: Hello World
+
+::Hello World Program::[markdown] The program
+```c++
+#include <iostream>
+int main() {
+  std::cout << "Hello, world";
+  return 0;
+}
+```
+prints {
+  =Hello, world
+  ~hello, world
+  ~"Hello, world"
+} to the console.
+
