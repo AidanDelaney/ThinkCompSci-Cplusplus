@@ -48,3 +48,72 @@ prints {
   ~"Hello, world"
 } to the console.
 
+::On Whitespace::All of {
+  =tab characters, space characters and newlines
+  ~space characters and newlines
+  ~tab characters and space characters
+} are referred to as whitespace characters.
+
+::Program Entry Point::A C++ program begins in a function called {
+  =main
+  ~Main
+  ~begin
+  ~start
+}
+
+::Identifying ostream::[markdown]The `<<` symbol is known as the {
+  =ostream operator
+  ~pipey pipe #No. There is another character '|' referred to as pipe.
+  ~Guillmets #Although they look like the quotation marks used in the French language, they're not.
+}
+
+$CATEGORY: Types
+
+::Int::[markdown] The literal `3` is a/an {
+  =int
+  ~float
+  ~string
+  ~char
+}
+
+::Float::[markdown] The literal `3.1415` is a/an {
+  ~int
+  =float
+  ~string
+  ~char
+}
+
+::Char::[markdown] The literal `'a'` is a/an {
+  ~int
+  ~float
+  ~string
+  =char
+}
+
+::String::[markdown] The literal `"moo"` is a/an {
+  ~int
+  ~float
+  =string
+  ~char
+}
+
+::Variables::[markdown]If I create `int my_int = 4` can I assign `my_int = 3.14`? {
+  =False
+  ~True
+}
+
+$CATEGORY: Functions
+
+$CATEGORY: IO
+
+$CATEGORY: Conditionals
+
+$CATEGORY: Iteration
+
+$CATEGORY: Lists
+
+$CATEGORY: MemoryManagement
+
+$CATEGORY: ProjectManagement
+
+$CATEGORY: ComputerOrganisation

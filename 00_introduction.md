@@ -8,6 +8,10 @@ author:
 
 ---
 
+# Objective
+
+In this chapter we motivate why we study computer programming.
+
 # Introduction
 
 There are a lot of interesting things out there in the world.  You could learn about [magical realism](https://en.wikipedia.org/wiki/Magic_realism) in literature from [Borges'](https://en.wikipedia.org/wiki/Jorge_Luis_Borges) writings through to [Del Toro's](https://en.wikipedia.org/wiki/Guillermo_del_Toro) excellent movie [Pan's Labyrinth](https://en.wikipedia.org/wiki/Pan%27s_Labyrinth).  Or maybe you're interested in how [Einstein's](https://en.wikipedia.org/wiki/Albert_Einstein) theories of relativity led to [Quantum Mechanics](https://en.wikipedia.org/wiki/Quantum_mechanics).  Amidst all of these interesting topics why choose to study computer programming?  I have multiple, and sometimes contradictory views, on why I like programming.  It's essentially reductionist, to do it correctly requires great social skills and it represents about 50% of my daily universe.  I'll explain each of these claims in turn.
