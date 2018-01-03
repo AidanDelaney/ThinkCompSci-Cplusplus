@@ -67,6 +67,59 @@ generates a compiler error.  We similarly must define a function before we use i
 
 ## Multiple Parameters
 
+## Testing Functions
+
+Choose three values you know will work in the function, and choose three values you know will not work in the function.  In many simple cases there won't be values that don't work with the function; in these cases we use our types to help us.  An `int` ranges from $−2,147,483,648$ to $2,147,483,647$, so it's a good idea to check the minumum value, $0$ and the maximum value.
+
+Choosing the min and max values to test comes from the observation that programmers make errors in boundary cases.  What happens if we call `square(2147483)`?  The use of zero as a test value comes from experience.  Again, programmers often make mistakes with zero values.  In the case of strings we might use `""`, a string containing no characters as an example input that is allowed but we may not expect.[^idvalue]
+
+[^idvalue] If you're a maths person, the set of strings in programming form a Monoid under concatenation where the empty string is the identity value.
+
+If your function accepts an `int` parameter then you're allowing any possible integer input.  If you accept a `string` as a parameter, then you're allowing every possible string.  There exists a big list of naughty strings whcih can break some more advanced applications.  The list is available at [https://github.com/minimaxir/big-list-of-naughty-strings](https://github.com/minimaxir/big-list-of-naughty-strings) and you may wish to examine it.  Do note, the list contains swear words and words of an innapropriate nature for testing purposes.
+
+### Test Harness
+
+If you're choosing three valid test values and three invalid test values it is useful to think about how to put them into your application.  Here's a straightforward pattern to follow:
+
+  1. Given a function with name `foo`.
+  2. Write another function called `test_foo`
+     - Use `assert` to validate your test cases.
+  3. Run all test functions at the start of `main`.
+
+So suppose we have our `square` function above we might also have:
+
+```c++
+#include <cassert>
+
+void test_square() {
+  int test_value1 = -2;
+  int test_value2 = 3;
+  int test_value3 = 100;
+
+  int minimum_int = -2147483648;
+  int maximum_int = 2147483647;
+  int zero = 0;
+
+  assert(4 == square(test_value1));
+  assert(9 == square(test_value2));
+  assert(10000 == square(test_value3));
+
+  assert(0 == square(minimum_int));
+  assert(1 == square(maximum_int));
+  assert(0 == square(zero));
+}
+
+int main() {
+  // Tests
+  test_square();
+
+  // Main Code
+  int x = square(2);
+  std::cout << x << std::endl;
+}
+```
+
+
 ## What we can now do
 
 We can now break our program down into different functions:
