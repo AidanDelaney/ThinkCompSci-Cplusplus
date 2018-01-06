@@ -77,7 +77,37 @@ The legal code for _hangman_ is useful when two players need to argue about the 
 
 <!--- I take a slightly different view of programming from many other texts.  Often a program is seen as the object we want to produce.  By contrast, I see it as an artefact of the production process.  The reality of programming is that we get a bunch of smart people together in order to write a solution to a problem in an unambiguous language.  Under this interpretation the program itself is a difficult-to-read document that explains how the development team understand the problem. -->
 
-TODO: Expand this.
+Hopefully you now agree that our natural languages, even when restrited to legal language, are not precise enough to instruct a dumb computer.  We need languages that are un-natural.  We need formal languages that are suited to describing how to manipulate symbols and "move" symbols around.  Such a lanugage is going to be difficult to read because of its lack of expressiveness.  It doesn't have the expressive _bandwidth_ of a natual language.
+
+In a more formal language designed for computation -- a **programming language** -- we have to write a lot of instructions to describe hangman.  The instructions might look something like:
+
+```
+start program
+run instructions to constuct gallows
+run instructions to input secret word
+repeat run instructions to take a turn until the game is over
+end program
+
+instructions to take a turn
+ask the player to input a single character
+read in a single character
+if the single character is in the secret word
+then run instructions to uncover characters
+otherwise run instructions to draw next stroke
+end instructions to take a turn
+```
+
+I've omitted a _lot_ of detail above in order to make it readable.  I've also kept my example formal language as close to English as possible.  In the C++ programming language the code to `start program` and `run instructions to construct gallows` might look like :
+
+```c++
+int main() {
+  construct_gallows();
+}
+```
+
+It's a lot more compact than my English-like language.  It is also much more difficult to read.  We want to learn C++, which I'll delve into below, but first we'll look at what computers can do in order to better motivate why we want to learn such a precise language[^cashmoney].
+
+[^cashmoney] Assuming you're not already motivated by the huge salaries that programmers command!  Or in the immortal words of MC Solaar "Du cash-money... Une voiture rouge. Donne-moi tout ça sinon faut qu'tu bouges"
 
 ## What can Computers Do?
 
@@ -127,7 +157,61 @@ So we now have reasons to study Computer Science and we have some insight into w
 
 ## Why C++
 
-C++ is a powerful programming language which has been used in industry for over 30 years.  Many of the software applications that you use day-to-day are written in C++.  These include your web-browser [^webbrowser] and your word-processor [^wordprocessor].  
+C++[^mcpp] is a powerful programming language which has been used in industry for over 30 years.  Many of the software applications that you use day-to-day are written in C++.  These include your web-browser [^webbrowser] and your word-processor [^wordprocessor].
 
+[^mcpp]: Not to be confused with the Nerd Core rapper [MC plus +](http://nerdcorerisingmovie.com/mc-plus.html).
 [^webbrowser]: Each of [Firefox](https://www.mozilla.org/en-US/firefox/new/), Chrome and Edge are largely written in C++.
 [^wordprocessor]: Both [Libreoffice Writer](http://libreoffice.org/) and Microsoft Word are written in C++.
+
+The C++ language is a **standard**.  This means that the great and the good of C++ programming get together regularly to improve the language.  They produce a document that describes the latest version of C++.  The current version of this document is C++17.  It's the version of the standard that was produced in 2017.  We expect the next version of the standard to be agreed in 2020 and it will be called C++20.  I take the view in this book that we only work with modern C++ and in the ways that modern C++ programmers should work.  This means that I assume we're working with, at least, C++14.
+
+Like many programming languages, C++ is written in text files, normally with a `.cpp` file extension.  These files simply contain plain-text and you can edit them with any editor that allows you to open text (note: this excludes word processors -- word processors don't edit plain text, they're much more complex than that in order to look like you're editing an A4 size page.)  The C++ files are then **compiled** into a program.  The understandable C++ is translated into an non-understadable sequence of 1's and 0's i.e binary machine code.  A **compiler** translates from C++ to machine code.
+
+With C++ we can choose to use a number of compilers from different vendors.  Because of the C++ standard document we have a high guarantee that code that compiles using one compiler will operate in the same way it does when compiled with another compiler.  The main C++ compilers are:
+
+GCC
+: [The GNU Compiler Collection](http://gcc.gnu.org/) contains a very high-performance C++ compiler that runs on many operating systems and on many computer architectures.  The Linux kernel and LibreOffice prefer to use GCC as they have to run on a variety of platforms.  GCC is an open-source project and is free of cost to download and redistribute.
+LLVM
+: [The LLVM Compiler Suite](https://llvm.org/) also contains a C++ compiler.  Google's Chrome browser prefers this compiler and it's the default C++ compiler on Apple systems.  LLVM is also open-source and free of cost.
+Visual C++
+: [Microsoft](https://en.wikipedia.org/wiki/Microsoft_Visual_C%2B%2B) have their own C++ compiler that only runs on their Microsoft Windows operating system.
+
+Intel, HP and IBM also have C++ compilers for various systems.  Often these are very specialised high-performance computing machines.  High-performance engineers love C++!  Games programmers, particularly on consoles, also tend to prefer C++.  But like everything in computing this is subject to constant change.
+
+We now know that a compiler is a program that reads a high-level program and
+translates it all at once, before executing any of the commands.
+Often you compile the program as a separate step, and then
+execute the compiled code later.  In this case, the high-level
+program is called the **source code**, and the translated
+program is called the **object code** or the **executable**.
+
+As an example, suppose you write a program in C++.  You might
+use a text editor to write the program (a text editor is
+a simple word processor).  When the program is finished, you
+might save it in a file named `program.cpp`, where "program"
+is an arbitrary name you make up, and the suffix `.cpp` is
+a convention that indicates that the file contains C++ source
+code.
+
+Then, depending on what your programming environment is like,
+you might leave the text editor and run the compiler.  The
+compiler would read your source code, translate it, and create
+a new file named `program.o` to contain the object code,
+or `program.exe` to contain the executable.  (Aside: on Microsoft Windows executable files have the `.exe` extension, on Unix (on x86) the files do not have to have a certain extension, but contain what's known as a _magic number_, the characters `.`, `E`, `L' and `F' as the first four characters in the file.)
+
+![The compilation process](compile.png)
+
+
+The next step is to run the program, which requires some kind
+of executor.  The role of the executor is to load the program
+(copy it from disk into memory) and make the computer start
+executing the program.
+
+Although this process may seem complicated, the good news is that in
+most programming environments (sometimes called development
+environments), these steps are automated for you.  Usually you will
+only have to write a program and type a single command to compile and
+run it.  On the other hand, it is useful to know what the steps are
+that are happening in the background, so that if something goes wrong
+you can figure out what it is.
+
