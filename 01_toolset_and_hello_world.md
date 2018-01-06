@@ -78,6 +78,7 @@ At the end of this chapter we can write a long `main` function which generates l
 #include <iostream>
 
 int main() {
-  std::cout <<
+  std::cout << "Hello";
+  std::cout << " this is Nuku'alofa calling." << std::endl;
 }
 ```

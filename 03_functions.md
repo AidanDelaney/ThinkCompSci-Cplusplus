@@ -69,7 +69,7 @@ generates a compiler error.  We similarly must define a function before we use i
 
 ## Testing Functions
 
-Choose three values you know will work in the function, and choose three values you know will not work in the function.  In many simple cases there won't be values that don't work with the function; in these cases we use our types to help us.  An `int` ranges from $−2,147,483,648$ to $2,147,483,647$, so it's a good idea to check the minumum value, $0$ and the maximum value.
+Choose three values you know will work in the function, and choose three values you know will not work in the function.  In many simple cases there won't be values that don't work with the function; in these cases we use our types to help us.  An `int` ranges from $-2,147,483,648$ to $2,147,483,647$, so it's a good idea to check the minumum value, $0$ and the maximum value.
 
 Choosing the min and max values to test comes from the observation that programmers make errors in boundary cases.  What happens if we call `square(2147483)`?  The use of zero as a test value comes from experience.  Again, programmers often make mistakes with zero values.  In the case of strings we might use `""`, a string containing no characters as an example input that is allowed but we may not expect.[^idvalue]
 

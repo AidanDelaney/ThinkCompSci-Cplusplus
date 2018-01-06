@@ -199,7 +199,7 @@ compiler would read your source code, translate it, and create
 a new file named `program.o` to contain the object code,
 or `program.exe` to contain the executable.  (Aside: on Microsoft Windows executable files have the `.exe` extension, on Unix (on x86) the files do not have to have a certain extension, but contain what's known as a _magic number_, the characters `.`, `E`, `L' and `F' as the first four characters in the file.)
 
-![The compilation process](compile.png)
+![The compilation process](images/compile.png)
 
 
 The next step is to run the program, which requires some kind
@@ -215,3 +215,6 @@ run it.  On the other hand, it is useful to know what the steps are
 that are happening in the background, so that if something goes wrong
 you can figure out what it is.
 
+## What we can do now
+
+We now have an understanding of the need for computation and we understand the limits of computation.  We write software as a sequence of instructions in a formal language which is compiled into executable code.
