@@ -53,9 +53,42 @@ std::cout << "Hello, world" << std::endl;
 
 says a lot, it directs -- using the ostream operator `<<` -- the string of text, "Hello, world", followed by an end of line character, `std::endl` to the console.  The console is represented by `std::cout`.  We may think of `std::cout` being the **st**andar**d** **c**onsole **out**put.  Keep in mind that "Hello, world" is a **string**.  We will look at string, int and some other **types** in the later section [`int` and Other Types].
 
-The `<<` operator makes it easy(ish) to send more interesting information to `std::cout`.
+The `<<` operator makes it easy(ish) to send more interesting information to `std::cout`:
 
-<!--- ␣ -->
+```c++
+std::cout << "Hello, world " << "it is today" << std::endl;
+```
+
+or
+
+```c++
+std::cout << "Ireland: " <<  23 << " Fiji: " << 20 << std::endl;
+```
+
+we can output `string`s and numbers[^rugby].
+
+[^rugby]: Which also reminds Fijians of the last scoreline between Ireland and Fiji.
+
+There's a strange looking character, ␣, in the above string.  This ␣ character is often used in programming manuals to indicate the presence of a space.  The ␣ character draws your attention to the whitespace that we might otherwise ignore.
+
+Finally, out first program contains the line `return 0`.  All C++ programs must `return` a number at the end of their `main` code.  If the program has had no errors, it must return `0` to the operating system.  As a computer user you never see this number.  As a computer programmer this return number provides a lot of information to me.  Let's see an example on the Unix terminal.
+
+```bash
+# Print out the files in this directory
+$ ls
+...
+# Print out the return code
+$ echo $?
+0
+# Make a mistake with the `ls` command
+$ ls moo
+ls: cannot access 'moo': No such file or directory
+# Print out the return code again
+$ echo $?
+2
+```
+
+Once we have a `return 0` as the last line of `main` we can mostly ignore this detail.  I've gone into an explanation of these details because it demonstrates one of the many differences between an advanced computer user and a programmer.  As a programmer you have to have a deeper understanding of the operating system on which you're running.  You will have to appreciate entire computer systems at a deeper level.
 
 ### A Stylistic Note on Whitespace
 

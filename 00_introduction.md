@@ -8,11 +8,13 @@ author:
 
 ---
 
-# Objective
+# Introduction
+
+## Objective
 
 In this chapter we motivate why we study computer programming.
 
-# Introduction
+## Background
 
 There are a lot of interesting things out there in the world.  You could learn about [magical realism](https://en.wikipedia.org/wiki/Magic_realism) in literature from [Borges'](https://en.wikipedia.org/wiki/Jorge_Luis_Borges) writings through to [Del Toro's](https://en.wikipedia.org/wiki/Guillermo_del_Toro) excellent movie [Pan's Labyrinth](https://en.wikipedia.org/wiki/Pan%27s_Labyrinth).  Or maybe you're interested in how [Einstein's](https://en.wikipedia.org/wiki/Albert_Einstein) theories of relativity led to [Quantum Mechanics](https://en.wikipedia.org/wiki/Quantum_mechanics).  Amidst all of these interesting topics why choose to study computer programming?  I have multiple, and sometimes contradictory views, on why I like programming.  It's essentially reductionist, to do it correctly requires great social skills and it represents about 50% of my daily universe.  I'll explain each of these claims in turn.
 
@@ -107,7 +109,7 @@ int main() {
 
 It's a lot more compact than my English-like language.  It is also much more difficult to read.  We want to learn C++, which I'll delve into below, but first we'll look at what computers can do in order to better motivate why we want to learn such a precise language[^cashmoney].
 
-[^cashmoney] Assuming you're not already motivated by the huge salaries that programmers command!  Or in the immortal words of MC Solaar "Du cash-money... Une voiture rouge. Donne-moi tout ça sinon faut qu'tu bouges"
+[^cashmoney]: Assuming you're not already motivated by the huge salaries that programmers command!  Or in the immortal words of MC Solaar "Du cash-money... Une voiture rouge. Donne-moi tout ça sinon faut qu'tu bouges".
 
 ## What can Computers Do?
 
@@ -171,8 +173,10 @@ With C++ we can choose to use a number of compilers from different vendors.  Bec
 
 GCC
 : [The GNU Compiler Collection](http://gcc.gnu.org/) contains a very high-performance C++ compiler that runs on many operating systems and on many computer architectures.  The Linux kernel and LibreOffice prefer to use GCC as they have to run on a variety of platforms.  GCC is an open-source project and is free of cost to download and redistribute.
+
 LLVM
 : [The LLVM Compiler Suite](https://llvm.org/) also contains a C++ compiler.  Google's Chrome browser prefers this compiler and it's the default C++ compiler on Apple systems.  LLVM is also open-source and free of cost.
+
 Visual C++
 : [Microsoft](https://en.wikipedia.org/wiki/Microsoft_Visual_C%2B%2B) have their own C++ compiler that only runs on their Microsoft Windows operating system.
 

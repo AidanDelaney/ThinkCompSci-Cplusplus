@@ -52,6 +52,7 @@ int main() {
   int x = 0;
   x = 1;
   return 0;
+}
 ```
 
 as
@@ -61,11 +62,32 @@ int main() {
   x = 1;
   int x = 0;
   return 0;
+}
 ```
 
 generates a compiler error.  We similarly must define a function before we use it.  Hence, in the above examples I've defined either `int zero()` or `int square(int x)` before they are used in `main()`.
 
 ## Multiple Parameters
+
+A function can take more than one parameter passed to it.  So for example, I could write a function that calculates the multiplication of two integers.
+
+```c++
+int mult(int x, int y) {
+  int r = x * y;
+  return r;
+}
+
+int main() {
+  mult(8, 9);
+  return 0;
+}
+```
+
+Again, it's not a very interesting exampe, but it illustrates our point clearly.  Our function is called `mult`, it returns an `int` i.e. a whole number to the calling code.  The parameter list for `mult` states that it takes a copy of two `int` values.  We call the first passed value `x` and the second passed value `y` within the function `mult`.
+
+Functions can take any number of parameters, but it is unusual to pass in more than four values.  If you find yourself writing functions that take seven or eight parameters you might think about restruturing your code.
+
+We can write functions that take multiple parameters, but a function can only ever return a single value.
 
 ## Testing Functions
 
@@ -73,7 +95,7 @@ Choose three values you know will work in the function, and choose three values 
 
 Choosing the min and max values to test comes from the observation that programmers make errors in boundary cases.  What happens if we call `square(2147483)`?  The use of zero as a test value comes from experience.  Again, programmers often make mistakes with zero values.  In the case of strings we might use `""`, a string containing no characters as an example input that is allowed but we may not expect.[^idvalue]
 
-[^idvalue] If you're a maths person, the set of strings in programming form a Monoid under concatenation where the empty string is the identity value.
+[^idvalue]: If you're a maths person, the set of strings in programming form a Monoid under concatenation where the empty string is the identity value.
 
 If your function accepts an `int` parameter then you're allowing any possible integer input.  If you accept a `string` as a parameter, then you're allowing every possible string.  There exists a big list of naughty strings whcih can break some more advanced applications.  The list is available at [https://github.com/minimaxir/big-list-of-naughty-strings](https://github.com/minimaxir/big-list-of-naughty-strings) and you may wish to examine it.  Do note, the list contains swear words and words of an innapropriate nature for testing purposes.
 
@@ -119,6 +141,28 @@ int main() {
 }
 ```
 
+## `void` return
+
+Functions return values.  This makes it possible to test them.  It's also possible to write a function that doesn't return a value.  For example, if we wanted to write a function that only printed out some information, there would be no need to return a value.  Such a function has a `void` return type:
+
+```c++
+#include <iostream>
+
+int i_return_seven() {
+  return 7;
+}
+
+void i_return_nothing() {
+  std::cout << "You called a function" << std::endl;
+}
+
+int main() {
+  i_return_seven();
+  i_return_nothing();
+}
+```
+
+The example above has two simple functions, one called `i_return_seven` which, unsurprisingly, returns the value `7`.  The function `i_return_nothing` has a `void` return type.  So it does not return any value but it has some **side-effects** such that it prints some information to the console.  A function that has a `void` return type, does not need a `return` statement at the end.
 
 ## What we can now do
 
