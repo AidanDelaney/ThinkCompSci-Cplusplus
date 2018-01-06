@@ -87,7 +87,24 @@ Again, it's not a very interesting exampe, but it illustrates our point clearly.
 
 Functions can take any number of parameters, but it is unusual to pass in more than four values.  If you find yourself writing functions that take seven or eight parameters you might think about restruturing your code.
 
-We can write functions that take multiple parameters, but a function can only ever return a single value.
+We can write functions that take multiple parameters, but a function can only ever return a single value.  Consider the equation for calculating the roots of a quadratic equation, a secondary-school favourite!
+
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
+
+We can turn this into two functions `positive_root` and `negative_root`.  I'll present the `positive_root` version here;
+
+```c++
+#include <cmath>
+
+float positive_root(int a, int b, int c) {
+  float x = (-b + sqrt((b * b) - (4*a*c)))/(2*a);
+  return x;
+}
+```
+
+In this presentation I use the `sqrt` function from the `cmath` library.  The `sqrt` function returns the square root of a value.  We can't write a ffunction that returns two `float`s (in a future chapter we can return a list of `float`s).
 
 ## Testing Functions
 
