@@ -1,6 +1,9 @@
 SVGS = $(wildcard images/*.svg)
+DOT_FILES = $(wildcard images/*.dot)
+DOTS = $(patsubst %.dot,%.svg,${DOT_FILES})
 PDFS = $(patsubst %.svg,%.pdf,${SVGS})
 PNGS = $(patsubst %.svg,%.png,${SVGS})
+
 
 BOOK_NAME = cpp_south_pacific
 INKSCAPE = inkscape
@@ -9,7 +12,10 @@ COMMON_OPTIONS = --top-level-division=chapter --number-sections --standalone --t
 
 all: images pdf html epub
 
-images: ${PDFS} ${PNGS} # Make all images
+images: ${DOTS} ${PDFS} ${PNGS} # Make all images
+
+images/%.svg: images/%.dot
+	dot -Tsvg -o$@ $<
 
 images/%.pdf: images/%.svg
 	@${INKSCAPE} --without-gui --export-pdf=$@ $<
