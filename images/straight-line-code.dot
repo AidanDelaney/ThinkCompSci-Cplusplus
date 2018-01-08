@@ -1,0 +1,31 @@
+digraph {
+//    label="Simple currency convertor";
+
+    node[shape="record"]
+       print_fjd;
+    node[shape="box", style="rounded"]
+       main; end; start_fjd; end_fjd;
+    node[shape="parallelogram", style=""]
+       message; declare_variables;
+//    node[shape="diamond", style=""]
+//       if_valid;
+ 
+    main -> declare_variables -> print_fjd -> os_return -> end;
+
+    start_fjd -> message -> end_fjd;
+    
+//    input -> if_valid;
+//    if_valid -> message[label="no"];
+//    if_valid -> end[label="yes"];
+//    message -> input;     
+ 
+//    if_valid[label="Is input\nvalid?"]
+    declare_variables[label="Declare and assign\n variables"]
+    message[label="Show\nmessage"]
+    os_return[label="return 0"]
+//    input[label="Prompt\nfor input"]
+
+    print_fjd [label="|print_fjd|"]
+    start_fjd [label="print_fjd"]
+    end_fjd [label="end"]
+}
