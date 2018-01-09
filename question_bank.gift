@@ -71,22 +71,22 @@ $CATEGORY: Types
 
 ::Int::[markdown] The literal `3` is a/an {
   =int
-  ~float
-  ~string
-  ~char
+  ~float  # No. `float`s represent numbers containing a decimal point
+  ~string # No, and converting between `string` and `int` is a good way to introduce error into your code!
+  ~char   # No, it is a single digit but the character literal for 3 is `'3'`.
 }
 
 ::Float::[markdown] The literal `3.1415` is a/an {
-  ~int
+  ~int    # No, an `int` can only represent a whole number.
   =float
-  ~string
+  ~string # No, this would be a mistake as the number above should go into a "number shaped" container.
   ~char
 }
 
 ::Char::[markdown] The literal `'a'` is a/an {
   ~int
   ~float
-  ~string
+  ~string  # No, notice the type of quote marks used in the literal.
   =char
 }
 
@@ -99,12 +99,42 @@ $CATEGORY: Types
 
 ::Variables::[markdown]If I create `int my_int = 4` can I assign `my_int = 3.14`? {
   =False
-  ~True
+  ~True   # No, `my_int` is of type `int`, not of type `float`.
 }
 
 $CATEGORY: Functions
 
+::FunctionNames::[markdown]Which of the following is a falid function signature? {
+  = `int mult_by_three(int x)`
+  ~ `int 3_mult(int x)`
+  ~ `int mult by three(int x)`
+  ~ `mult_by_three(int x); int`
+}
+
+::FunctionParameters::[markdown]Which of the following demonstrates valid parameter passing for `int foo(int x, int y)`? {
+  = `int a=3; foo(a, 4);`
+  ~ `foo(int 3, 4);`
+  ~ `foo(int 3, int 4);`
+}
+
+::FunctionReturnValues::[markdown]Given `int foo(int x, int y)` which of these literals would you expect returned? {
+  = 3
+  ~ 3.14  # No, this is not an `int` literal
+  ~ int   # No. You're right that this function returns an `int`, but I'm looking for the `int` literal.
+  ~ "3"   # No. This is a `string` containing a single character `3`.
+
+::FunctionsCallingFunctions::[markdown]Can a function call another function? {
+  = Yes
+  ~ No  # Incorrect.  Even `main` is a function, so we must be able to call functions from functions.
+
+::FunctionRuleOfThumb::As a general rule-of-thumb, how long should be expect our functions to be? {
+  = 10 lines of code
+  ~ 100 lines of code # No. At this length you may need to consider rewriting the function as a collection of several functions.
+  ~ 1000 lines of code # No. A function of this length would be very difficult to write correctly.
+
 $CATEGORY: IO
+
+
 
 $CATEGORY: Conditionals
 
