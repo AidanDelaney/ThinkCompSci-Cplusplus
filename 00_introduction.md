@@ -79,13 +79,13 @@ The legal code for _hangman_ is useful when two players need to argue about the 
 
 <!--- I take a slightly different view of programming from many other texts.  Often a program is seen as the object we want to produce.  By contrast, I see it as an artefact of the production process.  The reality of programming is that we get a bunch of smart people together in order to write a solution to a problem in an unambiguous language.  Under this interpretation the program itself is a difficult-to-read document that explains how the development team understand the problem. -->
 
-Hopefully you now agree that our natural languages, even when restrited to legal language, are not precise enough to instruct a dumb computer.  We need languages that are un-natural.  We need formal languages that are suited to describing how to manipulate symbols and "move" symbols around.  Such a lanugage is going to be difficult to read because of its lack of expressiveness.  It doesn't have the expressive _bandwidth_ of a natual language.
+Hopefully you now agree that our natural languages, even when restricted to legal language, are not precise enough to instruct a dumb computer.  We need languages that are un-natural.  We need formal languages that are suited to describing how to manipulate symbols and "move" symbols around.  Such a language is going to be difficult to read because of its lack of expressiveness.  It doesn't have the expressive _bandwidth_ of a natural language.
 
 In a more formal language designed for computation -- a **programming language** -- we have to write a lot of instructions to describe hangman.  The instructions might look something like:
 
 ```
 start program
-run instructions to constuct gallows
+run instructions to construct gallows
 run instructions to input secret word
 repeat run instructions to take a turn until the game is over
 end program
@@ -143,7 +143,7 @@ I've turned the statement of the problem into a graph.  This makes it a bit easi
   2. Suva to Lebasa (via Lautoka), and
   3. Lautoka to Lebasa (via Suva).
 
-For 3 campuses it's easy to work out which is the shortest route through all.  You can probably do it in your head.  As we in more campuses, say Port Vila in Vanuatu and Apia in Samoa, we find that the number of combinations is huge.  Computer Scientists[^awesome] have worked out that for 5 campuses there are $5^2 \times 2^5$ routes to calcuate, that's $800$ routes to calculate in total.  If we make an assumption that it takes 1 micro second to calculate a route then, for 5 campuses, it takes less than a second to find the cost of all routes.  That's great and much quicker than a human could do it.
+For 3 campuses it's easy to work out which is the shortest route through all.  You can probably do it in your head.  As we in more campuses, say Port Vila in Vanuatu and Apia in Samoa, we find that the number of combinations is huge.  Computer Scientists[^awesome] have worked out that for 5 campuses there are $5^2 \times 2^5$ routes to calculate, that's $800$ routes to calculate in total.  If we make an assumption that it takes 1 micro second to calculate a route then, for 5 campuses, it takes less than a second to find the cost of all routes.  That's great and much quicker than a human could do it.
 
 [^awesome]: All Computer Scientists are awesome people.  They're also very intelligent and witty individuals.
 
@@ -167,7 +167,7 @@ C++[^mcpp] is a powerful programming language which has been used in industry fo
 
 The C++ language is a **standard**.  This means that the great and the good of C++ programming get together regularly to improve the language.  They produce a document that describes the latest version of C++.  The current version of this document is C++17.  It's the version of the standard that was produced in 2017.  We expect the next version of the standard to be agreed in 2020 and it will be called C++20.  I take the view in this book that we only work with modern C++ and in the ways that modern C++ programmers should work.  This means that I assume we're working with, at least, C++14.
 
-Like many programming languages, C++ is written in text files, normally with a `.cpp` file extension.  These files simply contain plain-text and you can edit them with any editor that allows you to open text (note: this excludes word processors -- word processors don't edit plain text, they're much more complex than that in order to look like you're editing an A4 size page.)  The C++ files are then **compiled** into a program.  The understandable C++ is translated into an non-understadable sequence of 1's and 0's i.e binary machine code.  A **compiler** translates from C++ to machine code.
+Like many programming languages, C++ is written in text files, normally with a `.cpp` file extension.  These files simply contain plain-text and you can edit them with any editor that allows you to open text (note: this excludes word processors -- word processors don't edit plain text, they're much more complex than that in order to look like you're editing an A4 size page.)  The C++ files are then **compiled** into a program.  The understandable C++ is translated into an non-understandable sequence of 1's and 0's i.e binary machine code.  A **compiler** translates from C++ to machine code.
 
 With C++ we can choose to use a number of compilers from different vendors.  Because of the C++ standard document we have a high guarantee that code that compiles using one compiler will operate in the same way it does when compiled with another compiler.  The main C++ compilers are:
 
