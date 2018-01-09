@@ -88,6 +88,8 @@ $ echo $?
 2
 ```
 
+In the above example we can see that when we run the `ls` program correctly it returns `0` to the operating system.  We can see this `0` on a Unix by asking the command interpreter to `echo $?`.  When we run `ls` and it generates an error we can see that it returns `2` to the operating system.  As a programmer I can look up this return code in a manual to further diagnose why the problem occurred.
+
 Once we have a `return 0` as the last line of `main` we can mostly ignore this detail.  I've gone into an explanation of these details because it demonstrates one of the many differences between an advanced computer user and a programmer.  As a programmer you have to have a deeper understanding of the operating system on which you're running.  You will have to appreciate entire computer systems at a deeper level.
 
 ### A Stylistic Note on Whitespace
@@ -95,7 +97,7 @@ Once we have a `return 0` as the last line of `main` we can mostly ignore this d
 Programming style is vitally important.  Our first program could also be written as follows:
 
 ```c++
-#include <iostream>
+#include<iostream>
 int main(){std::cout<<"Hello, world"<<std::endl; return 0;}
 ```
 
