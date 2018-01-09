@@ -209,7 +209,7 @@ We can now branch our computations:
 int read_int() {
   int val;
   std::cin >> val;
-  std::cout << "You input the value " << val << std::endl;
+  return val;
 }
 
 int main() {
@@ -223,4 +223,6 @@ int main() {
   } else {
     std::cout << "FJD$" << fjd_amount << " is worth EUR" << (fjd_amount * 0.4076) << std::endl;
   }
+  return 0;
 }
+```

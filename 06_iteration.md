@@ -3,6 +3,8 @@
 
 ## Objective
 
+In this chapter we introduce loops which allow the repition of blocks of instructions.
+
 ## Multiple assignment
 
 I haven't said much about it, but it is legal in C++ to
@@ -27,7 +29,7 @@ you assign a value to a variable, you change the contents of
 the container, as shown in the figure:
 
 
-![Assiging values to a variable](images/assign2.png)
+![Assigning values to a variable](images/assign2.png)
 
 When there are multiple assignments to a variable, it is especially
 important to distinguish between an assignment statement and a
@@ -129,7 +131,7 @@ so easy to tell:
 ```c++
 void sequence (int n) {
   while (n != 1) {
-    cout << n << endl;
+    std::cout << n << std::endl;
     if (n%2 == 0) {      // n is even
       n = n / 2;
     } else {             // n is odd
@@ -231,7 +233,7 @@ $$
 Changing the output statement to
 
 ```c++
-cout << x << "\t" << log(x) / log(2.0) << endl;
+std::cout << x << "\t" << log(x) / log(2.0) << std::endl;
 ```
 
 yields
@@ -256,7 +258,7 @@ program like this:
 ```c++
 double x = 1.0;
 while (x < 100.0) {
-  cout << x << "\t" << log(x) / log(2.0) << endl;
+  std::cout << x << "\t" << log(x) / log(2.0) << std::endl;
   x = x * 2.0;
 }
 ```
@@ -319,7 +321,7 @@ For example:
 
 ```c++
 for (int i = 0; i < 4; i++) {
-  cout << count[i] << endl;
+  std::cout << count[i] << std::endl;
 }
 ```
 
@@ -328,7 +330,7 @@ is equivalent to
 ```c++
 int i = 0;
 while (i < 4) {
-  cout << count[i] << endl;
+  std::cout << count[i] << std::endl;
   i++;
 }
 ```
@@ -336,3 +338,30 @@ while (i < 4) {
 We prefer for loops where the bounds are known, or when we iterate over a structure (see #lists).  A `while` loop is preferred when we're waiting for some kind of event to happen.
 
 ## What we can now do
+
+We can now repeat instructions.
+
+```c++
+#include <iostream>
+
+int read_int() {
+  int val;
+  std::cin >> val;
+  return val;
+}
+
+int main() {
+  int fjd_amount;
+
+  std::cout << "Please enter an amount in FJD for conversion to EUR: ";
+  fjd_amount = read_int();
+
+  while(fjd_amount < 0) {
+    std::cout << "You have entered an amount less than zero, please retry: " << std::endl;
+    fjd_amount = read_int();
+  } 
+
+  std::cout << "FJD$" << fjd_amount << " is worth EUR" << (fjd_amount * 0.4076) << std::endl;
+  return 0;
+}
+```
