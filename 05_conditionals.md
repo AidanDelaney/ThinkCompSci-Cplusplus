@@ -49,7 +49,7 @@ This all feels a bit overkill for such simple code.  The value of flowcharts and
 ## Conditional execution
 
 In order to write useful programs, we almost always need the ability
-to check certain conditions and change the behavior of the program
+to check certain conditions and change the behaviour of the program
 accordingly.  Conditional statements give us this ability.  The
 simplest form is the `if` statement:
 
@@ -66,7 +66,7 @@ If the condition is not true, nothing happens.
 \index{operator!comparison}
 \index{comparison!operator}
 
-The condition can contain any of the omparison operators:
+The condition can contain any of the comparison operators:
 
 ```c++
 x == y  // x equals y
@@ -200,3 +200,27 @@ On the other hand, this kind of **nested structure** is common, and
 we will see it again, so you better get used to it.
 
 ## What we can now do
+
+We can now branch our computations:
+
+```c++
+#include <iostream>
+
+int read_int() {
+  int val;
+  std::cin >> val;
+  std::cout << "You input the value " << val << std::endl;
+}
+
+int main() {
+  int fjd_amount;
+
+  std::cout << "Please enter an amount in FJD for conversion to EUR: ";
+  fjd_amount = read_int();
+
+  if(fjd_amount < 0) {
+    std::cout << "You have entered an invalid amount" << std::endl;
+  } else {
+    std::cout << "FJD$" << fjd_amount << " is worth EUR" << (fjd_amount * 0.4076) << std::endl;
+  }
+}
