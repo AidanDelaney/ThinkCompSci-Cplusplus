@@ -1,0 +1,18 @@
+digraph {
+//    label="Simple currency convertor";
+
+    node[shape="point"]
+       main; end;
+    node[shape="parallelogram", style=""]
+       body;
+    node[shape="diamond", style=""]
+       condition;
+ 
+    main -> condition;
+    condition -> body [label="true"];
+    body -> condition;
+    condition -> end [label="false"];
+
+    main [label=""]
+    end [label=""]
+}

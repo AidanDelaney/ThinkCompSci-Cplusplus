@@ -219,7 +219,7 @@ The output of this program is
 9      2.19722
 ```
 
-If these values seem odd, remember that the {\tt log} function uses
+If these values seem odd, remember that the `log` function uses
 base $e$.  Since powers of two are so important in computer science,
 we often want to find logarithms with respect to base 2.  To do that,
 we can use the following formula:
