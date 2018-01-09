@@ -3,11 +3,11 @@
 
 ## Objective
 
-In this chapter we introduce the ideas of types, values and varaibles which are fundamental to all programming langauges.
+In this chapter we introduce the ideas of types, values and variables which are fundamental to all programming languages.
 
 ## Simple Types
 
-At a fundamental level in computers all information is represented as sequences of 1's and 0's.  Take, for example, the sequence $0100 0001$.  If we interpret that sequence as a whole number then it represents the number $65$.  However, if we interpret the same sequence as a printable character, then it represents the character 'A'.  Also, there are operations that we can perform on whole numbers, such as multiplication, that don't make sense to perfom on characters.  So, types will allow us to organise our data and to ensure that we only perform operations that make sense on that data.  We have seen two types, `int` and `string`.  I'll explain these now and add in some other basic types.
+At a fundamental level in computers all information is represented as sequences of 1's and 0's.  Take, for example, the sequence $0100 0001$.  If we interpret that sequence as a whole number then it represents the number $65$.  However, if we interpret the same sequence as a printable character, then it represents the character 'A'.  Also, there are operations that we can perform on whole numbers, such as multiplication, that don't make sense to perform on characters.  So, types will allow us to organise our data and to ensure that we only perform operations that make sense on that data.  We have seen two types, `int` and `string`.  I'll explain these now and add in some other basic types.
 
 In C++ we have a type that represents whole numbers.  That type is `int`, short for integer.  It represents positive and negative whole numbers.  So $-256, 0$ and $1024$ are examples of `int`s.  I can create a storage space to hold an `int` inside a function:
 
@@ -111,7 +111,7 @@ int main() {
 }
 ```
 
-If we try to use a variable before we have declared it, then we are inviolation of the C++ language.  When we violate the language our compiler generates an error.
+If we try to use a variable before we have declared it, then we are in violation of the C++ language.  When we violate the language our compiler generates an error.
 
 ## What we can now do
 
