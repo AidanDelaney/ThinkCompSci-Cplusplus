@@ -86,28 +86,28 @@ void countdown (int n) {
 }
 ```
 
-You can almost read a {\tt while} statement as if it were
-English.  What this means is, "While {\tt n} is greater than
-zero, continue displaying the value of {\tt n} and then reducing
-the value of {\tt n} by 1.  When you get to zero, output the
+You can almost read a `while` statement as if it were
+English.  What this means is, "While `n` is greater than
+zero, continue displaying the value of `n` and then reducing
+the value of `n` by 1.  When you get to zero, output the
 word 'Blastoff!'"
 
-More formally, the flow of execution for a {\tt while} statement
+More formally, the flow of execution for a `while` statement
 is as follows:
 
-  * Evaluate the condition in parentheses, yielding {\tt true}
-or {\tt false}.
-  *  If the condition is false, exit the {\tt while} statement
+  * Evaluate the condition in parentheses, yielding `true`
+or `false`.
+  *  If the condition is false, exit the `while` statement
 and continue execution at the next statement.
   * If the condition is true, execute each of the statements
 between the squiggly-braces, and then go back to step 1.
 
 
-This type of flow is called a {\bf loop} because the third step loops
+This type of flow is called a **loop** because the third step loops
 back around to the top.  Notice that if the condition is false the
 first time through the loop, the statements inside the loop are
 never executed.  The statements inside the loop are called
-the {\bf body} of the loop.
+the **body** of the loop.
 
 The body of the loop should change the value of
 one or more variables so that, eventually, the condition becomes
@@ -288,6 +288,87 @@ Log tables may not be useful any more, but for computer scientists,
 knowing the powers of two is!  As an exercise, modify this program
 so that it outputs the powers of two up to 65536
 (that's $2^{16}$).  Print it out and memorize it.
+
+\section{{\tt for} loops}
+
+The loops we have written so far have a number of elements
+in common.  All of them start by initializing a variable;
+they have a test, or condition, that depends on that variable;
+and inside the loop they do something to that variable,
+like increment it.
+
+\index{loop!for}
+\index{for}
+\index{statement!for}
+
+This type of loop is so common that there is an alternate
+loop statement, called {\tt for}, that expresses it more
+concisely.  The general syntax looks like this:
+
+\begin{lstlisting}
+  for (INITIALIZER; CONDITION; INCREMENTOR) {
+    BODY
+  }
+\end{lstlisting}
+%
+This statement is exactly equivalent to
+
+\begin{lstlisting}
+  INITIALIZER;
+  while (CONDITION) {
+    BODY
+    INCREMENTOR
+  }
+\end{lstlisting}
+%
+except that it is more concise and, since it puts all the
+loop-related statements in one place, it is easier to read.
+For example:
+
+\begin{lstlisting}
+  for (int i = 0; i < 4; i++) {
+    cout << count[i] << endl;
+  }
+\end{lstlisting}
+%
+is equivalent to 
+
+\begin{lstlisting}
+  int i = 0;
+  while (i < 4) {
+    cout << count[i] << endl;
+    i++;
+  }
+\end{lstlisting}
+
+The C++11 standard added some syntax that allows more straightforward {\tt for}
+loops to be written over vectors.  An example of a C++11 for loop is the
+following:
+
+\begin{lstlisting}
+for(auto c: count) {
+  cout << c << endl;
+}
+\end{lstlisting}
+
+Here we see that
+\begin{enumerate}
+\item the syntax of a {\tt for} loop has been simplified, and
+\item the use of the {\tt auto} keyword \index{keyword!auto} \index{auto} to
+  deduce the type of {\tt c}.
+\end{enumerate}
+The advantage of this newer notation is that we cannot overstep the boundary of
+the {\tt count} vector.  Suppose {\tt count} contains $5$ elements.  Using the
+older notation we could write
+\begin{lstlisting}
+  for (int i = 0; i < 6; i++) {
+    cout << count[i] << endl;
+  }
+\end{lstlisting}
+which is incorrect as it tries to access {\tt count[5]} which is not an element
+{\tt count}.  The new notation protects us programmers from making such common
+errors (yes really! you'd be surprised how often these off-by-one errors are
+made).
 
 
 ## What we can now do
