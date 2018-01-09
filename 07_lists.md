@@ -3,6 +3,8 @@
 
 ## Objective
 
+In this chapter we introduce one type of list.  The importance of lists in computer science cannot be understated.
+
 ## A `vector`
 
 A **vector** is a list of values where each value is identified by a
@@ -230,3 +232,28 @@ function `push\_back()` for that purpose.
 ```
 
 ## What we can now do
+
+We can now create a list of values and perform operations on the list:
+
+```c++
+#include <iostream>
+#include <vector>
+
+int main() {
+  std::vector<int> fjd_amounts;
+  std::vector<int> eur_amounts;
+
+  fjd_amounts.push_back(0);
+  fjd_amounts.push_back(1);
+  fjd_amounts.push_back(2);
+  fjd_amounts.push_back(4);
+  fjd_amounts.push_back(8);
+
+  for(int fjd: fjd_amounts) {
+    eur_amounts.push_back(fjd * 0.4076);
+  }
+  
+  std::cout << eur_amounts << std::endl;
+  return 0;
+}
+```
