@@ -109,56 +109,57 @@ first time through the loop, the statements inside the loop are
 never executed.  The statements inside the loop are called
 the **body** of the loop.
 
+![Structure of a loop](images/for-loop.png)
+
 The body of the loop should change the value of
 one or more variables so that, eventually, the condition becomes
 false and the loop terminates.  Otherwise the loop will repeat
-forever, which is called an {\bf infinite loop}.  An endless
+forever, which is called an infinite loop.  An endless
 source of amusement for computer scientists is the observation
 that the directions on shampoo, ``Lather, rinse, repeat,'' are
 an infinite loop.
 
-In the case of {\tt countdown}, we can prove that the loop
-will terminate because we know that the value of {\tt n} is
-finite, and we can see that the value of {\tt n} gets smaller
-each time through the loop (each {\bf iteration}), so
+In the case of `countdown`, we can prove that the loop
+will terminate because we know that the value of `n` is
+finite, and we can see that the value of `n` gets smaller
+each time through the loop (each **iteration**), so
 eventually we have to get to zero.  In other cases it is not
 so easy to tell:
 
 ```c++
-  void sequence (int n) {
-    while (n != 1) {
-      cout << n << endl;
-      if (n%2 == 0) {           // n is even
-        n = n / 2;
-      } else {                  // n is odd
-        n = n*3 + 1;
-      }
+void sequence (int n) {
+  while (n != 1) {
+    cout << n << endl;
+    if (n%2 == 0) {      // n is even
+      n = n / 2;
+    } else {             // n is odd
+      n = n*3 + 1;
     }
   }
+}
 ```
 
-The condition for this loop is {\tt n != 1}, so the loop
-will continue until {\tt n} is 1, which will make the condition
+The condition for this loop is `n != 1`, so the loop
+will continue until `n` is 1, which will make the condition
 false.
 
-At each iteration, the program outputs the value of {\tt n} and then
+At each iteration, the program outputs the value of `n` and then
 checks whether it is even or odd.  If it is even, the value of
-{\tt n} is divided by two.  If it is odd, the value is replaced
-by $3n+1$.  For example, if the starting value (the argument passed
-to {\tt sequence}) is 3, the resulting sequence is
-3, 10, 5, 16, 8, 4, 2, 1.
+`n` is divided by two.  If it is odd, the value is replaced
+by `3n+1`.  For example, if the starting value (the argument passed
+to `sequence`) is 3, the resulting sequence is `3, 10, 5, 16, 8, 4, 2, 1`.
 
-Since {\tt n} sometimes increases and sometimes decreases, there is no
-obvious proof that {\tt n} will ever reach 1, or that the program will
-terminate.  For some particular values of {\tt n}, we can prove
+Since `n` sometimes increases and sometimes decreases, there is no
+obvious proof that `n` will ever reach 1, or that the program will
+terminate.  For some particular values of `n`, we can prove
 termination.  For example, if the starting value is a power of two, then
-the value of {\tt n} will be even every time through the loop, until
+the value of `n` will be even every time through the loop, until
 we get to 1.  The previous example ends with such a sequence,
 starting with 16.
 
 Particular values aside, the interesting question is whether
-we can prove that this program terminates for {\em all} values of n.
-So far, no one has been able to prove it {\em or} disprove it!
+we can prove that this program terminates for **all** values of n.
+So far, no one has been able to prove it **or** disprove it!
 
 One of the things loops are good for is generating
 tabular data.  For example, before computers were readily available,
@@ -188,26 +189,21 @@ sequence of values in the left column and their logarithms in the
 right column:
 
 ```c++
-  double x = 1.0;
-  while (x < 10.0) {
-    std::cout << x << "\t" << log(x) << std::endl;
-    x = x + 1.0;
-  }
+double x = 1.0;
+while (x < 10.0) {
+  std::cout << x << "\t" << log(x) << std::endl;
+  x = x + 1.0;
+}
 ```
 
-The sequence `\t` represents a {\bf tab} character. These sequences
+The sequence `\t` represents a tab character. These sequences
 can be included anywhere in a string, although in these examples
 the sequence is the whole string.
 
 A tab character causes the cursor to shift to the right until
-it reaches one of the {\bf tab stops}, which are normally every
+it reaches one of the tab stops, which are normally every
 eight characters.  As we will see in a minute, tabs are useful
 for making columns of text line up.
-
-A newline character has exactly the same effect as {\tt endl};
-it causes the cursor to move on to the next line.  Usually if
-a newline character appears by itself, I use {\tt endl}, but
-if it appears as part of a string, I use \verb+\n+.
 
 The output of this program is
 
@@ -235,7 +231,7 @@ $$
 Changing the output statement to
 
 ```c++
-      cout << x << "\t" << log(x) / log(2.0) << endl;
+cout << x << "\t" << log(x) / log(2.0) << endl;
 ```
 
 yields
@@ -258,16 +254,16 @@ the logarithms of other powers of two, we could modify the
 program like this:
 
 ```c++
-  double x = 1.0;
-  while (x < 100.0) {
-    cout << x << "\t" << log(x) / log(2.0) << endl;
-    x = x * 2.0;
-  }
+double x = 1.0;
+while (x < 100.0) {
+  cout << x << "\t" << log(x) / log(2.0) << endl;
+  x = x * 2.0;
+}
 ```
 
-Now instead of adding something to {\tt x} each time through
+Now instead of adding something to `x` each time through
 the loop, which yields an arithmetic sequence, we multiply
-{\tt x} by something, yielding a {\bf geometric} sequence.
+`x` by something, yielding a _geometric sequence_.
 The result is:
 
 ```c++
@@ -289,7 +285,7 @@ knowing the powers of two is!  As an exercise, modify this program
 so that it outputs the powers of two up to 65536
 (that's $2^{16}$).  Print it out and memorize it.
 
-\section{{\tt for} loops}
+## `for` loops
 
 The loops we have written so far have a number of elements
 in common.  All of them start by initializing a variable;
@@ -297,78 +293,46 @@ they have a test, or condition, that depends on that variable;
 and inside the loop they do something to that variable,
 like increment it.
 
-\index{loop!for}
-\index{for}
-\index{statement!for}
-
 This type of loop is so common that there is an alternate
-loop statement, called {\tt for}, that expresses it more
+loop statement, called `for`, that expresses it more
 concisely.  The general syntax looks like this:
 
-\begin{lstlisting}
-  for (INITIALIZER; CONDITION; INCREMENTOR) {
-    BODY
-  }
-\end{lstlisting}
-%
+```
+for (INITIALIZER; CONDITION; INCREMENTOR) {
+  BODY
+}
+```
+
 This statement is exactly equivalent to
 
-\begin{lstlisting}
-  INITIALIZER;
-  while (CONDITION) {
-    BODY
-    INCREMENTOR
-  }
-\end{lstlisting}
-%
+```
+INITIALIZER;
+while (CONDITION) {
+  BODY
+  INCREMENTOR
+}
+```
+
 except that it is more concise and, since it puts all the
 loop-related statements in one place, it is easier to read.
 For example:
 
-\begin{lstlisting}
-  for (int i = 0; i < 4; i++) {
-    cout << count[i] << endl;
-  }
-\end{lstlisting}
-%
+```c++
+for (int i = 0; i < 4; i++) {
+  cout << count[i] << endl;
+}
+```
+
 is equivalent to 
 
-\begin{lstlisting}
-  int i = 0;
-  while (i < 4) {
-    cout << count[i] << endl;
-    i++;
-  }
-\end{lstlisting}
-
-The C++11 standard added some syntax that allows more straightforward {\tt for}
-loops to be written over vectors.  An example of a C++11 for loop is the
-following:
-
-\begin{lstlisting}
-for(auto c: count) {
-  cout << c << endl;
+```c++
+int i = 0;
+while (i < 4) {
+  cout << count[i] << endl;
+  i++;
 }
-\end{lstlisting}
+```
 
-Here we see that
-\begin{enumerate}
-\item the syntax of a {\tt for} loop has been simplified, and
-\item the use of the {\tt auto} keyword \index{keyword!auto} \index{auto} to
-  deduce the type of {\tt c}.
-\end{enumerate}
-The advantage of this newer notation is that we cannot overstep the boundary of
-the {\tt count} vector.  Suppose {\tt count} contains $5$ elements.  Using the
-older notation we could write
-\begin{lstlisting}
-  for (int i = 0; i < 6; i++) {
-    cout << count[i] << endl;
-  }
-\end{lstlisting}
-which is incorrect as it tries to access {\tt count[5]} which is not an element
-{\tt count}.  The new notation protects us programmers from making such common
-errors (yes really! you'd be surprised how often these off-by-one errors are
-made).
-
+We prefer for loops where the bounds are known, or when we iterate over a structure (see #lists).  A `while` loop is preferred when we're waiting for some kind of event to happen.
 
 ## What we can now do
