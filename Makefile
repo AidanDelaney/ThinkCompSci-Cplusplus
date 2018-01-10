@@ -5,10 +5,10 @@ PDFS = $(patsubst %.svg,%.pdf,${SVGS})
 PNGS = $(patsubst %.svg,%.png,${SVGS})
 
 
-BOOK_NAME = cpp_south_pacific
+BOOK_NAME = Pasifika_C_plus_plus
 INKSCAPE = inkscape
 
-COMMON_OPTIONS = --top-level-division=chapter --number-sections --standalone --toc #  --filter pandoc-fignos --chapters --number-sections --standalone --toc
+COMMON_OPTIONS = --number-sections --standalone --toc #  --filter pandoc-fignos --chapters --number-sections --standalone --toc
 
 all: images pdf html epub
 
@@ -24,7 +24,7 @@ images/%.png: images/%.svg
 	@${INKSCAPE} --without-gui --export-png=$@ $<
 
 pandoc_tex:
-	pandoc ${COMMON_OPTIONS} -t latex --include-in-header=pandoc-template.tex --listings -o ${BOOK_NAME}.tex *.md
+	pandoc ${COMMON_OPTIONS} -t latex --include-in-header=pandoc-template.tex --template eisvogel --listings -o ${BOOK_NAME}.tex *.md
 
 latex: $(BOOK_NAME).tex # Generate the PDF book output
 	sed -i 's/.png}/.pdf}/g' $<

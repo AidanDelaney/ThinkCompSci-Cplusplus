@@ -1,11 +1,13 @@
 ---
-title: C++
+title: Pasifika C++
 author:
   - Aidan Delaney
   - Allen B. Downey
   - Narendra Sisodiya
   - Tirtha P. Chatterjee
-
+rights: © 1999-2018, GNU GPL Version 2
+cover-image: images/cover.png
+titlepage: true
 ---
 
 # Introduction

@@ -134,6 +134,34 @@ $CATEGORY: Functions
 
 $CATEGORY: IO
 
+::cout::[markdown]Which of the following is the correct way to output a string? {
+  = `std::cout << "Hi";`
+  ~ `std::cout >> "Hi";`
+  ~ `std::cout ( "Hi" );`
+  ~ `std::cout << string "Hi";`
+
+::cin::[markdown]Which line of code with take a typed int and store it in variable `int x`? {
+  = `std::cin >> x`
+  ~ `std::cin << x`
+  ~ `x = input()`
+
+::IOError::[markdown]What is the output of the following program, given the input "error"
+```c++
+#include <iostream>
+
+int main() {
+  int x = 42;
+  std::cin >> x;
+  std::cout << x << std::endl;
+  return 0;
+}
+```
+{
+  = 0
+  ~ "Error: 'error' is not a valid input"
+  ~ there is no output
+  ~ 42
+}
 
 
 $CATEGORY: Conditionals
@@ -141,9 +169,3 @@ $CATEGORY: Conditionals
 $CATEGORY: Iteration
 
 $CATEGORY: Lists
-
-$CATEGORY: MemoryManagement
-
-$CATEGORY: ProjectManagement
-
-$CATEGORY: ComputerOrganisation
