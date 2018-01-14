@@ -1,4 +1,5 @@
-# Random numbers
+
+1;5002;0c# Random numbers
 
 ## Objective
 
@@ -309,7 +310,7 @@ a statistical term for a vector of numbers that counts the
 number of appearances of a range of values.
 
 The tricky thing here is that I am using the loop variable
-in two different ways.  First, it is an argument to {\tt howMany},
+in two different ways.  First, it is an argument to `howMany`,
 specifying which value I am interested in.  Second, it is
 an index into the histogram, specifying which location I should
 store the result in.
@@ -341,8 +342,8 @@ zeroes.  That way, when we use the increment
 operator (`++`) inside the loop, we know we are starting from zero.
 Forgetting to initialize counters is a common error.
 
-As an exercise, encapsulate this code in a function called {\tt
-histogram} that takes a vector and the range of values in the vector
+As an exercise, encapsulate this code in a function called
+`histogram` that takes a vector and the range of values in the vector
 (in this case 0 through 10), and that returns a histogram of the
 values in the vector.
 
@@ -365,7 +366,7 @@ after the change.
 
 If you want to choose a different seed for the random number
 generator, you can use the `srand` function.  It takes
-a single argument, which is an integer between 0 and `RAND\_MAX`.
+a single argument, which is an integer between 0 and `RAND_MAX`.
 
 ## What we can do now
 
