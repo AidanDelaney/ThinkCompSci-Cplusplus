@@ -10,7 +10,7 @@ cover-image: images/cover.png
 titlepage: true
 ---
 
-# Introduction
+# Why Study Computing?
 
 ## Objective
 
