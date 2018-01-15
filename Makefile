@@ -8,7 +8,7 @@ PNGS = $(patsubst %.svg,%.png,${SVGS})
 BOOK_NAME = Pasifika_C_plus_plus
 INKSCAPE = inkscape
 
-COMMON_OPTIONS = --number-sections --standalone --toc #  --filter pandoc-fignos --chapters --number-sections --standalone --toc
+COMMON_OPTIONS = --number-sections --standalone --top-level-division=chapter --toc #  --filter pandoc-fignos --chapters --number-sections --standalone --toc
 
 all: images pdf html epub
 
